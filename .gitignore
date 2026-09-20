@@ -1,0 +1,3 @@
+# Impeccable engine binaries: platform-specific (~16 MB each) and re-downloaded
+# on demand by .claude/skills/impeccable/scripts/impeccable (sha256-verified).
+.claude/skills/impeccable/scripts/bin/

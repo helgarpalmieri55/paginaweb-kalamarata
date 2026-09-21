@@ -223,15 +223,6 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .horario__fila dd { margin: 0; color: var(--tinta-suave); text-align: right; font-variant-numeric: tabular-nums; }
 .horario__aviso { background: var(--verde-claro); padding: var(--r3) var(--r4); font-size: .9rem; font-weight: 600; }
 
-/* --------------------------------------------------------------------------
-   Bloque de identidad legal — texto plano, nunca dentro de una imagen
-   -------------------------------------------------------------------------- */
-
-.identidad { background: var(--fondo-hondo); border-block: 1px solid var(--linea); padding-block: var(--r6); }
-.identidad__rejilla { display: grid; gap: var(--r4); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.identidad dt { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-tenue); font-weight: 700; margin-bottom: .2rem; }
-.identidad dd { margin: 0; font-weight: 600; }
-
 .pend {
   display: inline-block; background: var(--alerta-fondo); color: var(--alerta);
   border: 1px dashed var(--alerta); border-radius: var(--radio-chico);

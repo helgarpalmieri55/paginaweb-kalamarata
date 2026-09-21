@@ -7,9 +7,25 @@ inteligencia artificial el 2026-09-21 y se muestran en el sitio con la marca
 visible «Imagen de referencia» sobre cada una. El logotipo
 (`kalamarata-logo.webp`) sí es del cliente y no lleva esa marca.
 
-Ninguna lleva texto, marcas comerciales ni logotipos: las bebidas de marca
-(gaseosa de cola, té, jugos) se representan **sin etiqueta**, como un vaso o
-una botella genérica, para no reproducir la identidad de otra empresa.
+## Bebidas de marca
+
+Tres bebidas de la carta se nombran por su marca, y a petición del cliente sus
+imágenes llevan la etiqueta: **Coca-Cola mega**, **Té o jugos Hit** y
+**Té Hatsu**. Son productos que el restaurante vende de verdad, así que
+mostrarlos es lo mismo que hacen la carta impresa y la nevera del local.
+
+Las etiquetas están **generadas por IA**, no son fotografías del producto ni
+material oficial de esas marcas. Si alguna de ellas pide que se retire su
+imagen, se retira: no hay permiso de uso de por medio. Lo correcto a medio
+plazo es reemplazarlas por una foto de las botellas que el restaurante tiene
+en nevera, que además muestra el envase y el tamaño reales.
+
+El resto de bebidas (`Gaseosa PET 400`, `Gaseosa 1.5 L PET`, `Botella de
+agua`, `Soda`, `Ginger ale`, las sodas saborizadas) **no nombran marca en la
+carta**, así que sus botellas van sin etiqueta: poner una supondría inventar
+qué marca surte el restaurante.
+
+Ninguna imagen lleva otro texto ni logotipos.
 
 Se generaron porque el restaurante no tiene todavía fotografía propia
 publicable, y porque las fotos que circulan en el repositorio del proveedor

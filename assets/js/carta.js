@@ -16,6 +16,12 @@
      resumir a propósito antes que dejar que se rompa solo. */
   const TOPE_URL = 1800;
 
+  /* Arriba y no junto a quien lo usa: `const` no se eleva como sí lo hacen las
+     declaraciones de función, y pintarPedido() —que está mucho antes en el
+     archivo— lo necesita. Dejarlo abajo funcionaba solo por el orden en que
+     caen hoy las llamadas, que es una trampa para el siguiente que edite. */
+  const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
@@ -62,6 +68,15 @@
     else pedido.push({ ...linea, cant: 1 });
     guardar();
     avisar(linea.nombre, linea.talla);
+  }
+
+  /* Quita la línea entera. Antes, sacar cuatro pizzas del pedido eran cuatro
+     toques en el «−», y el cuarto cambiaba de sitio al desaparecer la línea. */
+  function quitar(k) {
+    const i = pedido.findIndex(l => llave(l.id, l.talla) === k);
+    if (i < 0) return;
+    pedido.splice(i, 1);
+    guardar();
   }
 
   function mover(k, delta) {
@@ -143,16 +158,34 @@
         '<li class="vacio"><strong>Tu pedido está vacío</strong>' +
         'Toca el botón naranja de cualquier plato para empezar.</li>';
     } else {
+      const hoy = diaEnBogota();
       lista.innerHTML = pedido.map(l => {
         const k = llave(l.id, l.talla);
-        return `<li class="linea">
+        /* Un especial guardado ayer sigue en el carrito hoy: localStorage no
+           sabe de días. Se marca en vez de borrarlo por las buenas —nadie
+           espera que le vacíen el pedido solo— y el botón de quitar queda al
+           lado para que resolverlo sea un toque. */
+        const dia = diaDelEspecial(l.nombre);
+        const caduco = dia >= 0 && dia !== hoy;
+        return `<li class="linea${caduco ? ' linea--caduca' : ''}">
           <div>
             <div class="linea__n">${esc(l.nombre)}</div>
             ${l.talla ? `<div class="linea__d">${esc(l.talla)}</div>` : ''}
-            <div class="cant">
-              <button type="button" data-menos="${esc(k)}" aria-label="Quitar uno de ${esc(l.nombre)}">−</button>
-              <span>${l.cant}</span>
-              <button type="button" data-mas="${esc(k)}" aria-label="Añadir uno de ${esc(l.nombre)}">+</button>
+            ${caduco ? `<div class="linea__aviso">Hoy no se sirve: es de los ${esc(DIAS[dia].toLowerCase())}</div>` : ''}
+            <div class="linea__mandos">
+              <div class="cant">
+                <button type="button" data-menos="${esc(k)}" aria-label="Quitar uno de ${esc(l.nombre)}">−</button>
+                <span>${l.cant}</span>
+                <button type="button" data-mas="${esc(k)}" aria-label="Añadir uno de ${esc(l.nombre)}">+</button>
+              </div>
+              <button class="linea__borrar" type="button" data-borrar="${esc(k)}"
+                      aria-label="Quitar ${esc(l.nombre)} del pedido entero">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>
+                </svg>
+                <span>Quitar</span>
+              </button>
             </div>
           </div>
           <div class="linea__p">${pesos(l.precio * l.cant)}</div>
@@ -250,6 +283,8 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
 
   lista?.addEventListener('click', e => {
+    const borrar = e.target.closest('[data-borrar]');
+    if (borrar) { quitar(borrar.dataset.borrar); return; }
     const menos = e.target.closest('[data-menos]');
     const mas   = e.target.closest('[data-mas]');
     if (menos) mover(menos.dataset.menos, -1);
@@ -379,6 +414,9 @@
       }
       const add = e.target.closest('[data-add]');
       if (!add) return;
+      /* Un <button disabled> no dispara click, pero que la regla no dependa
+         solo de eso: lo que no se sirve hoy no entra al pedido. */
+      if (add.disabled || add.getAttribute('aria-disabled') === 'true') return;
       const caja = add.closest('.plato');
       const sel  = $('[data-talla][aria-pressed="true"]', caja);
       add.classList.remove('hecho');
@@ -404,7 +442,7 @@
       campoNotas.addEventListener('input', () => guardarNotas(campoNotas.value));
     }
 
-    marcarHoy();
+    marcarEspeciales();
     marcarDisponibilidad(d.servicios);
     abrirCartaDeAhora(d.servicios, $('#cats'));
     // Las fuentes cambian las alturas: si no se ha tocado nada, recolocamos.
@@ -508,27 +546,67 @@
     });
   }
 
-  /* El visitante del mediodía llega buscando qué se come hoy. Se marca con el
-     día del local, no el del navegador: en UTC puede ser ya lunes mientras en
-     Barranquilla sigue siendo domingo y la cocina no sirve almuerzo. */
-  function marcarHoy() {
-    const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-    let dia;
+  /* Se usa el día del LOCAL, no el del navegador: en UTC puede ser ya lunes
+     mientras en Barranquilla sigue siendo domingo y la cocina no sirve
+     almuerzo. */
+  function diaEnBogota() {
     try {
-      dia = DIAS.indexOf(new Intl.DateTimeFormat('es-CO', {
+      return DIAS.indexOf(new Intl.DateTimeFormat('es-CO', {
         timeZone: 'America/Bogota', weekday: 'long'
       }).format(new Date()).replace(/^./, c => c.toUpperCase()));
-    } catch { dia = new Date().getDay(); }
-    if (dia < 1) return; // domingo: no hay almuerzo que marcar
+    } catch { return new Date().getDay(); }
+  }
 
-    const nombre = DIAS[dia];
-    $$('.plato', zona).forEach(p => {
-      if (p.querySelector('.plato__nombre')?.textContent.startsWith(nombre + ' ·')) {
+  /* El día que anuncia el nombre del plato: «Martes · Chuleta valluna» -> 2.
+     Devuelve -1 si el plato no es un especial del día. */
+  function diaDelEspecial(nombre) {
+    const corte = String(nombre).indexOf(' ·');
+    if (corte < 0) return -1;
+    return DIAS.indexOf(nombre.slice(0, corte));
+  }
+
+  /* Los especiales son un plato distinto cada día: enseñarlos todos pedibles
+     hacía que se pudiera mandar por WhatsApp la chuleta del martes un jueves,
+     que la cocina no tiene. Se siguen viendo los seis —sirven para saber qué
+     toca mañana— pero solo el de hoy se puede añadir. */
+  function marcarEspeciales() {
+    const hoy = diaEnBogota();
+    $$('#almuerzo--especiales-del-dia .plato', zona).forEach(p => {
+      const nombre = p.querySelector('.plato__nombre')?.textContent || '';
+      const dia = diaDelEspecial(nombre);
+      if (dia < 0) return;
+
+      const cuerpo = p.querySelector('.plato__cuerpo');
+      if (dia === hoy) {
         p.classList.add('plato--hoy');
-        p.querySelector('.plato__cuerpo')
-         ?.insertAdjacentHTML('afterbegin', '<span class="dato__hoy">Hoy</span>');
+        cuerpo?.insertAdjacentHTML('afterbegin', '<span class="dato__hoy">Hoy</span>');
+        return;
       }
+
+      p.classList.add('plato--otro-dia');
+      const boton = p.querySelector('[data-add]');
+      if (boton) {
+        boton.disabled = true;
+        boton.setAttribute('aria-disabled', 'true');
+        /* El botón deshabilitado no es suficiente por sí solo: sin este
+           rótulo, quien usa lector de pantalla oye «añadir» y nada más. */
+        boton.setAttribute('aria-label', `${nombre} no se sirve hoy; es de los ${DIAS[dia].toLowerCase()}`);
+        boton.removeAttribute('title');
+      }
+      /* En domingo no hay almuerzo, así que ninguno es «de otro día»: no hay
+         ninguno hoy, y decirlo así evita el sinsentido de «vuelve el domingo». */
+      const rotulo = hoy < 1
+        ? `Los ${DIAS[dia].toLowerCase()}`
+        : `Solo los ${DIAS[dia].toLowerCase()}`;
+      cuerpo?.insertAdjacentHTML('afterbegin', `<span class="dato__otro-dia">${esc(rotulo)}</span>`);
     });
+
+    if (hoy < 1) {
+      const grupo = $('#almuerzo--especiales-del-dia', zona);
+      grupo?.querySelector('.grupo__nota')?.insertAdjacentHTML('afterend',
+        '<p class="grupo__aviso">Hoy es domingo y no hay almuerzo: ningún especial está disponible. ' +
+        'Vuelven el lunes.</p>');
+    }
   }
 
   function lienzo(nombre, img) {

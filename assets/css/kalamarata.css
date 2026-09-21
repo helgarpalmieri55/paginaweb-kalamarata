@@ -762,3 +762,56 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 @media (max-width: 52rem) { .mapa { aspect-ratio: 4 / 5; } }
 .mapa iframe { width: 100%; height: 100%; border: 0; display: block; }
 .mapa__pie { margin-top: var(--r3); font-size: .88rem; color: var(--tinta-suave); }
+
+/* --------------------------------------------------------------------------
+   Quitar una línea entera del pedido, y especiales de otro día
+   -------------------------------------------------------------------------- */
+
+/* El botón de quitar va FUERA de `.cant`: esa caja tiene borde propio y
+   `overflow: hidden`, así que dentro se leería como un tercer paso del
+   selector de cantidad en vez de como otra acción. */
+.linea__mandos { display: flex; align-items: center; gap: var(--r3); flex-wrap: wrap; }
+
+.linea__borrar {
+  display: inline-flex; align-items: center; gap: .3rem;
+  background: none; border: 0; cursor: pointer; padding: .25rem .1rem;
+  font: inherit; font-size: .82rem; color: var(--tinta-suave);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.linea__borrar:hover { color: var(--alerta); }
+.linea__borrar svg { flex: 0 0 auto; }
+
+/* Un especial guardado de otro día: se marca, no se borra solo. */
+.linea--caduca .linea__n { color: var(--tinta-suave); }
+.linea__aviso {
+  font-size: .8rem; font-weight: 700; color: var(--alerta);
+  margin-top: .15rem;
+}
+
+/* En la carta, el especial que hoy no se sirve. No se esconde —sirve para
+   saber qué toca mañana— pero se ve que no está disponible y no se puede
+   añadir. */
+.plato--otro-dia .plato__lienzo img { filter: saturate(.55); opacity: .75; }
+.dato__otro-dia {
+  display: inline-block; align-self: flex-start; margin-bottom: var(--r2);
+  background: var(--control); color: var(--tinta-suave);
+  border: 1px solid var(--linea-fuerte);
+  font-size: .7rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+  padding: .18rem .45rem; border-radius: var(--radio-chico);
+}
+.plato--otro-dia .plato__nombre { color: var(--tinta-suave); }
+.plato--otro-dia .mas[disabled] {
+  background: var(--control); color: var(--tinta-tenue);
+  border: 1px solid var(--linea-fuerte);
+  cursor: not-allowed;
+}
+.plato--otro-dia .mas[disabled]:hover { background: var(--control); }
+
+.grupo__aviso {
+  margin: var(--r3) 0 0;
+  padding: var(--r3) var(--r4);
+  background: var(--alerta-fondo); color: var(--alerta);
+  border-left: 3px solid var(--alerta);
+  border-radius: var(--radio-chico);
+  font-size: .9rem; font-weight: 700;
+}

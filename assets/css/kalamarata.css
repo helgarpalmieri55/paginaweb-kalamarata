@@ -539,17 +539,41 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    -------------------------------------------------------------------------- */
 
 .hero {
-  background: var(--verde-hondo);
+  background: var(--verde-hondo) url('../img/muro-italia-movil.webp') center / cover no-repeat;
   color: #fff;
   padding-block: var(--r8);
   text-align: center;
-  /* El campo verde ocupa la primera pantalla entera por debajo de la cabecera.
+  /* El campo ocupa la primera pantalla entera por debajo de la cabecera.
      `svh` y no `vh`: en el móvil `vh` cuenta la barra del navegador que luego
      se retrae, y el héroe quedaba cortado por abajo al abrir.
      La cabecera mide --cab-alto + 1px de su borde inferior. */
   min-height: calc(100svh - var(--cab-alto) - 1px);
   display: flex; flex-direction: column; justify-content: center;
+  position: relative; isolation: isolate;
 }
+/* El archivo grande solo donde se nota: a 390 px de ancho, mandar 1600 px es
+   pagar 149 KB para enseñar 820. */
+@media (min-width: 46rem) {
+  .hero { background-image: url('../img/muro-italia.webp'); }
+}
+/* Velo sobrio sobre el muro. No es para «oscurecer y ya»: sin él, el borde
+   del panel se pierde contra la franja blanca del ladrillo. */
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(10,32,14,.40), rgba(10,32,14,.62));
+}
+/* El texto NO va suelto sobre la bandera: sobre la franja blanca del muro el
+   blanco desaparece. Va en un panel opaco del verde de marca, que es lo que
+   deja el titular legible sin tener que apagar la imagen entera. */
+.hero__panel {
+  background: rgba(13,77,32,.93);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radio);
+  padding: var(--r7) var(--r5);
+  max-width: 52rem; margin-inline: auto;
+  box-shadow: 0 18px 50px rgba(0,0,0,.34);
+}
+@media (min-width: 46rem) { .hero__panel { padding: var(--r8) var(--r7); } }
 .hero h1 {
   font-size: clamp(2.1rem, 1.3rem + 3.4vw, 4rem);
   max-width: 16ch; margin-inline: auto; color: #fff;
@@ -647,3 +671,94 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    lo que se está sirviendo, sin volverlo ilegible ni impedir el pedido. */
 .servicio--cerrado .platos, .servicio--cerrado .lista-bar { opacity: .72; }
 .servicio--cerrado .plato:hover { opacity: 1; }
+
+/* --------------------------------------------------------------------------
+   Aviso de «añadido al pedido»
+   Antes, añadir un plato solo subía un número en la cabecera: en el móvil ese
+   número queda fuera del pulgar y del ojo, así que no se veía que hubiera
+   pasado nada. Este aviso lo dice donde se está mirando, sin tapar la carta y
+   sin sacar a nadie de la lista: quien quiera seguir comprando, sigue.
+   -------------------------------------------------------------------------- */
+
+.aviso {
+  position: fixed; z-index: 46;
+  left: 50%; transform: translateX(-50%) translateY(1rem);
+  bottom: calc(var(--r5) + env(safe-area-inset-bottom));
+  display: flex; align-items: center; gap: var(--r3);
+  max-width: min(30rem, calc(100vw - 2rem));
+  padding: var(--r3) var(--r3) var(--r3) var(--r4);
+  background: var(--tinta); color: #fff;
+  border-radius: 999px;
+  box-shadow: var(--sombra-alta);
+  opacity: 0; pointer-events: none;
+  transition: opacity .18s ease, transform .18s cubic-bezier(.2,.8,.2,1);
+}
+/* Por encima de la barra del móvil, que vive abajo del todo. */
+@media (max-width: 52rem) {
+  .aviso { bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+}
+.aviso.visible { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+/* `display: flex` de arriba le gana al `[hidden] { display: none }` del
+   navegador, así que sin esta línea el atributo `hidden` no oculta nada: el
+   aviso seguía en el árbol, anunciable por un lector de pantalla, desde que
+   cargaba la página y sin que nadie hubiera añadido nada. */
+.aviso[hidden] { display: none; }
+
+.aviso__ok {
+  flex: 0 0 auto; color: #7BD88F;
+  /* El trazo se dibuja solo al aparecer: confirma sin necesitar leer. */
+  stroke-dasharray: 26; stroke-dashoffset: 26;
+}
+.aviso.visible .aviso__ok { animation: aviso-check .32s .06s ease forwards; }
+@keyframes aviso-check { to { stroke-dashoffset: 0; } }
+
+.aviso__txt {
+  flex: 1 1 auto; font-size: .94rem; line-height: 1.3;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.aviso__ver {
+  flex: 0 0 auto; border: 0; cursor: pointer;
+  background: var(--naranja-accion); color: var(--sobre-accion);
+  font-family: var(--texto); font-weight: 800; font-size: .88rem;
+  padding: .45rem .85rem; border-radius: 999px;
+}
+.aviso__ver:hover { background: #FF9433; }
+
+/* El botón que acabas de pulsar confirma en el sitio, para que el ojo no
+   tenga que viajar hasta el aviso. */
+.mas.hecho { animation: mas-late .34s cubic-bezier(.2,.8,.2,1); }
+@keyframes mas-late {
+  40% { transform: scale(1.22); }
+  to  { transform: scale(1); }
+}
+
+/* La cuenta del pedido late al cambiar, que es lo que el usuario echaba en
+   falta cuando solo «salía un número más». */
+.cuenta.late { animation: cuenta-late .42s cubic-bezier(.2,.8,.2,1); }
+@keyframes cuenta-late {
+  30% { transform: scale(1.45); }
+  to  { transform: scale(1); }
+}
+
+/* Quien pide menos movimiento recibe el aviso igual, pero sin brincos. */
+@media (prefers-reduced-motion: reduce) {
+  .aviso { transition: opacity .18s ease; transform: translateX(-50%); }
+  .aviso.visible { transform: translateX(-50%); }
+  .aviso.visible .aviso__ok { animation: none; stroke-dashoffset: 0; }
+  .mas.hecho, .cuenta.late { animation: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Mapa de «Dónde estamos»
+   -------------------------------------------------------------------------- */
+
+.mapa {
+  position: relative; aspect-ratio: 16 / 9;
+  border-radius: var(--radio); overflow: hidden;
+  border: 1px solid var(--linea); background: var(--fondo-hondo);
+}
+/* Más alto en el teléfono: a 16/9 sobre 390 px el mapa queda en una tira de
+   220 px, donde no se distingue una manzana de la siguiente. */
+@media (max-width: 52rem) { .mapa { aspect-ratio: 4 / 5; } }
+.mapa iframe { width: 100%; height: 100%; border: 0; display: block; }
+.mapa__pie { margin-top: var(--r3); font-size: .88rem; color: var(--tinta-suave); }

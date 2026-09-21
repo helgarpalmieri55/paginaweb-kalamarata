@@ -80,10 +80,15 @@ Las **17 menciones** (héroe, pies, JSON-LD, meta descripciones, `carta.json` y
 los dos textos legales) dicen ahora **Calle 72 No. 60-53**. El botón «Cómo
 llegar» ya apuntaba a coordenadas fijas, así que llegar no dependía del texto.
 
-Queda una cosa por comprobar, y no la puedo comprobar yo: **las coordenadas del
-enlace de Google Maps** (`11.0029612,-74.7964900`) se pusieron cuando la
-dirección era «Calle 72 #61 esquina». Conviene abrir el botón una vez y
-confirmar que cae en la puerta del local.
+Sobre **las coordenadas** (`11.0029612,-74.7964900`): al incrustar el mapa se
+pudo por fin mirar dónde cae el pin, y **cae en la Calle 72 entre la Carrera 60
+y la 61**, que es justo lo que significa «60-53» en la nomenclatura colombiana.
+Es coherente con el certificado. Lo que sigue sin poder comprobarse desde aquí
+es **la puerta exacta**: eso se mira una vez desde el local.
+
+Las coordenadas están repetidas en **tres sitios**: el botón «Cómo llegar» y el
+mapa de `donde-estamos.html`, y el JSON-LD de `index.html`. Si hay que
+corregirlas, hay que tocar los tres.
 
 ### b-bis) De dónde venía el problema
 
@@ -167,6 +172,17 @@ frase que dice qué hace el restaurante. Las dos opciones:
 **Recomendación:** empezar por **no**. Es una línea de texto, no bloquea nada, y
 evita tener que montar la casilla y la baja antes de publicar. Cambiarlo
 después cuesta lo mismo.
+
+## 1-quater. El mapa incrusta Google
+
+`donde-estamos.html` lleva ahora un mapa de Google incrustado, interactivo y
+con el pin del local. Eso significa que **Google recibe la IP de quien visita
+esa página** y puede poner sus cookies.
+
+Está declarado en la política de datos, §5, junto a los demás encargados. Si
+alguna vez se quiere evitar del todo, la alternativa es quitar el `<iframe>` y
+dejar solo el botón «Cómo llegar», que abre la app de mapas sin incrustar nada.
+El mapa **solo** está en esa página; ninguna otra carga nada de Google.
 
 ## 2. Archivos que faltan
 

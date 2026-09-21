@@ -61,6 +61,7 @@
     if (ya) ya.cant += 1;
     else pedido.push({ ...linea, cant: 1 });
     guardar();
+    avisar(linea.nombre, linea.talla);
   }
 
   function mover(k, delta) {
@@ -176,6 +177,39 @@
     }
   }
 
+  /* ------------------------------------------------------------- aviso    */
+
+  const aviso    = $('#aviso');
+  const avisoTxt = $('#aviso-txt');
+  let avisoReloj = null;
+
+  /* Se llama SOLO al añadir, no en cada pintarPedido(): si saltara al repintar
+     aparecería también al recargar la página o al quitar algo, que es
+     justamente lo contrario de lo que confirma. */
+  function avisar(nombre, talla) {
+    const cuenta = $('.cuenta[data-cuenta]');
+    if (cuenta) {
+      cuenta.classList.remove('late');
+      void cuenta.offsetWidth;        // reinicia la animación si se pulsa rápido
+      cuenta.classList.add('late');
+    }
+    if (!aviso || !avisoTxt) return;
+    avisoTxt.textContent = `Añadido: ${nombre}${talla ? ` (${talla})` : ''}`;
+    aviso.hidden = false;
+    void aviso.offsetWidth;
+    aviso.classList.add('visible');
+    clearTimeout(avisoReloj);
+    avisoReloj = setTimeout(ocultarAviso, 3200);
+  }
+
+  function ocultarAviso() {
+    if (!aviso) return;
+    aviso.classList.remove('visible');
+    /* `hidden` va después de la transición para que no desaparezca de golpe;
+       si alguien vuelve a añadir antes, avisar() lo reabre igual. */
+    setTimeout(() => { if (!aviso.classList.contains('visible')) aviso.hidden = true; }, 220);
+  }
+
   function esc(s) {
     return String(s).replace(/[&<>"']/g, c =>
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -187,6 +221,7 @@
 
   function abrir() {
     if (!panel) return;
+    ocultarAviso();
     abridor = document.activeElement;
     panel.classList.add('abierto');
     velo?.classList.add('abierto');
@@ -346,6 +381,10 @@
       if (!add) return;
       const caja = add.closest('.plato');
       const sel  = $('[data-talla][aria-pressed="true"]', caja);
+      add.classList.remove('hecho');
+      void add.offsetWidth;
+      add.classList.add('hecho');
+      add.addEventListener('animationend', () => add.classList.remove('hecho'), { once: true });
       sumar({
         id: add.dataset.add,
         nombre: add.dataset.nombre,

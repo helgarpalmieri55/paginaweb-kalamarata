@@ -66,6 +66,17 @@
   </button>
 </div>
 
+<!-- Aviso de «se añadió». role="status" + aria-live: quien usa lector de
+     pantalla se entera igual que quien lo ve, sin robarle el foco. -->
+<div class="aviso" id="aviso" role="status" aria-live="polite" hidden>
+  <svg class="aviso__ok" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M20 6 9 17l-5-5"/>
+  </svg>
+  <span class="aviso__txt" id="aviso-txt"></span>
+  <button class="aviso__ver" type="button" data-abrir-pedido>Ver pedido</button>
+</div>
+
 <div class="velo" id="velo" aria-hidden="true"></div>
 
 <aside class="panel" id="panel" aria-hidden="true" aria-label="Tu pedido">

@@ -69,6 +69,22 @@ qué marca surte el restaurante.
 Ninguna imagen **generada** lleva texto ni logotipos; las tres de marca sí,
 porque son fotografía de producto y la etiqueta es el producto.
 
+## La imagen del inicio
+
+`muro-italia.webp` (1600×901, 149 KB) y `muro-italia-movil.webp` (820×462,
+56 KB) son **la misma imagen aportada por el cliente**, en dos tamaños: el
+móvil recibe el pequeño, que es la diferencia entre 57 KB y 149 KB en la
+primera vista.
+
+Muro de ladrillo con la bandera italiana y el logotipo de Kalamarata. **Le
+aplica lo mismo que a las tres fotos de bebida: no consta de dónde salió ni
+bajo qué licencia.** El logotipo sí es del cliente.
+
+El texto del inicio **no va suelto sobre ella**: va en un panel verde opaco.
+No es decoración — sobre la franja blanca del ladrillo el texto blanco
+desaparece. Medido sobre la página real: 9,53:1 en el titular y 8,09:1 en la
+entrada, cuando AA pide 4,5:1.
+
 ## Qué hay que hacer con ellas
 
 Reemplazarlas por fotografía propia de los platos de Kalamarata en cuanto el

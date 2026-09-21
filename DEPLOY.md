@@ -1,4 +1,52 @@
-# Publicación en GitHub Pages
+# Publicación del sitio
+
+Hay dos destinos y **los dos usan el mismo guion**, `construir.sh`, que arma en
+`_site/` solo lo que es el sitio público.
+
+| Destino | Para qué | Dominio |
+|---|---|---|
+| GitHub Pages | Vista previa. Lleva `noindex` inyectado | `helgarpalmieri55.github.io` |
+| **Cloudflare Pages** | **El sitio de verdad** | **kalamarata.com** (GoDaddy → Cloudflare) |
+
+---
+
+## Cloudflare Pages (el destino real)
+
+Al conectar el repositorio, en **Settings → Builds & deployments**:
+
+| Casilla | Valor |
+|---|---|
+| Build command | `bash construir.sh` |
+| Build output directory | `_site` |
+| Root directory | *(vacío)* |
+
+**Estas dos casillas no son opcionales.** Si se dejan en blanco, Cloudflare
+sirve la raíz del repositorio y publica `PENDIENTES.md`, `PRODUCT.md`,
+`DESIGN.md`, `DEPLOY.md` y `.claude/`. Es exactamente el mismo fallo que ya
+ocurrió aquí con GitHub Pages en modo «Deploy from a branch» el 21/09/2026.
+
+Comprobación después del primer despliegue, desde fuera:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.com/PENDIENTES.md
+```
+
+`404` es lo correcto. `200` significa que falta configurar las casillas.
+
+### El DNS
+
+El dominio está en GoDaddy y se sirve por Cloudflare. En GoDaddy hay que
+apuntar los **nameservers** a los que dé Cloudflare; el registro del sitio se
+crea solo al conectar Pages a un dominio propio.
+
+### Qué NO lleva Cloudflare
+
+El paso de `noindex` es **solo** para la vista previa de github.io. El sitio de
+kalamarata.com tiene que ser indexable: es la prueba de que el negocio existe
+para la verificación de Meta. `construir.sh` no toca el `robots.txt`, así que
+Cloudflare publica el del repositorio, que permite la indexación.
+
+---
 
 El sitio se publica solo cuando entra código en `main` — es decir, **cuando tú
 haces merge del pull request**. No se publica desde ramas ni desde el propio PR.

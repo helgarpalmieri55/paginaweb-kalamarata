@@ -517,12 +517,18 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    Pie — el bloque legal va en TODAS las páginas, aunque quede feo
    -------------------------------------------------------------------------- */
 
-.pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r7) var(--r5); }
+.pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r4); }
 .pie a { color: #fff; }
-.pie__rejilla { display: grid; gap: var(--r5); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r3); font-family: var(--texto); font-weight: 800; }
-.pie p, .pie address { font-style: normal; margin: 0 0 var(--r2); font-size: .94rem; }
-.pie__legal { border-top: 1px solid var(--pie-linea); margin-top: var(--r6); padding-top: var(--r4); font-size: .9rem; color: var(--pie-rotulo); }
+.pie__rejilla { display: grid; gap: var(--r4) var(--r5); grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+/* En ancho, cinco columnas exactas. Con `auto-fit` a 1440 salian SEIS pistas
+   —una vacia— y las otras mas estrechas partian los nombres largos, que es lo
+   que estiraba el pie. */
+@media (min-width: 62rem) { .pie__rejilla { grid-template-columns: repeat(5, 1fr); } }
+.pie__rejilla { border-bottom: 1px solid var(--pie-linea); padding-bottom: var(--r4); }
+.pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r2); font-family: var(--texto); font-weight: 800; }
+.pie p, .pie address { font-style: normal; margin: 0 0 var(--r1); font-size: .9rem; line-height: 1.45; }
+.pie__legal { margin: var(--r3) 0 0; font-size: .85rem; line-height: 1.5; color: var(--pie-rotulo); }
+.pie__legal a { color: var(--pie-texto); }
 .pie__legal a { color: var(--pie-texto); }
 .pie .pend { background: var(--pie-pend-fondo); border-color: var(--pie-pend-filo); color: var(--pie-pend-tinta); }
 
@@ -537,6 +543,12 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   color: #fff;
   padding-block: var(--r8);
   text-align: center;
+  /* El campo verde ocupa la primera pantalla entera por debajo de la cabecera.
+     `svh` y no `vh`: en el móvil `vh` cuenta la barra del navegador que luego
+     se retrae, y el héroe quedaba cortado por abajo al abrir.
+     La cabecera mide --cab-alto + 1px de su borde inferior. */
+  min-height: calc(100svh - var(--cab-alto) - 1px);
+  display: flex; flex-direction: column; justify-content: center;
 }
 .hero h1 {
   font-size: clamp(2.1rem, 1.3rem + 3.4vw, 4rem);

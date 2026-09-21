@@ -29,8 +29,8 @@ dueño.
 
 | Marcador | Qué falta decidir |
 |---|---|
-| `PENDIENTE_DOMINIO` | El dominio propio. El correo es `@kalamarata.com`, pero tener el correo no es lo mismo que tener el dominio apuntando al sitio. **Hay que confirmarlo, no suponerlo** |
-| `PENDIENTE_DECISION_PROMOCIONES` | Si el restaurante va a enviar publicidad. Es una decisión del negocio, no un dato del certificado |
+| ~~`PENDIENTE_DOMINIO`~~ | **kalamarata.com**, confirmado por el dueño el 21/09/2026. Está en GoDaddy y se sirve por Cloudflare |
+| `PENDIENTE_DECISION_PROMOCIONES` | **Lo único que queda.** Si el restaurante va a mandar publicidad. Ver «La decisión de promociones» más abajo |
 
 ---
 
@@ -39,7 +39,20 @@ dueño.
 No son detalles de redacción. Meta compara lo que dice el sitio contra lo que
 dice el certificado, y hoy **no coinciden**.
 
-### a) El certificado no menciona «Kalamarata» por ningún lado
+### a) RESUELTO — se verifica como GATO'S LA 72
+
+**Decisión del dueño, 21/09/2026:** la verificación ante Meta se hace con el
+nombre real del establecimiento, **GATO'S LA 72**, que es el que respalda el
+certificado. El sitio sigue llamándose Kalamarata, que es el nombre comercial
+con el que atiende. Para que el sitio sostenga esa verificación, el pie de las
+6 páginas ahora dice, además de la razón social y el NIT:
+«Establecimiento GATO'S LA 72».
+
+El certificado lo escribe como `GATO"S LA 72`, con comilla doble: es cómo lo
+guarda el registro. En el sitio se escribe con apóstrofo, que es como se lee.
+**En el formulario de Meta hay que copiar la forma exacta del registro.**
+
+### a-bis) De dónde venía el problema
 
 El establecimiento de comercio matriculado a nombre de Néstor Mauricio Ortiz
 González se llama:
@@ -60,7 +73,19 @@ Eso deja tres caminos, y **los tres son del dueño, no nuestros**:
 Mientras no se resuelva, **la verificación se rechaza**: el nombre del negocio
 no lo respalda ningún documento.
 
-### b) La dirección del certificado no es la que usa el sitio
+### b) RESUELTO — manda la dirección del certificado
+
+**Decisión del dueño, 21/09/2026:** se usa la del certificado en todo el sitio.
+Las **17 menciones** (héroe, pies, JSON-LD, meta descripciones, `carta.json` y
+los dos textos legales) dicen ahora **Calle 72 No. 60-53**. El botón «Cómo
+llegar» ya apuntaba a coordenadas fijas, así que llegar no dependía del texto.
+
+Queda una cosa por comprobar, y no la puedo comprobar yo: **las coordenadas del
+enlace de Google Maps** (`11.0029612,-74.7964900`) se pusieron cuando la
+dirección era «Calle 72 #61 esquina». Conviene abrir el botón una vez y
+confirmar que cae en la puerta del local.
+
+### b-bis) De dónde venía el problema
 
 | Fuente | Dirección |
 |---|---|
@@ -118,6 +143,30 @@ Además, sin marcador en el código pero igual de bloqueantes:
   caja.
 - **Confirmar quién es administrador del portafolio comercial** y su usuario de
   Facebook. Solo un administrador puede completar la verificación.
+
+## 1-ter. La decisión de promociones (lo único que queda en rojo)
+
+**La pregunta, en una línea:** ¿el restaurante va a mandarle publicidad por
+WhatsApp a quien ya pidió —ofertas, el menú del día, promociones— o los datos
+del cliente se usan **solo** para atender su pedido?
+
+**Por qué hay que decidirlo y no se puede dejar en blanco.** La Ley 1581 de
+2012 y el Decreto 1377 de 2013 tratan la publicidad como una finalidad
+**distinta** de atender el pedido. Quien te da su teléfono para que le lleves
+un almuerzo no te ha autorizado a mandarle promociones: eso es un permiso
+aparte, que se pide aparte y que el cliente puede negar sin perder el pedido.
+
+La política ya tiene escrito el párrafo que lo explica; lo que falta es la
+frase que dice qué hace el restaurante. Las dos opciones:
+
+| Si la respuesta es | Lo que se publica |
+|---|---|
+| **No, por ahora no** | «Hoy no enviamos promociones: tus datos se usan solo para atender tu pedido.» Es lo más simple y lo más seguro. Si mañana se quiere, se cambia la política y se pide el permiso |
+| **Sí, queremos** | «Si nos das permiso, podemos enviarte promociones…» y **además** hay que añadir una casilla de aceptación separada en el pedido, y una forma de darse de baja |
+
+**Recomendación:** empezar por **no**. Es una línea de texto, no bloquea nada, y
+evita tener que montar la casilla y la baja antes de publicar. Cambiarlo
+después cuesta lo mismo.
 
 ## 2. Archivos que faltan
 

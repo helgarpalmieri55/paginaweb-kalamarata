@@ -17,14 +17,23 @@ residue. It refuses the restaurant-site default of a photographic hero over a
 decorative menu: here the menu IS the page and the address is as prominent as
 the food.
 
-OWN-WORLD: The client's own logo palette, taken literally — saturated orange
-(#B8550A filled, #E8720C mark), grass green (#1E6B1D), near-black ink on warm
-paper (#F6F3EE / #FFFFFF). Archivo and Archivo Black (Omnibus-Type, Buenos
-Aires), a grotesque drawn for Latin American print, set in tabular figures for
-every price. Depth from 1px hairlines and paper→surface steps, never from
-shadow stacks. Recognisable with all content removed by: the orange round add
-button, the single right-aligned tabular price column, and the green category
-pill.
+OWN-WORLD: The client's own logo palette, taken literally — orange in two
+roles that are not interchangeable (#E8720C as the brand mark, #B8550A wherever
+text sits on it or in it, because the brand orange does not clear AA as text),
+grass green #1E6B1D, near-black ink on warm paper #F6F3EE / #FFFFFF. Archivo
+and Archivo Black (Omnibus-Type, Buenos Aires), self-hosted, with tabular
+figures on every price. Depth from 1px hairlines and paper→surface steps; one
+sanctioned two-layer shadow with a single owner, the floating order panel,
+because an overlay needs real separation and a hairline alone does not give it.
+Recognisable with all content removed by: the round orange add button on every
+card, the green category pill, and the two-line card foot where price sits left
+and the add button right.
+
+REVISED after the user pinned the direction to Salvator's ordering site. The
+previous OWN-WORLD promised a single right-aligned tabular price column, which
+belongs to the printed-menu world the pin superseded; the canon puts price
+inside each card. The finish review correctly scored that promise as missing —
+the fault was this contract going stale, not the build drifting from it.
 
 STORY: A hungry person in Barranquilla understands in one screen what the
 kitchen serves and what it costs, assembles an order without typing, and hands

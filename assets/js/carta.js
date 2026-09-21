@@ -266,12 +266,7 @@
     const cats = $('#cats');
     if (cats) {
       cats.innerHTML = navs.map(n =>
-        `<button type="button" data-ir="${esc(n.id)}" aria-pressed="false">${esc(n.nombre)}</button>`).join('');
-      cats.addEventListener('click', e => {
-        const b = e.target.closest('[data-ir]');
-        if (!b) return;
-        document.getElementById(b.dataset.ir)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+        `<a href="#${esc(n.id)}" data-ir="${esc(n.id)}">${esc(n.nombre)}</a>`).join('');
       observarGrupos(cats);
     }
 
@@ -312,7 +307,10 @@
         <span class="plato__ref">Imagen de referencia</span>
       </div>`;
     }
-    return `<div class="plato__lienzo"><div class="plato__sinfoto"><span>${esc(nombre)}</span></div></div>`;
+    /* Sin foto no se emite caja: una caja con forma de foto y el nombre dentro
+       repite el titular de abajo y se come dos tercios del documento móvil.
+       Nunca la foto de otro restaurante; tampoco un hueco fingiendo serlo. */
+    return '';
   }
 
   function tarjeta(cat, i, catNombre = '') {
@@ -407,8 +405,10 @@
     const obs = new IntersectionObserver(entradas => {
       entradas.forEach(e => {
         if (!e.isIntersecting) return;
-        $$('button', cats).forEach(b =>
-          b.setAttribute('aria-pressed', String(b.dataset.ir === e.target.id)));
+        $$('a', cats).forEach(a => {
+          if (a.dataset.ir === e.target.id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
       });
     }, { rootMargin: '-150px 0px -70% 0px' });
     $$('.grupo', zona).forEach(g => obs.observe(g));

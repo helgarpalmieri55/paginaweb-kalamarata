@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carta · Kalamarata</title>
 <meta name="description" content="La carta completa de Kalamarata: pescados, parrilladas, pizzas, hamburguesas, salchipapas, perros y bebidas. Arma tu pedido y envíalo por WhatsApp.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fuentes.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/kalamarata.css">
 </head>
@@ -43,8 +43,8 @@
       <input id="buscar" type="search" placeholder="¿Qué se te antoja?" autocomplete="off">
     </div>
   </div>
-  <div class="env">
-    <div class="cats" id="cats" role="group" aria-label="Categorías de la carta"></div>
+  <div class="env cats-caja">
+    <nav class="cats" id="cats" aria-label="Categorías de la carta"></nav>
   </div>
 </div>
 

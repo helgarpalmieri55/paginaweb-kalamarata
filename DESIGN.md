@@ -272,7 +272,7 @@ anclas. Si un enlace necesita otro color, se cambia el token o se le pone clase.
 
 ## Typography
 
-**Display Font:** Archivo Black (con `Archivo`, `ui-sans-serif`, `system-ui` de reserva)
+**Display Font:** Archivo Black (con `Archivo`, `ui-sans-serif`, `system-ui` de reserva). Auto-hospedada en `assets/fonts/`, subconjuntos latin y latin-ext, declarada en `assets/css/fuentes.css`. No se sirve desde un CDN: eso manda la IP del visitante a un tercero que la política de datos no declara, y en datos móviles el primer pintado sale con cara de sistema.
 **Body Font:** Archivo 400/600/700/800 (con `ui-sans-serif`, `system-ui`, `-apple-system`, `Segoe UI` de reserva)
 
 **Character:** Una sola familia, Archivo, de Omnibus-Type (Buenos Aires): una
@@ -288,6 +288,35 @@ decorativa, ni serif editorial, ni cara de sistema haciendo de display.
 - **Body** (Archivo 400, 1rem, interlineado 1.55, máximo 68ch; 70ch de caja en páginas legales): texto corrido. La entradilla de portada sube a 1.16rem y se corta en 46ch.
 - **Label** (Archivo 700/800, 0.70–0.74rem, tracking 0.10–0.12em, versalitas por `text-transform: uppercase`): rótulos de dato en el bloque de identidad, cabeceras de columna del pie, bajada del wordmark y la marca «Imagen de referencia» sobre las fotos.
 - **Precio** (Archivo Black, 1.12rem en tarjeta / 1.5rem en total, `tabular-nums`): la columna de precios.
+- **Cuerpo menor** (Archivo 400/600, 0.94rem): enlaces de navegación, párrafos y dirección del pie, descripción de plato en la tarjeta.
+- **Meta** (Archivo 400, 0.9rem): notas de sección, texto legal del pie, aviso del bar, nota del total.
+- **Menor** (Archivo 700, 0.82rem): botones de talla de pizza, detalle de línea del pedido, marcador `PENDIENTE_*`.
+- **Cifra grande** (Archivo Black, 1.75rem, `tabular-nums`): el precio del almuerzo de hoy en la portada, la única cifra que compite con el titular.
+
+### Size ramp
+
+Cuatro escalones en el extremo pequeño, no nueve. Antes convivían `.64`, `.68`,
+`.78`, `.82`, `.84`, `.86`, `.88`, `.89`, `.92`, `.94` y `.95rem`: diferencias
+que nadie percibe y que ningún criterio explica. Se colapsaron aquí, y `.64rem`
+además quedaba en 10.2 px, por debajo del piso de 11 px para texto funcional.
+
+| Paso | Valor | Para qué |
+|---|---|---|
+| micro | `0.7rem` | Rótulos en versalitas con tracking: bajada de marca, badge «Imagen de referencia», etiqueta «Hoy» |
+| rótulo | `0.74rem` | Encabezados de columna del pie |
+| menor | `0.82rem` | Talla de pizza, detalle de línea del pedido, marcador `PENDIENTE_*` |
+| meta | `0.9rem` | Notas de sección, texto legal del pie, avisos |
+| cuerpo menor | `0.94rem` | Enlaces de navegación, párrafos del pie, descripción de plato |
+| cuerpo | `1rem` | Texto corrido, medida 68ch |
+| entrada | `1.16rem` | Entradilla de portada, título del panel de pedido |
+| título | `1.06rem` | `h3`, nombre de plato |
+| precio | `1.12rem` | Precio en tarjeta |
+| cifra | `1.5rem` | Total del pedido, wordmark, cifra de domicilio |
+| cifra grande | `1.75rem` | Precio del almuerzo de hoy |
+| titular | `clamp(1.4rem, 1.15rem + 1.1vw, 2rem)` | `h2` |
+| display | `clamp(2rem, 1.4rem + 2.6vw, 3.4rem)` | `h1` |
+
+Un tamaño nuevo entra en esta tabla o no entra.
 
 ### Named Rules
 
@@ -453,3 +482,30 @@ completo que dice el estado en texto («Aún no has elegido nada» / «Ver el pe
 - **Don't** rellenar con `verde` un chip o botón de navegación: el verde es confirmación, enlace y WhatsApp; la acción de pedido es naranja.
 - **Don't** inventar breakpoints: el corte del sitio es 52rem y las rejillas se resuelven solas con `auto-fit` / `auto-fill`.
 - **Don't** quitar el `overflow: hidden` de la tarjeta de plato ni el `[hidden] { display: none }` explícito: `display:flex` le gana a `[hidden]` del navegador y la tarjeta filtrada reaparece.
+
+
+## Revisión final: cambios aplicados
+
+La revisión final marcó siete arreglos materiales. Lo que cambió en el sistema:
+
+- **El hueco de foto solo existe cuando hay foto.** `lienzo()` no emite
+  `.plato__lienzo` sin `img`. Antes reservaba una caja 4:3 en los 148 platos sin
+  imagen y la rellenaba con el nombre del plato, que ya iba en el `<h3>` de
+  abajo: duplicación leída como fallo de render, y dos tercios del documento
+  móvil en verde vacío. Medido: el documento móvil pasó de 68.405 px a 28.735 px
+  y el de escritorio de 22.433 px a 13.468 px.
+- **La píldora de categoría activa es verde, no naranja.** El naranja significa
+  una sola cosa: esto se pulsa para pedir. Cuando la píldora activa también era
+  naranja, el color dejaba de decidir nada.
+- **El riel de categorías declara su desbordamiento.** La barra de scroll está
+  oculta, así que `.cats-caja::after` pone un degradado de corte en el borde
+  derecho. Sin él, 20 de 22 categorías eran invisibles y sin señal.
+- **Las píldoras son enlaces, no interruptores.** Eran `<button aria-pressed>`
+  para un control que solo desplaza: un lector de pantalla anunciaba «botón, no
+  presionado» de algo que navega. Ahora son `<a href="#id">` con `aria-current`.
+- **Una sola sombra en todo el sistema.** El hover de tarjeta se resuelve solo
+  con el filete; la sombra sobraba. Queda `--sombra-alta` con un único dueño, el
+  panel de pedido.
+- **El almuerzo de hoy se resuelve en el inicio**, con el día de
+  `America/Bogota` y no el del navegador: en UTC puede ser ya lunes mientras en
+  Barranquilla sigue siendo domingo y la cocina no sirve almuerzo.

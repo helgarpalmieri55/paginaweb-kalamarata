@@ -11,9 +11,9 @@
 <meta property="og:description" content="Pescados, parrilladas, pizzas, salchipapas y hamburguesas en la Calle 72 #61 esquina. Pide por WhatsApp.">
 <meta property="og:type" content="restaurant">
 <meta property="og:locale" content="es_CO">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fuentes.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/kalamarata.css">
 </head>
@@ -59,7 +59,10 @@
       </div>
 
       <div>
-        <h2 class="vo">Horarios</h2>
+        <h2 class="vo">El almuerzo de hoy y los horarios</h2>
+        <!-- Se rellena con el día del local (America/Bogota). Sin JavaScript
+             queda oculto y mandan los horarios de abajo, que son estáticos. -->
+        <div class="hoy-cartel" id="hoy-cartel" hidden></div>
         <dl class="horario">
           <div class="horario__fila"><dt>Almuerzo</dt><dd>Lunes a sábado<br>11:00 – 15:00</dd></div>
           <div class="horario__fila"><dt>Pizzería</dt><dd>Domingo a jueves<br>16:00 – 22:00</dd></div>
@@ -143,12 +146,12 @@
         <p>De lunes a sábado, entre las 11:00 y las 3:00 de la tarde.</p>
       </div>
       <div class="tarjetas">
-        <div class="dato"><h3>Lunes</h3><p>Arroz mixto · <strong>$21.000</strong></p></div>
-        <div class="dato"><h3>Martes</h3><p>Chuleta valluna · <strong>$21.000</strong></p></div>
-        <div class="dato"><h3>Miércoles</h3><p>Pollo cordon bleu · <strong>$21.000</strong></p></div>
-        <div class="dato"><h3>Jueves</h3><p>Bandeja paisa · <strong>$24.000</strong></p></div>
-        <div class="dato"><h3>Viernes</h3><p>Carne en posta · <strong>$21.000</strong></p></div>
-        <div class="dato"><h3>Sábado</h3><p>Chicken tenders · <strong>$21.000</strong></p></div>
+        <div class="dato" data-dia="1"><h3>Lunes</h3><p>Arroz mixto · <strong>$21.000</strong></p></div>
+        <div class="dato" data-dia="2"><h3>Martes</h3><p>Chuleta valluna · <strong>$21.000</strong></p></div>
+        <div class="dato" data-dia="3"><h3>Miércoles</h3><p>Pollo cordon bleu · <strong>$21.000</strong></p></div>
+        <div class="dato" data-dia="4"><h3>Jueves</h3><p>Bandeja paisa · <strong>$24.000</strong></p></div>
+        <div class="dato" data-dia="5"><h3>Viernes</h3><p>Carne en posta · <strong>$21.000</strong></p></div>
+        <div class="dato" data-dia="6"><h3>Sábado</h3><p>Chicken tenders · <strong>$21.000</strong></p></div>
       </div>
     </div>
   </section>
@@ -230,5 +233,6 @@
   ]
 }
 </script>
+<script src="assets/js/hoy.js" defer></script>
 </body>
 </html>

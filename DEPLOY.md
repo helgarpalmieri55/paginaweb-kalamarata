@@ -10,43 +10,130 @@ Hay dos destinos y **los dos usan el mismo guion**, `construir.sh`, que arma en
 
 ---
 
-## Cloudflare Pages (el destino real)
+## Cloudflare, paso a paso
 
-Al conectar el repositorio, en **Settings → Builds & deployments**:
+Verificado contra la documentación de Cloudflare el 21/09/2026.
 
-| Casilla | Valor |
-|---|---|
-| Build command | `bash construir.sh` |
-| Build output directory | `_site` |
-| Root directory | *(vacío)* |
+### Aviso: el panel ya no lleva a Pages
 
-**Estas dos casillas no son opcionales.** Si se dejan en blanco, Cloudflare
-sirve la raíz del repositorio y publica `PENDIENTES.md`, `PRODUCT.md`,
-`DESIGN.md`, `DEPLOY.md` y `.claude/`. Es exactamente el mismo fallo que ya
-ocurrió aquí con GitHub Pages en modo «Deploy from a branch» el 21/09/2026.
+Al conectar un repositorio nuevo, Cloudflare mete el proyecto en **Workers**, no
+en Pages. Se reconoce porque la pantalla dice «Configure your **Worker**
+project», pide un **Deploy command** (`npx wrangler deploy`) y **no tiene la
+casilla «Build output directory»**.
 
-Comprobación después del primer despliegue, desde fuera:
+Eso cambia una cosa importante: **Workers necesita `wrangler.jsonc` en el
+repositorio** para saber qué carpeta publicar. Ya está puesto en la raíz. Pages
+no lo necesitaba, pero Pages ya no es lo que ofrece el panel por defecto.
 
-```bash
-curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.com/PENDIENTES.md
+Las dos rutas funcionan para este sitio. Abajo va la de Workers, que es la que
+da el panel; al final, cómo volver a Pages si se prefiere.
+
+### 1. Crear la aplicación
+
+1. Panel de Cloudflare → **Workers & Pages** → **Create** → **Connect to Git**.
+2. Autoriza GitHub. Puedes darle acceso solo a `paginaweb-kalamarata`.
+3. Elige el repositorio.
+
+### 2. La pantalla «Set up your application»
+
+| Casilla | Valor | Por qué |
+|---|---|---|
+| **Project name** | `kalamarata` | **Tiene que coincidir con el `name` de `wrangler.jsonc`.** Si no, la construcción falla |
+| **Build command** | `bash construir.sh` | Arma `_site/` con solo lo publicable |
+| **Deploy command** | `npx wrangler deploy` | Lo que trae por defecto; se deja |
+| **Builds for non-production branches** | a gusto | Si se desmarca, solo construye `main` |
+| **Protect with Cloudflare Access** | apagado | El sitio es público |
+| **Path** (Advanced) | `/` | La raíz del repositorio |
+| **API token** | *Create new token* | Lo crea solo |
+| **Variable name / value** | vacías | El sitio no usa variables |
+
+### 3. `wrangler.jsonc` tiene que estar en `main` ANTES de desplegar
+
+La construcción lee la rama de producción. Si se pulsa **Deploy** antes de que
+el archivo esté en `main`, el despliegue falla con un error de configuración
+—no es un fallo del panel—. Basta con volver a lanzar la construcción cuando ya
+esté.
+
+### Si la construcción falla con «jekyll build»
+
+Síntoma exacto, visto el 21/09/2026:
+
+```
+Detected Project Settings:
+ - Framework: Static
+ - Build Command: npx bundle exec jekyll build
+[build] npm error could not determine executable to run
+✘ [ERROR] Running custom build `npx bundle exec jekyll build` failed.
 ```
 
-`404` es lo correcto. `200` significa que falta configurar las casillas.
+**No es un fallo de `construir.sh`** —en ese mismo log se ve `_site listo: 180
+archivos` justo antes—. Lo que pasó es que `wrangler deploy` **no encontró
+`wrangler.jsonc` en la rama de producción**, así que arrancó su
+autoconfiguración, vio el `_config.yml` de la raíz, dedujo «esto es Jekyll» e
+intentó construirlo con Ruby, que no está en la imagen.
 
-### El DNS
+**La cura es fusionar primero.** La construcción clona `main`: si
+`wrangler.jsonc` solo está en una rama, es como si no existiera. Con el archivo
+en `main`, wrangler no adivina nada y publica `_site/` directamente.
 
-El dominio está en GoDaddy y se sirve por Cloudflare. En GoDaddy hay que
-apuntar los **nameservers** a los que dé Cloudflare; el registro del sitio se
-crea solo al conectar Pages a un dominio propio.
+El `_config.yml` se queda: protege de que GitHub Pages publique la rama entera,
+que es una fuga silenciosa. Una construcción fallida, en cambio, se ve.
 
-### Qué NO lleva Cloudflare
+### 4. Comprobar ANTES de apuntar el dominio
 
-El paso de `noindex` es **solo** para la vista previa de github.io. El sitio de
-kalamarata.com tiene que ser indexable: es la prueba de que el negocio existe
-para la verificación de Meta. `construir.sh` no toca el `robots.txt`, así que
-Cloudflare publica el del repositorio, que permite la indexación.
+Cloudflare da una URL `…workers.dev`. Compruébala:
+
+```bash
+# Debe dar 404. Si da 200, se está publicando la raíz del repositorio.
+curl -s -o /dev/null -w '%{http_code}\n' https://<tu-url>.workers.dev/PENDIENTES.md
+
+# Debe dar 200.
+curl -s -o /dev/null -w '%{http_code}\n' https://<tu-url>.workers.dev/carta.html
+```
+
+**No pases al paso 5 hasta que el primero dé 404.**
+
+### 5. El dominio propio
+
+Con el proyecto abierto: **Settings → Domains & Routes → Add → Custom domain**,
+y escribe `kalamarata.com`. Como el dominio ya es zona de Cloudflare, el
+registro DNS se crea solo. Repite con `www.kalamarata.com`.
+
+### 6. A partir de ahí
+
+Cada `git push` a `main` construye y despliega. Nada más que hacer.
+
+### Si se prefiere Pages
+
+Sigue existiendo: **Workers & Pages → Create → Pages → Connect to Git**. Ahí las
+casillas son **Build command** `bash construir.sh` y **Build output directory**
+`_site`, y `wrangler.jsonc` se ignora. Es más simple de explicar; Workers es
+donde Cloudflare está invirtiendo. Para un sitio estático como este, da igual.
+
+### Lo que Cloudflare NO lleva
+
+El paso de `noindex` es **solo** para la vista previa de github.io, y vive en el
+workflow, no en `construir.sh`. Cloudflare publica el `robots.txt` del
+repositorio, que permite la indexación: kalamarata.com **tiene** que ser
+indexable, porque es la prueba de que el negocio existe para la verificación de
+Meta.
+
+### Pendiente: el caché
+
+Los recursos se sirven sin marca de versión, así que un visitante que vuelve
+puede recibir el CSS y el JS viejos. Se arregla con un archivo `_headers` dentro
+de `_site/`; no está puesto todavía.
+
+**Fuentes** (consultadas el 21/09/2026):
+<https://developers.cloudflare.com/workers/static-assets/>,
+<https://developers.cloudflare.com/workers/ci-cd/builds/>,
+<https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/>,
+<https://developers.cloudflare.com/pages/get-started/git-integration/>,
+<https://developers.cloudflare.com/pages/configuration/custom-domains/>
 
 ---
+
+# Publicación en GitHub Pages (la vista previa)
 
 El sitio se publica solo cuando entra código en `main` — es decir, **cuando tú
 haces merge del pull request**. No se publica desde ramas ni desde el propio PR.

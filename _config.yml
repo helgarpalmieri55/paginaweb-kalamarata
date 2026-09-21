@@ -1,5 +1,13 @@
 # Red de seguridad para el modo «Deploy from a branch» de GitHub Pages.
 #
+# OJO, EFECTO SECUNDARIO EN CLOUDFLARE: la sola presencia de este archivo hace
+# que `wrangler deploy` crea que el proyecto es Jekyll y trate de ejecutar
+# `npx bundle exec jekyll build`, que falla porque aquí no hay Ruby. Eso solo
+# pasa cuando wrangler NO encuentra `wrangler.jsonc`; con el archivo en su
+# sitio, wrangler no adivina nada. Pasó el 21/09/2026 por desplegar antes de
+# fusionar. Este archivo se queda porque protege de una fuga silenciosa, y una
+# construcción fallida es ruidosa e inofensiva.
+#
 # Si Pages publica la rama directamente en vez del artefacto del workflow,
 # sirve el repositorio ENTERO, incluida la documentación interna. Esta lista
 # se lo impide.

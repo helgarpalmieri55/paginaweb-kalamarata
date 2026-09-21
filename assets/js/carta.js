@@ -216,6 +216,8 @@
        pizzas para llegar al ejecutivo de pollo. Cada servicio es su propia
        sección, con su banda y su horario. */
     d.servicios.forEach(serv => {
+      /* El riel solo lleva los dos servicios. Las categorías siguen
+         seccionando cada carta dentro de la página, con su propio título. */
       navs.push({ id: `s-${serv.id}`, nombre: serv.nombre, servicio: true });
 
       const dentro = [];
@@ -223,7 +225,6 @@
       d.categorias.filter(c => c.servicios.includes(serv.id)).forEach(c => {
         const nombre = (c.nombrePorServicio && c.nombrePorServicio[serv.id]) || c.nombre;
         const id = `${serv.id}--${c.id}`;
-        navs.push({ id, nombre, de: serv.id });
         dentro.push(`
           <section class="grupo" id="${id}" aria-labelledby="t-${id}">
             <div class="grupo__tit"><h3 id="t-${id}">${esc(nombre)}</h3></div>
@@ -234,7 +235,6 @@
 
       d.pizzas.filter(c => c.servicios.includes(serv.id)).forEach(c => {
         const id = `${serv.id}--${c.id}`;
-        navs.push({ id, nombre: c.nombre, de: serv.id });
         dentro.push(`
           <section class="grupo" id="${id}" aria-labelledby="t-${id}">
             <div class="grupo__tit"><h3 id="t-${id}">${esc(c.nombre)}</h3></div>
@@ -245,7 +245,6 @@
 
       if (d.adicionalesPizza.servicios.includes(serv.id)) {
         const a = d.adicionalesPizza, id = `${serv.id}--arma-tu-pizza`;
-        navs.push({ id, nombre: 'Arma tu pizza', de: serv.id });
         dentro.push(`
           <section class="grupo" id="${id}" aria-labelledby="t-${id}">
             <div class="grupo__tit"><h3 id="t-${id}">Arma tu pizza</h3></div>
@@ -259,7 +258,6 @@
       const bar = d.bar.categorias.filter(c => c.servicios.includes(serv.id));
       if (bar.length) {
         const id = `${serv.id}--bar`;
-        navs.push({ id, nombre: 'Bar', de: serv.id });
         dentro.push(`
           <section class="grupo" id="${id}" aria-labelledby="t-${id}">
             <div class="grupo__tit"><h3 id="t-${id}">Bar</h3></div>
@@ -298,7 +296,7 @@
       cats.innerHTML = navs.map(n =>
         `<a href="#${esc(n.id)}" data-ir="${esc(n.id)}"${n.servicio ? ' class="cats__serv"' : ''}>${esc(n.nombre)}</a>`).join('');
       hacerRecorrible(cats);
-      observarGrupos(cats);
+      seguirCarta(cats);
     }
 
     zona.addEventListener('click', e => {
@@ -327,6 +325,9 @@
 
     marcarHoy();
     marcarDisponibilidad(d.servicios);
+    abrirCartaDeAhora(d.servicios, $('#cats'));
+    // Las fuentes cambian las alturas: si no se ha tocado nada, recolocamos.
+    document.fonts?.ready.then(() => abrirCartaDeAhora(d.servicios, $('#cats')));
     pintarPedido();
   }
 
@@ -351,6 +352,59 @@
 
   const aMin = h => Number(h.slice(0,2)) * 60 + Number(h.slice(3,5));
 
+  /* A qué hora cierra ese servicio ese día. Las comidas rápidas cierran más
+     tarde viernes y sábado, así que el día importa. */
+  function cierreDe(serv, dia) {
+    return serv.id === 'rapidas'
+      ? aMin(dia === 5 || dia === 6 ? serv.cierraFinDeSemana : serv.cierraEntreSemana)
+      : aMin(serv.cierra);
+  }
+
+  function estaAbierto(serv, dia, minutos) {
+    return serv.dias.includes(dia)
+        && minutos >= aMin(serv.abre)
+        && minutos < cierreDe(serv, dia);
+  }
+
+  /* Cuántos minutos faltan para que ese servicio abra. Mira hasta una semana
+     por delante: el domingo no hay almuerzo, así que «el próximo almuerzo»
+     puede caer al día siguiente. */
+  function minutosHastaAbrir(serv, dia, minutos) {
+    for (let d = 0; d < 8; d++) {
+      const diaN = (dia + d) % 7;
+      if (!serv.dias.includes(diaN)) continue;
+      const abre = d * 1440 + aMin(serv.abre);
+      if (abre >= minutos) return abre - minutos;
+    }
+    return Infinity;
+  }
+
+  /* El que entra a las 8 de la noche viene por una pizza, no por el almuerzo.
+     Abrimos en la carta que se está sirviendo; si no se sirve ninguna, en la
+     que abra antes. La otra sigue ahí, a un golpe de rueda. */
+  function abrirCartaDeAhora(servicios, cats) {
+    // Un enlace directo o una posición restaurada mandan sobre esto.
+    if (location.hash || window.scrollY > 0) return;
+    const { dia, minutos } = ahoraEnBogota();
+    if (dia === undefined) return;
+
+    const abierto = servicios.find(x => estaAbierto(x, dia, minutos));
+    const elegido = abierto || servicios
+      .map(x => ({ x, espera: minutosHastaAbrir(x, dia, minutos) }))
+      .sort((a, b) => a.espera - b.espera)[0]?.x;
+    if (!elegido) return;
+
+    if (cats) marcarChip(cats, `s-${elegido.id}`);
+
+    // El primero ya está arriba: moverse sería trabajo para nada.
+    if (servicios[0] && elegido.id === servicios[0].id) return;
+    const secc = $(`.servicio--${elegido.id}`);
+    if (!secc) return;
+    // Sin animación: un desplazamiento suave al cargar marea y además se
+    // corta en cuanto el visitante toca la rueda.
+    secc.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }
+
   function marcarDisponibilidad(servicios) {
     const { dia, minutos } = ahoraEnBogota();
     if (dia === undefined) return;
@@ -359,10 +413,7 @@
       const cartel = $(`[data-cerrado="${serv.id}"]`);
       if (!cartel) return;
 
-      const cierra = serv.id === 'rapidas'
-        ? aMin(dia === 5 || dia === 6 ? serv.cierraFinDeSemana : serv.cierraEntreSemana)
-        : aMin(serv.cierra);
-      const abierto = serv.dias.includes(dia) && minutos >= aMin(serv.abre) && minutos < cierra;
+      const abierto = estaAbierto(serv, dia, minutos);
 
       if (abierto) {
         cartel.hidden = true;
@@ -506,18 +557,40 @@
      cambia de alto segun envuelva los chips y segun cargue la tipografia.
      Medirla es la unica forma de que el titulo de categoria no quede debajo
      al saltar: un numero fijo se desincroniza en cuanto algo envuelve. */
-  function ajustarDesplazamiento() {
+  function altoPegajoso() {
     const cab   = $('.cab');
     const barra = $('.barra');
-    if (!cab || !barra) return;
-    const alto = Math.round(cab.getBoundingClientRect().height + barra.getBoundingClientRect().height);
+    if (!cab || !barra) return 0;
+    return Math.round(cab.getBoundingClientRect().height + barra.getBoundingClientRect().height);
+  }
+
+  function ajustarDesplazamiento() {
+    const alto = altoPegajoso();
+    if (!alto) return;
     document.documentElement.style.setProperty('--desplazamiento', `${alto + 16}px`);
   }
 
-  /* El riel de categorías se desplaza aparte de la página: sin esto te quedas
-     viendo las categorías de almuerzo mientras lees comidas rápidas, porque el
-     chip activo se sale por la derecha. Movemos scrollLeft a mano en vez de
-     scrollIntoView, que además arrastraría la página en vertical. */
+  /* De un elemento cualquiera de la carta al id del chip de su servicio. */
+  function servicioDe(el) {
+    const serv = el?.closest?.('.servicio');
+    const clase = serv && [...serv.classList]
+      .find(c => c.startsWith('servicio--') && c !== 'servicio--cerrado');
+    return clase ? 's-' + clase.slice('servicio--'.length) : null;
+  }
+
+  /* Un solo sitio donde se decide qué chip va marcado. Antes lo ponía solo el
+     observador, que no dispara hasta que algo entra en su franja: al cargar no
+     había ninguno marcado, y si abríamos en comidas rápidas quedaba marcado
+     «Almuerzo» por el camino recorrido. */
+  function marcarChip(cats, idServ) {
+    let actual = null;
+    $$('a', cats).forEach(a => {
+      if (idServ && a.dataset.ir === idServ) { a.setAttribute('aria-current', 'true'); actual = a; }
+      else a.removeAttribute('aria-current');
+    });
+    return actual;
+  }
+
   function arrastrarRiel(cats, chip) {
     // Si el usuario acaba de mover el riel a mano, mandan sus manos.
     if (Date.now() - (cats.dataset.tocado || 0) < 4000) return;
@@ -569,33 +642,50 @@
     const caja = cats.parentElement;
     if (!caja) return;
     const margen = cats.scrollWidth - cats.clientWidth;
+    // Marca de «esto ya lo midió el JS»: sin ella, el respaldo del CSS
+    // dejaría el degradado derecho puesto aunque no haya nada escondido.
+    caja.classList.add('cats-caja--medida');
     caja.classList.toggle('cats-caja--izq', cats.scrollLeft > 4);
-    caja.classList.toggle('cats-caja--der', cats.scrollLeft < margen - 4);
+    caja.classList.toggle('cats-caja--der', margen > 4 && cats.scrollLeft < margen - 4);
   }
 
-  function observarGrupos(cats) {
+  /* Qué carta estás leyendo, medida de la página y no deducida del orden en
+     que llegan los eventos. Con un IntersectionObserver ganaba la última
+     entrada del lote, que no es la que se ve: al abrir en comidas rápidas
+     quedaba marcado «Almuerzo» por los grupos que el salto había cruzado. */
+  function servicioEnPantalla() {
+    const secciones = $$('.servicio');
+    if (!secciones.length) return null;
+    /* El sondeo va por debajo de donde aterriza una seccion al saltar a ella:
+       el scroll-margin la deja en altoPegajoso()+16, asi que medir en +8 la
+       dejaba siempre justo por encima de la linea y nunca contaba. */
+    const tope = altoPegajoso() + 24;
+    let elegido = secciones[0];
+    secciones.forEach(sec => {
+      if (sec.getBoundingClientRect().top <= tope) elegido = sec;
+    });
+    return servicioDe(elegido);
+  }
+
+  function seguirCarta(cats) {
     ajustarDesplazamiento();
     window.addEventListener('resize', ajustarDesplazamiento, { passive: true });
     document.fonts?.ready.then(ajustarDesplazamiento);
-    if (!('IntersectionObserver' in window)) return;
-    const obs = new IntersectionObserver(entradas => {
-      entradas.forEach(e => {
-        if (!e.isIntersecting) return;
-        let actual = null;
-        $$('a', cats).forEach(a => {
-          if (a.dataset.ir === e.target.id) { a.setAttribute('aria-current', 'true'); actual = a; }
-          else a.removeAttribute('aria-current');
-        });
-        if (actual) arrastrarRiel(cats, actual);
-        const pill = $('#barra-serv');
-        if (pill) {
-          const serv = e.target.closest('.servicio');
-          const nombre = serv?.querySelector('.banda h2')?.textContent;
-          if (nombre) { pill.textContent = nombre; pill.hidden = false; }
-        }
-      });
-    }, { rootMargin: '-150px 0px -70% 0px' });
-    $$('.grupo', zona).forEach(g => obs.observe(g));
+
+    let pedido = false;
+    const revisar = () => {
+      pedido = false;
+      const actual = marcarChip(cats, servicioEnPantalla());
+      if (actual) arrastrarRiel(cats, actual);
+    };
+    const alDesplazar = () => {
+      if (pedido) return;
+      pedido = true;
+      requestAnimationFrame(revisar);
+    };
+    window.addEventListener('scroll', alDesplazar, { passive: true });
+    window.addEventListener('resize', alDesplazar, { passive: true });
+    revisar();
   }
 
   pintarPedido();

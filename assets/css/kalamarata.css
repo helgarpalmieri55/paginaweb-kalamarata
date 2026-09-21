@@ -283,12 +283,24 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .cats-caja { position: relative; }
 /* La barra de scroll se oculta, asi que el corte tiene que verse de otra
    forma: sin esto, 20 de 22 categorias son invisibles y nadie sabe que hay
-   mas a la derecha. */
+   mas a la derecha. Ahora tambien a la izquierda: desde que el riel se
+   desplaza solo para seguirte, puede quedar carta escondida a ese lado. */
+.cats-caja::before,
 .cats-caja::after {
-  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 3.5rem;
-  pointer-events: none;
-  background: linear-gradient(to right, transparent, var(--papel) 78%);
+  content: ""; position: absolute; top: 0; bottom: 0; width: 3.5rem;
+  pointer-events: none; opacity: 0; transition: opacity .16s;
 }
+.cats-caja::before {
+  left: 0; background: linear-gradient(to left, transparent, var(--papel) 78%);
+}
+.cats-caja::after {
+  right: 0; background: linear-gradient(to right, transparent, var(--papel) 78%);
+}
+/* Las clases las pone pintarBordes() en carta.js. Si el script no corre, el
+   respaldo de abajo deja el degradado derecho siempre puesto, que es el
+   comportamiento que habia antes. */
+.cats-caja--izq::before, .cats-caja--der::after { opacity: 1; }
+.cats-caja:not(.cats-caja--izq):not(.cats-caja--der)::after { opacity: 1; }
 .cats { display: flex; gap: var(--r2); overflow-x: auto; padding-block: var(--r3); padding-right: 3rem; scrollbar-width: none; }
 .cats::-webkit-scrollbar { display: none; }
 .cats a {

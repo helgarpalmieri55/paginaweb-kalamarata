@@ -297,6 +297,7 @@
     if (cats) {
       cats.innerHTML = navs.map(n =>
         `<a href="#${esc(n.id)}" data-ir="${esc(n.id)}"${n.servicio ? ' class="cats__serv"' : ''}>${esc(n.nombre)}</a>`).join('');
+      hacerRecorrible(cats);
       observarGrupos(cats);
     }
 
@@ -518,6 +519,8 @@
      chip activo se sale por la derecha. Movemos scrollLeft a mano en vez de
      scrollIntoView, que además arrastraría la página en vertical. */
   function arrastrarRiel(cats, chip) {
+    // Si el usuario acaba de mover el riel a mano, mandan sus manos.
+    if (Date.now() - (cats.dataset.tocado || 0) < 4000) return;
     const r = cats.getBoundingClientRect();
     const c = chip.getBoundingClientRect();
     const margen = 24;
@@ -527,6 +530,47 @@
     if (!delta) return;
     const quieto = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     cats.scrollBy({ left: delta, behavior: quieto ? 'auto' : 'smooth' });
+  }
+
+  /* El riel esconde su barra de scroll, y la rueda del ratón no desplaza en
+     horizontal: en un PC, una vez que el riel se iba a la derecha no había
+     forma de volver a «Almuerzo». Aquí se arregla eso, y de paso se marca
+     cuándo lo mueve el usuario para que el auto-desplazamiento no le pelee. */
+  function hacerRecorrible(cats) {
+    const anotar = () => { cats.dataset.tocado = Date.now(); };
+    cats.addEventListener('pointerdown', anotar, { passive: true });
+    cats.addEventListener('touchstart', anotar, { passive: true });
+    cats.addEventListener('keydown', anotar, { passive: true });
+
+    cats.addEventListener('wheel', e => {
+      // Un ratón normal solo manda deltaY; un trackpad ya manda deltaX y se
+      // apaña solo. Solo traducimos cuando el gesto es claramente vertical.
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      const margen = cats.scrollWidth - cats.clientWidth;
+      if (margen <= 0) return;
+      const hasta = Math.max(0, Math.min(margen, cats.scrollLeft + e.deltaY));
+      // Si el riel ya está en el tope hacia ese lado, no secuestramos la
+      // página: el usuario quiere seguir bajando.
+      if (hasta === cats.scrollLeft) return;
+      e.preventDefault();
+      anotar();
+      cats.scrollLeft = hasta;
+      pintarBordes(cats);
+    }, { passive: false });
+
+    cats.addEventListener('scroll', () => pintarBordes(cats), { passive: true });
+    window.addEventListener('resize', () => pintarBordes(cats), { passive: true });
+    pintarBordes(cats);
+  }
+
+  /* Los degradados de los extremos dicen si queda carta hacia ese lado. El de
+     la izquierda solo aparece cuando de verdad hay algo escondido detrás. */
+  function pintarBordes(cats) {
+    const caja = cats.parentElement;
+    if (!caja) return;
+    const margen = cats.scrollWidth - cats.clientWidth;
+    caja.classList.toggle('cats-caja--izq', cats.scrollLeft > 4);
+    caja.classList.toggle('cats-caja--der', cats.scrollLeft < margen - 4);
   }
 
   function observarGrupos(cats) {

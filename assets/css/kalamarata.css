@@ -311,7 +311,10 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   white-space: nowrap;
 }
 .cats a:hover { border-color: var(--tinta-tenue); color: var(--tinta); }
-.cats a[aria-current="true"] { background: var(--verde-hondo); border-color: var(--verde-hondo); color: var(--sobre-marca); }
+/* «Dónde estoy» va en tinta, no en verde: el verde ya está ocupado por los
+   chips de servicio, que son permanentes. Con los dos en verde, «Almuerzo»
+   parecía la categoría actual aunque estuvieras leyendo comidas rápidas. */
+.cats a[aria-current="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--sobre-marca); }
 
 /* --desplazamiento lo mide el JS: ver ajustarDesplazamiento() en carta.js.
    El calc es el respaldo si el script no corre. */
@@ -591,6 +594,13 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   color: var(--sobre-marca); font-family: var(--titular); letter-spacing: -.01em;
 }
 .cats a.cats__serv:hover { background: var(--verde-prensa); border-color: var(--verde-prensa); color: var(--sobre-marca); }
+/* El observador solo mira los .grupo, así que un chip de servicio nunca es
+   aria-current. Esta regla existe por si algún día lo es: que siga leyéndose
+   como servicio, con el anillo de tinta encima para decir «estás aquí». */
+.cats a.cats__serv[aria-current="true"] {
+  background: var(--verde-hondo); border-color: var(--tinta);
+  box-shadow: 0 0 0 2px var(--tinta);
+}
 
 /* Dentro de un servicio los títulos de categoría son h3, no h2: el h2 es la
    banda del servicio. El tamaño sigue la rampa. */

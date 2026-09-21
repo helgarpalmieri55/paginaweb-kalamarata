@@ -513,6 +513,22 @@
     document.documentElement.style.setProperty('--desplazamiento', `${alto + 16}px`);
   }
 
+  /* El riel de categorías se desplaza aparte de la página: sin esto te quedas
+     viendo las categorías de almuerzo mientras lees comidas rápidas, porque el
+     chip activo se sale por la derecha. Movemos scrollLeft a mano en vez de
+     scrollIntoView, que además arrastraría la página en vertical. */
+  function arrastrarRiel(cats, chip) {
+    const r = cats.getBoundingClientRect();
+    const c = chip.getBoundingClientRect();
+    const margen = 24;
+    let delta = 0;
+    if (c.left < r.left + margen) delta = c.left - r.left - margen;
+    else if (c.right > r.right - margen) delta = c.right - r.right + margen;
+    if (!delta) return;
+    const quieto = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    cats.scrollBy({ left: delta, behavior: quieto ? 'auto' : 'smooth' });
+  }
+
   function observarGrupos(cats) {
     ajustarDesplazamiento();
     window.addEventListener('resize', ajustarDesplazamiento, { passive: true });
@@ -521,10 +537,12 @@
     const obs = new IntersectionObserver(entradas => {
       entradas.forEach(e => {
         if (!e.isIntersecting) return;
+        let actual = null;
         $$('a', cats).forEach(a => {
-          if (a.dataset.ir === e.target.id) a.setAttribute('aria-current', 'true');
+          if (a.dataset.ir === e.target.id) { a.setAttribute('aria-current', 'true'); actual = a; }
           else a.removeAttribute('aria-current');
         });
+        if (actual) arrastrarRiel(cats, actual);
         const pill = $('#barra-serv');
         if (pill) {
           const serv = e.target.closest('.servicio');

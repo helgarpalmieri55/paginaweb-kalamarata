@@ -425,18 +425,6 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .vacio { padding: var(--r7) var(--r4); text-align: center; color: var(--tinta-suave); }
 .vacio strong { display: block; font-family: var(--titular); font-size: 1.16rem; color: var(--tinta); margin-bottom: var(--r2); }
 
-/* Bar: se muestra, no se despacha */
-.bar-aviso {
-  background: var(--alerta-fondo); border: 1px solid var(--alerta); color: var(--alerta);
-  border-radius: var(--radio); padding: var(--r3) var(--r4);
-  font-weight: 600; font-size: .9rem; margin-top: var(--r4);
-}
-.lista-bar { list-style: none; margin: var(--r4) 0 0; padding: 0; border-top: 1px solid var(--linea); }
-.lista-bar li { display: flex; align-items: baseline; gap: var(--r3); padding: var(--r3) 0; border-bottom: 1px solid var(--linea); }
-.lista-bar .n { font-weight: 600; }
-.lista-bar .g { flex: 1; border-bottom: 1px dotted var(--linea-fuerte); transform: translateY(-.22em); }
-.lista-bar .p { font-variant-numeric: tabular-nums; font-weight: 700; }
-
 /* --------------------------------------------------------------------------
    Pedido
    -------------------------------------------------------------------------- */
@@ -669,7 +657,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 
 /* Servicio cerrado ahora mismo: se atenúa lo justo para que se note que no es
    lo que se está sirviendo, sin volverlo ilegible ni impedir el pedido. */
-.servicio--cerrado .platos, .servicio--cerrado .lista-bar { opacity: .72; }
+.servicio--cerrado .platos { opacity: .72; }
 .servicio--cerrado .plato:hover { opacity: 1; }
 
 /* --------------------------------------------------------------------------

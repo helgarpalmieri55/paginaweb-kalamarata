@@ -54,7 +54,7 @@ https://helgarpalmieri55.github.io/paginaweb-kalamarata/
 Se publica una **lista explícita**, no una lista de exclusiones, para que nada
 nuevo acabe en internet por descuido:
 
-- Las 7 páginas (`index`, `carta`, `donde-estamos`, `contacto`,
+- Las 6 plantillas (`index`, `carta`, `donde-estamos`,
   `politica-de-datos`, `terminos`, `404`)
 - `assets/` (estilos, scripts, imágenes, tipografías) y `data/carta.json`
 - `favicon.ico`, `robots.txt`, `sitemap.xml`
@@ -68,7 +68,7 @@ Lo publicado pesa **832 KB**.
 ## La vista previa NO se indexa, a propósito
 
 El workflow inyecta `<meta name="robots" content="noindex, nofollow">` en las
-7 páginas y sustituye `robots.txt` por un `Disallow: /`, **solo en la copia que
+6 plantillas y sustituye `robots.txt` por un `Disallow: /`, **solo en la copia que
 se publica**. El código del repositorio queda tal cual, listo para el dominio
 propio.
 
@@ -102,7 +102,7 @@ Cuando exista el dominio del negocio:
 3. Añade un archivo `CNAME` en la raíz del repositorio con el dominio dentro.
 4. Borra el paso de noindex del workflow.
 5. Haz lo que dice `PENDIENTES.md` §3: dominio real en `robots.txt` y
-   `sitemap.xml`, `<link rel="canonical">` en las 6 páginas, y `og:image` y
+   `sitemap.xml`, `<link rel="canonical">` en las 5 páginas, y `og:image` y
    `og:url` absolutos.
 
 ## Una limitación que conviene saber

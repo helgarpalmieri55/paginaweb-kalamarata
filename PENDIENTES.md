@@ -45,7 +45,13 @@ Además, sin marcador en el código pero igual de bloqueantes:
   `assets/img/` son generadas por IA y salen marcadas «Imagen de referencia»;
   ver `assets/img/PROCEDENCIA.md`.
 
-## 3. Cuando exista el dominio
+## 3. Un paso manual en GitHub, una sola vez
+
+- [ ] **Settings → Pages → Source = «GitHub Actions»** (no «Deploy from a
+      branch»). Sin esto el workflow construye pero no publica. Detalle
+      completo en `DEPLOY.md`.
+
+## 4. Cuando exista el dominio
 
 - [ ] Poner el dominio real en `robots.txt` (descomentar la línea `Sitemap:`) y
       en `sitemap.xml`.
@@ -56,7 +62,7 @@ Además, sin marcador en el código pero igual de bloqueantes:
 - [ ] Comprobar que el sitio carga por HTTPS sin advertencias.
 - [ ] Probarlo en **ventana de incógnito**: sin sesión, sin caché y sin 404.
 
-## 4. Enganche con el asistente de WhatsApp
+## 5. Enganche con el asistente de WhatsApp
 
 - [ ] Escribir la URL de la política publicada en `business_info.privacy_policy_url`
       del tenant. El bot ya la nombra al pedir la autorización, pero hoy no la
@@ -66,7 +72,7 @@ Además, sin marcador en el código pero igual de bloqueantes:
       con el catálogo del bot. Hoy son dos copias: en la primera subida de
       precios se separan, y el que queda mal es el bot.
 
-## 5. Coherencia que Meta compara
+## 6. Coherencia que Meta compara
 
 Esto se revisa al final, cuando ya estén los datos de arriba:
 
@@ -89,3 +95,9 @@ Esto se revisa al final, cuando ya estén los datos de arriba:
 - [x] Contraste WCAG AA (4.5:1) en tema claro y oscuro
 - [x] El sitio es indexable: `robots.txt` lo permite explícitamente
 - [x] El logo real del cliente está en la cabecera y en los iconos
+- [x] Las 6 páginas son alcanzables desde cualquier página **en móvil**: la
+      navegación de cabecera se oculta por debajo de 52 rem y no hay menú
+      hamburguesa, así que el pie lleva la lista completa
+- [x] Publicación automática en GitHub Pages al hacer merge a `main`, con la
+      vista previa marcada `noindex` porque `github.io` no es el dominio del
+      negocio (ver `DEPLOY.md`)

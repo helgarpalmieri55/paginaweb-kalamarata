@@ -54,6 +54,31 @@ el archivo esté en `main`, el despliegue falla con un error de configuración
 —no es un fallo del panel—. Basta con volver a lanzar la construcción cuando ya
 esté.
 
+### Si la construcción falla con «jekyll build»
+
+Síntoma exacto, visto el 21/09/2026:
+
+```
+Detected Project Settings:
+ - Framework: Static
+ - Build Command: npx bundle exec jekyll build
+[build] npm error could not determine executable to run
+✘ [ERROR] Running custom build `npx bundle exec jekyll build` failed.
+```
+
+**No es un fallo de `construir.sh`** —en ese mismo log se ve `_site listo: 180
+archivos` justo antes—. Lo que pasó es que `wrangler deploy` **no encontró
+`wrangler.jsonc` en la rama de producción**, así que arrancó su
+autoconfiguración, vio el `_config.yml` de la raíz, dedujo «esto es Jekyll» e
+intentó construirlo con Ruby, que no está en la imagen.
+
+**La cura es fusionar primero.** La construcción clona `main`: si
+`wrangler.jsonc` solo está en una rama, es como si no existiera. Con el archivo
+en `main`, wrangler no adivina nada y publica `_site/` directamente.
+
+El `_config.yml` se queda: protege de que GitHub Pages publique la rama entera,
+que es una fuga silenciosa. Una construcción fallida, en cambio, se ve.
+
 ### 4. Comprobar ANTES de apuntar el dominio
 
 Cloudflare da una URL `…workers.dev`. Compruébala:

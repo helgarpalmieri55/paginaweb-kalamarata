@@ -1,0 +1,91 @@
+name: Publicar en GitHub Pages
+
+# Se dispara solo al entrar código en main — es decir, cuando se hace merge
+# del pull request. No se publica desde ramas ni desde el propio PR.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una publicación a la vez. No se cancelan las que ya van en curso: preferimos
+# que una terminen a dejar el sitio a medio subir.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reunir solo lo que es el sitio
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+
+          # Lista explícita, no exclusiones: así nada nuevo se publica por
+          # descuido. Quedan fuera .claude (18 MB de la skill de diseño),
+          # .impeccable, y PRODUCT.md / DESIGN.md / PENDIENTES.md, que son
+          # documentación interna — PENDIENTES.md además dice en voz alta qué
+          # datos del negocio faltan.
+          cp index.html carta.html donde-estamos.html contacto.html \
+             politica-de-datos.html terminos.html 404.html \
+             robots.txt sitemap.xml favicon.ico _site/
+          cp -r assets data _site/
+
+          # Sin esto GitHub Pages pasa el sitio por Jekyll, que se salta
+          # cualquier archivo o carpeta que empiece por guion bajo.
+          touch _site/.nojekyll
+
+      - name: Marcar la vista previa como no indexable
+        run: |
+          set -euo pipefail
+          # Esta copia vive en github.io, que NO es el dominio del negocio.
+          # Si Google la indexa, compite con el sitio real y publica los
+          # marcadores PENDIENTE_*. El noindex se inyecta SOLO en lo que se
+          # publica: el código del repositorio queda listo para el dominio
+          # propio. Para quitarlo, borra este paso entero.
+          for f in _site/*.html; do
+            sed -i 's|<meta name="viewport"|<meta name="robots" content="noindex, nofollow">\n<meta name="viewport"|' "$f"
+          done
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+          echo "Marcadas $(ls _site/*.html | wc -l) páginas como noindex."
+
+      - name: Comprobar que no se publica nada roto
+        run: |
+          set -euo pipefail
+          test -s _site/index.html
+          test -s _site/data/carta.json
+          test -s _site/assets/css/kalamarata.css
+          test -s _site/assets/js/carta.js
+          test -s _site/assets/img/kalamarata-logo.webp
+          python3 -c "import json;d=json.load(open('_site/data/carta.json'));print('carta.json válido')"
+          # Ningún recurso referenciado puede faltar.
+          fallos=0
+          for ruta in $(grep -ohE '(href|src)="[^"#:]+"' _site/*.html \
+                        | sed -E 's/.*="([^"]+)"/\1/' | sort -u); do
+            [ -e "_site/$ruta" ] || { echo "FALTA: $ruta"; fallos=1; }
+          done
+          [ "$fallos" -eq 0 ] || exit 1
+          echo "Todos los recursos referenciados existen."
+          echo "Peso publicado: $(du -sh _site | cut -f1)"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

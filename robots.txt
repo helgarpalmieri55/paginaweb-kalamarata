@@ -1,0 +1,10 @@
+# Este sitio debe ser público e indexable: es la prueba de que el negocio
+# existe para la verificación de empresa de Meta. No añadir Disallow global.
+User-agent: *
+Allow: /
+
+# La carta con token del asistente vive en otro dominio y lleva su propio
+# noindex. No se enlaza desde aquí.
+
+# Descomentar cuando exista el dominio propio del negocio:
+# Sitemap: https://PENDIENTE_DOMINIO/sitemap.xml

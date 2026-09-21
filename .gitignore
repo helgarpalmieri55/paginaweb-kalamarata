@@ -1,0 +1,9 @@
+# Impeccable engine binaries: platform-specific (~16 MB each) and re-downloaded
+# on demand by .claude/skills/impeccable/scripts/impeccable (sha256-verified).
+.claude/skills/impeccable/scripts/bin/
+
+# Comps de la ronda de decisión: son la mano del dado, no entregable.
+.impeccable/mocks/
+
+# Capturas para la revisión final: evidencia de trabajo, no entregable.
+.impeccable/review/

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PENDIENTE: reemplazar PENDIENTE_DOMINIO por el dominio propio del negocio
+  antes de publicar. Los buscadores descartan un sitemap cuyas URL no
+  coincidan con el host que lo sirve, así que tal cual está es inofensivo
+  pero inútil.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://PENDIENTE_DOMINIO/</loc><priority>1.0</priority></url>
+  <url><loc>https://PENDIENTE_DOMINIO/carta.html</loc><priority>0.9</priority></url>
+  <url><loc>https://PENDIENTE_DOMINIO/donde-estamos.html</loc><priority>0.7</priority></url>
+  <url><loc>https://PENDIENTE_DOMINIO/contacto.html</loc><priority>0.7</priority></url>
+  <url><loc>https://PENDIENTE_DOMINIO/politica-de-datos.html</loc><priority>0.3</priority></url>
+  <url><loc>https://PENDIENTE_DOMINIO/terminos.html</loc><priority>0.3</priority></url>
+</urlset>

@@ -10,43 +10,106 @@ Hay dos destinos y **los dos usan el mismo guion**, `construir.sh`, que arma en
 
 ---
 
-## Cloudflare Pages (el destino real)
+## Cloudflare Pages, paso a paso
 
-Al conectar el repositorio, en **Settings → Builds & deployments**:
+Verificado contra la documentación de Cloudflare el 21/09/2026:
+<https://developers.cloudflare.com/pages/get-started/git-integration/> y
+<https://developers.cloudflare.com/pages/configuration/custom-domains/>.
+
+### 1. Crear el proyecto
+
+1. Entra al panel de Cloudflare y abre **Workers & Pages**.
+2. **Create application → Pages → Connect to Git**.
+3. Inicia sesión en GitHub y autoriza. En **Install & Authorize** puedes darle
+   acceso solo a `paginaweb-kalamarata`; no hace falta darle todos los
+   repositorios.
+4. Elige `helgarpalmieri55/paginaweb-kalamarata` y pulsa **Begin setup**.
+
+### 2. Las casillas de construcción
+
+Esta es la pantalla que importa. **Si estas dos se quedan en blanco, Cloudflare
+sirve el repositorio ENTERO** y publica `PENDIENTES.md`, `PRODUCT.md`,
+`DESIGN.md`, `DEPLOY.md` y `.claude/` — con el NIT, la cédula del dueño y el
+código del certificado dentro. Es el mismo fallo que ya ocurrió aquí con GitHub
+Pages en modo «Deploy from a branch» el 21/09/2026.
 
 | Casilla | Valor |
 |---|---|
-| Build command | `bash construir.sh` |
-| Build output directory | `_site` |
-| Root directory | *(vacío)* |
+| **Project name** | `kalamarata` (genera `kalamarata.pages.dev`) |
+| **Production branch** | `main` |
+| **Build command** | `bash construir.sh` |
+| **Build output directory** | `_site` |
+| **Root directory (advanced)** | *dejar vacío* |
+| **Environment variables** | ninguna |
 
-**Estas dos casillas no son opcionales.** Si se dejan en blanco, Cloudflare
-sirve la raíz del repositorio y publica `PENDIENTES.md`, `PRODUCT.md`,
-`DESIGN.md`, `DEPLOY.md` y `.claude/`. Es exactamente el mismo fallo que ya
-ocurrió aquí con GitHub Pages en modo «Deploy from a branch» el 21/09/2026.
+Pulsa **Save and Deploy**. El primer despliegue tarda un par de minutos.
 
-Comprobación después del primer despliegue, desde fuera:
+`construir.sh` solo necesita `bash` y `python3`, y la imagen de construcción de
+Cloudflare (v3, Ubuntu 22.04) trae Python 3.13 por defecto, así que no hay que
+fijar versión ni añadir `.python-version`.
+
+### 3. Comprobar ANTES de apuntar el dominio
+
+Cuando termine, Cloudflare te da una URL `…pages.dev`. Compruébala:
 
 ```bash
-curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.com/PENDIENTES.md
+# Debe dar 404. Si da 200, las casillas del paso 2 están mal.
+curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.pages.dev/PENDIENTES.md
+
+# Debe dar 200.
+curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.pages.dev/carta.html
 ```
 
-`404` es lo correcto. `200` significa que falta configurar las casillas.
+**No pases al paso 4 hasta que el primero dé 404.**
 
-### El DNS
+### 4. El dominio propio
 
-El dominio está en GoDaddy y se sirve por Cloudflare. En GoDaddy hay que
-apuntar los **nameservers** a los que dé Cloudflare; el registro del sitio se
-crea solo al conectar Pages a un dominio propio.
+El dominio ya está en Cloudflare (nameservers apuntados desde GoDaddy), así que
+esto es lo corto:
 
-### Qué NO lleva Cloudflare
+1. **Workers & Pages → kalamarata → Custom domains → Set up a domain**.
+2. Escribe `kalamarata.com` y confirma. Al ser ya una zona de Cloudflare, **el
+   registro DNS se crea solo**; no hay que tocar nada a mano.
+3. Repite con `www.kalamarata.com`. Ahí Cloudflare crea un `CNAME` hacia
+   `kalamarata.pages.dev`.
 
-El paso de `noindex` es **solo** para la vista previa de github.io. El sitio de
-kalamarata.com tiene que ser indexable: es la prueba de que el negocio existe
-para la verificación de Meta. `construir.sh` no toca el `robots.txt`, así que
-Cloudflare publica el del repositorio, que permite la indexación.
+**No crees el CNAME a mano en el DNS sin hacer antes el paso 1.** La
+documentación de Cloudflare avisa de que añadir el registro por tu cuenta sin
+asociar primero el dominio al proyecto hace que el dominio no resuelva.
+
+Para que `www` lleve al dominio sin `www` (o al revés, como prefieras), se hace
+con una **Redirect Rule** en la sección **Rules** de la zona.
+
+### 5. A partir de ahí
+
+Cada `git push` a `main` dispara una construcción y un despliegue nuevos. No hay
+que hacer nada más.
+
+Las ramas distintas de `main` generan **vistas previas** en URLs propias. Son
+públicas si alguien acierta la URL; si eso molesta, se apagan en
+**Settings → Builds & deployments → Preview deployments**.
+
+### 6. Dos cosas que conviene mirar después
+
+**El caché.** Los recursos se sirven sin marca de versión, así que un visitante
+que vuelve puede recibir el CSS y el JS viejos. En Cloudflare se arregla con un
+archivo `_headers`; no está puesto todavía.
+
+**GitHub Pages sigue vivo.** La copia de `github.io` no estorba —lleva `noindex`
+y `Disallow: /`, así que no compite con kalamarata.com— pero si quieres apagarla
+del todo es **Settings → Pages → Source = None** en GitHub.
+
+### Lo que Cloudflare NO lleva
+
+El paso de `noindex` es **solo** para la vista previa de github.io, y vive en el
+workflow, no en `construir.sh`. Cloudflare publica el `robots.txt` del
+repositorio, que permite la indexación: kalamarata.com **tiene** que ser
+indexable, porque es la prueba de que el negocio existe para la verificación de
+Meta.
 
 ---
+
+# Publicación en GitHub Pages (la vista previa)
 
 El sitio se publica solo cuando entra código en `main` — es decir, **cuando tú
 haces merge del pull request**. No se publica desde ramas ni desde el propio PR.

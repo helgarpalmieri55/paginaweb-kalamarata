@@ -25,12 +25,18 @@ dueño.
 | ~~`PENDIENTE_DIRECCION_NOTIFICACIONES`~~ | Calle 72 No. 60-53, Barranquilla, Atlántico | Certificado, campo «Dirección para notificación judicial» |
 | ~~`PENDIENTE_FECHA_VIGENCIA`~~ | 21 de septiembre de 2026 | Fecha en que se publicaron los textos |
 
-### Siguen en rojo, y no salen del certificado
+### Ya no queda ninguno en rojo
+
+**Los nueve marcadores `PENDIENTE_*` están resueltos.** El sitio no muestra
+ningún hueco. Lo que sigue son decisiones ya tomadas, anotadas para que conste
+quién las tomó y cuándo.
+
+### Cómo se resolvieron los dos últimos
 
 | Marcador | Qué falta decidir |
 |---|---|
 | ~~`PENDIENTE_DOMINIO`~~ | **kalamarata.com**, confirmado por el dueño el 21/09/2026. Está en GoDaddy y se sirve por Cloudflare |
-| `PENDIENTE_DECISION_PROMOCIONES` | **Lo único que queda.** Si el restaurante va a mandar publicidad. Ver «La decisión de promociones» más abajo |
+| ~~`PENDIENTE_DECISION_PROMOCIONES`~~ | **Resuelto el 21/09/2026: sin promociones por ahora.** La política dice «Hoy no enviamos promociones» y que los datos se usan solo para atender el pedido |
 
 ---
 
@@ -149,40 +155,33 @@ Además, sin marcador en el código pero igual de bloqueantes:
 - **Confirmar quién es administrador del portafolio comercial** y su usuario de
   Facebook. Solo un administrador puede completar la verificación.
 
-## 1-ter. La decisión de promociones (lo único que queda en rojo)
+## 1-ter. La decisión de promociones: TOMADA
 
-**La pregunta, en una línea:** ¿el restaurante va a mandarle publicidad por
-WhatsApp a quien ya pidió —ofertas, el menú del día, promociones— o los datos
-del cliente se usan **solo** para atender su pedido?
+**21/09/2026 — el dueño decidió: sin promociones por ahora.**
 
-**Por qué hay que decidirlo y no se puede dejar en blanco.** La Ley 1581 de
-2012 y el Decreto 1377 de 2013 tratan la publicidad como una finalidad
-**distinta** de atender el pedido. Quien te da su teléfono para que le lleves
-un almuerzo no te ha autorizado a mandarle promociones: eso es un permiso
-aparte, que se pide aparte y que el cliente puede negar sin perder el pedido.
+La política dice ahora, en el §3: «**Hoy no enviamos promociones.** Tus datos se
+usan únicamente para atender tu pedido…», y mantiene el párrafo que explica que
+la publicidad es un permiso aparte.
 
-La política ya tiene escrito el párrafo que lo explica; lo que falta es la
-frase que dice qué hace el restaurante. Las dos opciones:
+**Si algún día se quiere cambiar**, no basta con reescribir esa frase. La Ley
+1581 de 2012 y el Decreto 1377 de 2013 tratan la publicidad como una finalidad
+distinta de atender el pedido, así que haría falta además:
 
-| Si la respuesta es | Lo que se publica |
+1. una **casilla de aceptación separada** en el pedido, que no venga marcada;
+2. una forma de **darse de baja** en cada mensaje promocional;
+3. registro de quién aceptó y cuándo.
+
+Por eso se recomendó empezar por «no»: cuesta una línea, y montar lo de arriba
+es trabajo aparte que hoy no bloquea publicar.
+
+## 1-quinquies. Decisiones cerradas el 21/09/2026
+
+| Asunto | Decisión del dueño |
 |---|---|
-| **No, por ahora no** | «Hoy no enviamos promociones: tus datos se usan solo para atender tu pedido.» Es lo más simple y lo más seguro. Si mañana se quiere, se cambia la política y se pide el permiso |
-| **Sí, queremos** | «Si nos das permiso, podemos enviarte promociones…» y **además** hay que añadir una casilla de aceptación separada en el pedido, y una forma de darse de baja |
-
-**Recomendación:** empezar por **no**. Es una línea de texto, no bloquea nada, y
-evita tener que montar la casilla y la baja antes de publicar. Cambiarlo
-después cuesta lo mismo.
-
-## 1-quater. El mapa incrusta Google
-
-`donde-estamos.html` lleva ahora un mapa de Google incrustado, interactivo y
-con el pin del local. Eso significa que **Google recibe la IP de quien visita
-esa página** y puede poner sus cookies.
-
-Está declarado en la política de datos, §5, junto a los demás encargados. Si
-alguna vez se quiere evitar del todo, la alternativa es quitar el `<iframe>` y
-dejar solo el botón «Cómo llegar», que abre la app de mapas sin incrustar nada.
-El mapa **solo** está en esa página; ninguna otra carga nada de Google.
+| Promociones | **No, por ahora.** La política lo dice en el §3 |
+| Autoría de las imágenes aportadas | **Las hizo él mismo** (las tres de bebida y el muro). Anotado como su declaración en `PROCEDENCIA.md` |
+| Pin del mapa y dirección | **Está bien así** |
+| Especial guardado de otro día | **Se queda marcándose**, no se borra solo. Borrar el pedido de alguien sin avisar es peor que avisarle |
 
 ## 2. Archivos que faltan
 
@@ -194,17 +193,15 @@ El mapa **solo** está en esa página; ninguna otra carga nada de Google.
   de `assets/img/`, **153** son generadas por IA y salen marcadas «Imagen de
   referencia»; ver `assets/img/PROCEDENCIA.md`. Reemplazarlas por fotografía
   real en cuanto el restaurante la tenga, y quitar entonces esa marca.
-- **Permiso de uso de las tres fotos de bebida de marca** (Coca-Cola mega,
-  Té o jugos Hit, Té Hatsu). Las aportó el cliente y muestran el producto
-  correcto, pero **no consta de dónde salieron ni bajo qué licencia**. En un
-  sitio que vende, publicar la foto de otro sin permiso es un riesgo real.
-  Se cierra de dos formas: una foto de las botellas de la nevera del local
-  (gratis y exacta), o el material de producto del embotellador (Coca-Cola
-  FEMSA y Postobón se lo dan a sus clientes, con permiso incluido).
-- **Aclarar qué es una «Coca-Cola mega»**. La carta la llama así y la foto
-  aportada es de **600 mL**; en Colombia «mega» suele ser un formato mayor.
-  O la foto no es del envase que se vende, o el nombre de la carta no es el
-  del producto. Lo dice el restaurante; no se ha supuesto nada.
+- ~~**Permiso de uso de las fotos aportadas**~~ — **resuelto el 21/09/2026**:
+  el dueño declaró que las hizo él mismo (las tres de bebida y el muro
+  italiano). Anotado en `PROCEDENCIA.md` como su declaración, no como
+  verificación nuestra: no hay forma de comprobar la autoría de una imagen
+  desde aquí.
+- **Aclarar qué es una «Coca-Cola mega»** (lo único abierto de las imágenes).
+  La carta la llama así y la foto es de **600 mL**; en Colombia «mega» suele ser
+  un formato mayor. Ya no es cuestión de permisos, sino de que el cliente vea lo
+  que va a recibir. Lo dice el restaurante; no se ha supuesto nada.
 
 ## 3. Un paso manual en GitHub, una sola vez
 

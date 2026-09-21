@@ -32,30 +32,24 @@ IA** y tenía el texto de la etiqueta alucinado (la tabla nutricional decía
 «chrpnt Snts Gsh.» y el pie «De un porcentaje de 2006 ozcalorias»). Una
 etiqueta con texto inventado es exactamente lo que el cliente rechazó.
 
-### Lo que no sabemos de estas tres
+### De dónde salieron
 
-**No consta de dónde salieron ni bajo qué licencia.** Las aportó el cliente;
-no son fotografías del local ni material que el embotellador nos haya
-entregado a nosotros con permiso por escrito. Si proceden de un buscador, son
-de quien las tomó y publicarlas en un sitio que vende es usar su trabajo sin
-permiso.
+**El dueño declaró el 21/09/2026 que las hizo él mismo**, así que no hay
+problema de licencia. Queda anotado como lo que es: **su declaración**, no una
+verificación nuestra —no hay forma de comprobar la autoría de una imagen desde
+aquí—. Si alguna vez alguien reclama por una de ellas, este es el registro de
+quién respondió por su origen y cuándo.
 
-**Esto sigue abierto y es del cliente resolverlo.** Las dos formas limpias de
-cerrarlo, por orden de utilidad:
-
-1. **Una foto de las botellas de la nevera del local.** Gratis, exacta, sin
-   permisos de por medio, y enseña el envase y el tamaño que el cliente va a
-   recibir. Basta un teléfono y luz de día.
-2. **El material de producto del embotellador.** Coca-Cola FEMSA y Postobón se
-   lo dan a sus clientes; se le pide al asesor comercial. Viene con permiso de
-   uso incluido.
+Siguen sin ser fotografías del local: son imágenes de producto. Una foto de las
+botellas de la propia nevera seguiría siendo mejor, porque enseñaría el envase y
+el tamaño exactos que recibe el cliente, pero ya no es un asunto de permisos.
 
 ### Dos desajustes medidos, no supuestos
 
 - **La carta dice «Coca-Cola mega» y la foto es de 600 mL.** En Colombia
   «mega» suele nombrar un formato mayor. O la foto no es del envase que se
-  vende, o el nombre de la carta no es el del producto. **Lo aclara el
-  restaurante**, no nosotros.
+  vende, o el nombre de la carta no es el del producto. **Sigue sin aclararse**;
+  no es un problema de licencia, sino de que el cliente vea lo que va a recibir.
 - **La foto de Hit viene de un original de 554×554 px**, por debajo de los
   760 px que usa el sitio, así que se ve algo más blanda que las demás. Se
   publicó igual porque muestra el producto correcto; una foto propia la
@@ -76,9 +70,10 @@ porque son fotografía de producto y la etiqueta es el producto.
 móvil recibe el pequeño, que es la diferencia entre 57 KB y 149 KB en la
 primera vista.
 
-Muro de ladrillo con la bandera italiana y el logotipo de Kalamarata. **Le
-aplica lo mismo que a las tres fotos de bebida: no consta de dónde salió ni
-bajo qué licencia.** El logotipo sí es del cliente.
+Muro de ladrillo con la bandera italiana y el logotipo de Kalamarata. **El
+dueño declaró el 21/09/2026 que la hizo él mismo**, igual que las tres de
+bebida, así que no hay problema de licencia. Queda anotado como su declaración,
+no como verificación nuestra.
 
 El texto del inicio **no va suelto sobre ella**: va en un panel verde opaco.
 No es decoración — sobre la franja blanca del ladrillo el texto blanco

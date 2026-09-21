@@ -79,6 +79,31 @@ en `main`, wrangler no adivina nada y publica `_site/` directamente.
 El `_config.yml` se queda: protege de que GitHub Pages publique la rama entera,
 que es una fuga silenciosa. Una construcción fallida, en cambio, se ve.
 
+### El 307 de las páginas es normal, y NO hay que «arreglarlo»
+
+Comprobado el 21/09/2026 sobre el sitio vivo:
+
+```
+/            -> 200
+/carta.html  -> 307 hacia /carta  -> 200
+/carta       -> 200
+```
+
+Workers quita el «.html» por su cuenta: es su esquema de URL canónica, y viene
+de `html_handling`, cuyo valor por defecto es `auto-trailing-slash`. El sitio
+funciona; el coste es un salto por enlace.
+
+**Tienta poner `"html_handling": "none"` para quitarlo. No lo hagas.** Esa
+opción apaga también el mapeo de `/` a `index.html`, así que **la portada
+empezaría a devolver la página de 404**. Un salto de más es barato; la página
+principal caída, no.
+<https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/>
+
+Si algún día molesta de verdad, la salida es cambiar los enlaces internos y el
+`sitemap.xml` a las URL sin extensión —pero entonces dejan de funcionar en la
+vista previa de GitHub Pages, que sí sirve `/carta.html` directo—. Es un
+intercambio, no una mejora gratis.
+
 ### 4. Comprobar ANTES de apuntar el dominio
 
 Cloudflare da una URL `…workers.dev`. Compruébala:

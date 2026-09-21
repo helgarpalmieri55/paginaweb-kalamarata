@@ -39,6 +39,14 @@ jobs:
              robots.txt sitemap.xml favicon.ico _site/
           cp -r assets data _site/
 
+          # `cp -r assets` se lleva TODO lo que haya dentro, y ahi vive
+          # assets/img/PROCEDENCIA.md, que es documentacion interna: dice que
+          # las fotos son generadas, de donde salieron las de marca y que su
+          # licencia no consta. Publicar eso en el sitio que vende es regalar
+          # munición. La lista explicita de arriba no lo cubre porque la
+          # carpeta entra de golpe, asi que se barre despues.
+          find _site -name '*.md' -type f -print -delete
+
           # Sin esto GitHub Pages pasa el sitio por Jekyll, que se salta
           # cualquier archivo o carpeta que empiece por guion bajo.
           touch _site/.nojekyll
@@ -65,6 +73,12 @@ jobs:
           test -s _site/assets/css/kalamarata.css
           test -s _site/assets/js/carta.js
           test -s _site/assets/img/kalamarata-logo.webp
+          # Ningun .md puede llegar al sitio publico.
+          if find _site -name '*.md' -type f | grep -q .; then
+            echo "Se cuela documentacion interna en el sitio:"
+            find _site -name '*.md' -type f
+            exit 1
+          fi
           python3 -c "import json;d=json.load(open('_site/data/carta.json'));print('carta.json válido')"
           # Ningún recurso referenciado puede faltar.
           fallos=0

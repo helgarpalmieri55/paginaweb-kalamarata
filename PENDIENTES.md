@@ -41,14 +41,21 @@ Además, sin marcador en el código pero igual de bloqueantes:
   Está en la cabecera de las 5 páginas (`assets/img/kalamarata-logo.webp`,
   13 KB) y el camarón de la marca es ahora el favicon, sobre el verde de marca
   porque naranja sobre naranja no contrasta. La K provisional se eliminó.
-- **Fotografías propias** de los platos y del local. Las **153** imágenes de
-  platos de `assets/img/` son generadas por IA y salen marcadas «Imagen de
+- **Fotografías propias** de los platos y del local. De las **156** imágenes
+  de `assets/img/`, **153** son generadas por IA y salen marcadas «Imagen de
   referencia»; ver `assets/img/PROCEDENCIA.md`. Reemplazarlas por fotografía
   real en cuanto el restaurante la tenga, y quitar entonces esa marca.
-- **Foto de las tres bebidas de marca** (Coca-Cola mega, Té o jugos Hit, Té
-  Hatsu). Hoy salen sin imagen: las generadas no concordaban con el producto
-  real. Con una foto de las botellas de la nevera se resuelve en un minuto, y
-  además es la que enseña el envase y el tamaño de verdad.
+- **Permiso de uso de las tres fotos de bebida de marca** (Coca-Cola mega,
+  Té o jugos Hit, Té Hatsu). Las aportó el cliente y muestran el producto
+  correcto, pero **no consta de dónde salieron ni bajo qué licencia**. En un
+  sitio que vende, publicar la foto de otro sin permiso es un riesgo real.
+  Se cierra de dos formas: una foto de las botellas de la nevera del local
+  (gratis y exacta), o el material de producto del embotellador (Coca-Cola
+  FEMSA y Postobón se lo dan a sus clientes, con permiso incluido).
+- **Aclarar qué es una «Coca-Cola mega»**. La carta la llama así y la foto
+  aportada es de **600 mL**; en Colombia «mega» suele ser un formato mayor.
+  O la foto no es del envase que se vende, o el nombre de la carta no es el
+  del producto. Lo dice el restaurante; no se ha supuesto nada.
 
 ## 3. Un paso manual en GitHub, una sola vez
 

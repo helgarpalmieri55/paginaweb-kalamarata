@@ -4,3 +4,6 @@
 
 # Comps de la ronda de decisión: son la mano del dado, no entregable.
 .impeccable/mocks/
+
+# Capturas para la revisión final: evidencia de trabajo, no entregable.
+.impeccable/review/

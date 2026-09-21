@@ -34,7 +34,7 @@ jobs:
           # .impeccable, y PRODUCT.md / DESIGN.md / PENDIENTES.md, que son
           # documentación interna — PENDIENTES.md además dice en voz alta qué
           # datos del negocio faltan.
-          cp index.html carta.html donde-estamos.html contacto.html \
+          cp index.html carta.html donde-estamos.html \
              politica-de-datos.html terminos.html 404.html \
              robots.txt sitemap.xml favicon.ico _site/
           cp -r assets data _site/

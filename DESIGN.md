@@ -509,3 +509,46 @@ La revisión final marcó siete arreglos materiales. Lo que cambió en el sistem
 - **El almuerzo de hoy se resuelve en el inicio**, con el día de
   `America/Bogota` y no el del navegador: en UTC puede ser ya lunes mientras en
   Barranquilla sigue siendo domingo y la cocina no sirve almuerzo.
+
+
+## Rediseño del 21/09: portada mínima y color comprometido
+
+Petición del cliente: el sitio se veía «muy básico, muy IA», sobraba el modo
+oscuro y la carta mezclaba el almuerzo con las comidas rápidas.
+
+**Fuera el esquema oscuro.** Era una decisión mía, tomada desde la escena de
+uso; el cliente la revocó: esto es una página web de restaurante, no una app, y
+el blanco es su decisión. `color-scheme: only light`, y los tokens que existían
+solo para invertirse (`sobre-marca`, `enlace`, los `*-prensa`) siguen vivos
+porque ya cumplían otra función en claro.
+
+**El color se compromete a escala de página.** El diagnóstico de por qué se veía
+generado: todo era una tarjeta blanca con filete de 1 px sobre gris claro, y el
+naranja y el verde de la marca aparecían solo en botones pequeños. El estándar
+de oficio lo dice literalmente — *el color commits at page scale: campos que
+ocupan regiones enteras, no acentos salpicados sobre fondo neutro*. Ahora:
+
+- **`.hero`**: campo `verde-hondo` entero, titular blanco a `clamp(2.1rem, …,
+  4rem)`, y dos acciones grandes en la pauta de la categoría (icono, acción en
+  Archivo Black, subtítulo de qué pasa al pulsar).
+- **`.accion--pedir`**: relleno `naranja-accion` (#F5821F) con texto
+  `sobre-accion` (#1A1512). El blanco encima de ese naranja da **2.59:1** y no
+  se usa; la tinta oscura da 6.98:1.
+- **`.banda`**: rótulo blanco sobre campo verde para cada servicio de la carta.
+  No es un recurso inventado: es el de la carta impresa de Kalamarata.
+
+**La portada es mínima.** Héroe y bloque de identidad legal, nada más. Las
+tarjetas de domicilios, la rejilla del almuerzo semanal y el mapa se fueron: la
+portada dice qué es y lleva a pedir.
+
+**La carta son dos servicios.** `data/carta.json` etiqueta cada categoría con
+`servicios: ['almuerzo'|'rapidas']`, tomado de las dos cartas impresas del
+cliente. Cuatro categorías están en ambas — Asados y parrilladas (que la carta
+de día llama «Parrilladas» y la de noche «Asados», mismos platos y precios),
+Lasañas, Bebidas y Cervezas — y se renderizan en las dos con el nombre que les
+corresponde vía `nombrePorServicio`. Dentro de un servicio los títulos de
+categoría son `h3`: el `h2` es la banda.
+
+**Contacto desapareció.** Su contenido propio (lista de contacto y formas de
+pago) vive en «Dónde estamos». La navegación es Inicio · Pide aquí · Dónde
+estamos, y «Pide aquí» es la carta: mirar y pedir en la misma página.

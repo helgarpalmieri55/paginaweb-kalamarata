@@ -101,3 +101,6 @@ Esto se revisa al final, cuando ya estén los datos de arriba:
 - [x] Publicación automática en GitHub Pages al hacer merge a `main`, con la
       vista previa marcada `noindex` porque `github.io` no es el dominio del
       negocio (ver `DEPLOY.md`)
+- [x] Solo tema claro: el modo oscuro se eliminó a petición del cliente
+- [x] La carta separa **Almuerzo** (72 platos) de **Comidas rápidas** (135),
+      según las dos cartas impresas que entregó el cliente

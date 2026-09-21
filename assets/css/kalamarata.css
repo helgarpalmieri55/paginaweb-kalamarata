@@ -27,6 +27,8 @@
   --verde-claro:    #E8F4E7;
   --enlace:         #1E6B1D;
   --verde-prensa:   #175616;
+  --naranja-accion: #F5821F;   /* relleno de acción sobre campo verde */
+  --sobre-accion:   #1A1512;   /* texto encima: blanco sobre ese naranja da 2.6:1 */
 
   /* Superficies */
   --papel:          #FFFFFF;
@@ -57,39 +59,14 @@
 
   --sombra-alta: 0 2px 4px rgba(26, 21, 18, .08), 0 12px 28px rgba(26, 21, 18, .12);
 
-  color-scheme: light;
+  /* Solo claro: es una página web de restaurante, no una app, y el blanco
+     es la decisión del cliente. Sin esto el navegador puede repintar los
+     controles nativos en oscuro. */
+  color-scheme: only light;
   accent-color: var(--naranja);
 }
 
 @media (max-width: 52rem) { :root { --cab-alto: 72px; } }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) {
-    --papel:        #201A16;
-    --fondo:        #151110;
-    --fondo-hondo:  #0E0B0A;
-    --tinta:        #F6F1EA;
-    --tinta-suave:  #BCB0A4;
-    --tinta-tenue:  #8D8277;
-    --linea:        #362D27;
-    --linea-fuerte: #4A3F37;
-    --verde-claro:  #1C2E1B;
-    --enlace:       #4FB24D;
-    --verde-prensa: #86D884;
-    --naranja:      #F5861E;
-    --naranja-vivo: #FF9833;
-    --verde:        #4FB24D;
-    --verde-hondo:  #5FC25D;
-    --naranja-hondo: #F5861E;
-    --naranja-texto: #FF9833;
-    --naranja-prensa: #FFAA55;
-    --sobre-marca:   #17120F;
-    --alerta:       #F0836A;
-    --alerta-fondo: #2E1A15;
-    --sombra-alta:  0 2px 4px rgba(0,0,0,.45), 0 12px 28px rgba(0,0,0,.55);
-    color-scheme: dark;
-  }
-}
 
 /* --------------------------------------------------------------------------
    Base y superficies del navegador. Lo que no dibujamos igual lleva la marca.
@@ -195,10 +172,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 }
 .nav a:hover { color: var(--naranja-hondo); border-bottom-color: var(--naranja); }
 .nav a[aria-current="page"] { color: var(--naranja-hondo); border-bottom-color: var(--naranja); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .nav a:hover,
-  :root:not([data-tema="claro"]) .nav a[aria-current="page"] { color: var(--naranja-vivo); }
-}
+
 @media (max-width: 52rem) { .nav { display: none; } }
 
 /* --------------------------------------------------------------------------
@@ -365,9 +339,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   font-family: var(--titular); font-size: 1.06rem; line-height: 1.15;
   color: var(--verde-hondo); letter-spacing: -.02em;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .plato__sinfoto span { color: var(--verde); }
-}
+
 .plato__ref {
   position: absolute; left: var(--r2); bottom: var(--r2);
   background: rgba(26,21,18,.82); color: #fff;
@@ -496,7 +468,6 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    -------------------------------------------------------------------------- */
 
 .pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r7) var(--r5); }
-@media (prefers-color-scheme: dark) { :root:not([data-tema="claro"]) .pie { background: var(--fondo-hondo); } }
 .pie a { color: #fff; }
 .pie__rejilla { display: grid; gap: var(--r5); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
 .pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r3); font-family: var(--texto); font-weight: 800; }
@@ -504,3 +475,83 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .pie__legal { border-top: 1px solid var(--pie-linea); margin-top: var(--r6); padding-top: var(--r4); font-size: .9rem; color: var(--pie-rotulo); }
 .pie__legal a { color: var(--pie-texto); }
 .pie .pend { background: var(--pie-pend-fondo); border-color: var(--pie-pend-filo); color: var(--pie-pend-tinta); }
+
+/* --------------------------------------------------------------------------
+   Héroe: el color se compromete a escala de página, no en acentos sueltos.
+   Un campo verde entero es lo que separa esto de una plantilla con botones
+   de colores.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  background: var(--verde-hondo);
+  color: #fff;
+  padding-block: var(--r8);
+  text-align: center;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 1.3rem + 3.4vw, 4rem);
+  max-width: 16ch; margin-inline: auto; color: #fff;
+}
+.hero__entrada {
+  font-size: 1.16rem; color: #F2EFE9; max-width: 44ch;
+  margin: var(--r4) auto 0;
+}
+
+/* Los dos botones grandes de la portada, en la pauta de la categoría:
+   icono, acción en grande, y debajo qué pasa al pulsar. */
+.hero__acciones {
+  display: grid; gap: var(--r4); margin-top: var(--r7);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 46rem) { .hero__acciones { grid-template-columns: 1fr 1fr; } }
+
+.accion {
+  display: flex; align-items: center; gap: var(--r4);
+  padding: var(--r5); border-radius: var(--radio);
+  text-decoration: none; text-align: left;
+  border: 2px solid transparent;
+  transition: transform .16s cubic-bezier(.2,.8,.2,1), background-color .16s, border-color .16s;
+}
+.accion:hover { transform: translateY(-2px); }
+.accion svg { flex: 0 0 auto; }
+.accion__tit { display: block; font-family: var(--titular); font-size: 1.3rem; line-height: 1.1; letter-spacing: -.02em; }
+.accion__sub { display: block; font-size: .94rem; margin-top: .2rem; opacity: .85; }
+
+.accion--pedir { background: var(--naranja-accion); color: var(--sobre-accion); }
+.accion--pedir:hover { background: #FF9433; }
+.accion--wa { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+.accion--wa:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+
+/* --------------------------------------------------------------------------
+   Banda de sección. Es el recurso de la carta impresa de Kalamarata: rótulo
+   blanco sobre campo verde. No es un adorno inventado, es su propio sistema.
+   -------------------------------------------------------------------------- */
+
+.banda {
+  background: var(--verde-hondo); color: #fff;
+  padding: var(--r4) 0;
+  margin-block: var(--r7) 0;
+  scroll-margin-top: var(--desplazamiento, 12rem);
+}
+.banda__caja { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--r2) var(--r4); }
+.banda h2 { color: #fff; font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.2rem); }
+.banda__horario { font-size: .94rem; color: #F2EFE9; font-weight: 600; }
+.banda__nota { flex-basis: 100%; font-size: .9rem; color: #D8E6D5; margin: 0; }
+
+.servicio { padding-bottom: var(--r6); }
+.servicio--rapidas { background: var(--fondo); }
+
+/* Los chips de servicio mandan sobre los de categoría: son la división real
+   de la carta, no un filtro más. */
+.cats a.cats__serv {
+  background: var(--verde-hondo); border-color: var(--verde-hondo);
+  color: var(--sobre-marca); font-family: var(--titular); letter-spacing: -.01em;
+}
+.cats a.cats__serv:hover { background: var(--verde-prensa); border-color: var(--verde-prensa); color: var(--sobre-marca); }
+
+/* Dentro de un servicio los títulos de categoría son h3, no h2: el h2 es la
+   banda del servicio. El tamaño sigue la rampa. */
+.grupo__tit h3 { font-size: clamp(1.4rem, 1.15rem + 1.1vw, 2rem); letter-spacing: -.02em; }
+
+.plato--hoy { border-color: var(--verde-hondo); border-width: 2px; }
+.plato--hoy .dato__hoy { align-self: flex-start; }

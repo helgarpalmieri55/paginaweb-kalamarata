@@ -283,6 +283,8 @@
               <h2>${esc(serv.nombre)}</h2>
               <span class="banda__horario">${esc(serv.horario)}</span>
               <p class="banda__nota">${esc(serv.nota)}</p>
+              <p class="banda__aviso">${esc(serv.aviso)}</p>
+              <p class="banda__cerrado" data-cerrado="${esc(serv.id)}" hidden></p>
             </div>
           </div>
           <div class="env">${dentro.join('')}</div>
@@ -323,7 +325,54 @@
     buscador?.addEventListener('input', () => filtrar(buscador.value));
 
     marcarHoy();
+    marcarDisponibilidad(d.servicios);
     pintarPedido();
+  }
+
+  /* Qué se está sirviendo AHORA, con el reloj del local. Un visitante a las
+     8 de la noche mirando la bandeja paisa tiene que saber que a esa hora no
+     se la pueden hacer, y al revés al mediodía con la pizza. */
+  function ahoraEnBogota() {
+    try {
+      const f = new Intl.DateTimeFormat('es-CO', {
+        timeZone: 'America/Bogota', weekday: 'short', hour: '2-digit',
+        minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const g = t => f.find(x => x.type === t)?.value || '';
+      const dias = { dom:0, lun:1, mar:2, mié:3, mie:3, jue:4, vie:5, sáb:6, sab:6 };
+      const dia = dias[g('weekday').toLowerCase().replace('.','').slice(0,3)];
+      return { dia, minutos: Number(g('hour')) * 60 + Number(g('minute')) };
+    } catch {
+      const d = new Date();
+      return { dia: d.getDay(), minutos: d.getHours() * 60 + d.getMinutes() };
+    }
+  }
+
+  const aMin = h => Number(h.slice(0,2)) * 60 + Number(h.slice(3,5));
+
+  function marcarDisponibilidad(servicios) {
+    const { dia, minutos } = ahoraEnBogota();
+    if (dia === undefined) return;
+
+    servicios.forEach(serv => {
+      const cartel = $(`[data-cerrado="${serv.id}"]`);
+      if (!cartel) return;
+
+      const cierra = serv.id === 'rapidas'
+        ? aMin(dia === 5 || dia === 6 ? serv.cierraFinDeSemana : serv.cierraEntreSemana)
+        : aMin(serv.cierra);
+      const abierto = serv.dias.includes(dia) && minutos >= aMin(serv.abre) && minutos < cierra;
+
+      if (abierto) {
+        cartel.hidden = true;
+      } else {
+        cartel.textContent = serv.id === 'almuerzo'
+          ? 'Ahora mismo no se está sirviendo almuerzo. Puedes pedirlo igual y te confirmamos por WhatsApp.'
+          : 'Ahora mismo no se están sirviendo comidas rápidas. Puedes pedirlas igual y te confirmamos por WhatsApp.';
+        cartel.hidden = false;
+      }
+      $(`.servicio--${serv.id}`)?.classList.toggle('servicio--cerrado', !abierto);
+    });
   }
 
   /* El visitante del mediodía llega buscando qué se come hoy. Se marca con el
@@ -476,6 +525,12 @@
           if (a.dataset.ir === e.target.id) a.setAttribute('aria-current', 'true');
           else a.removeAttribute('aria-current');
         });
+        const pill = $('#barra-serv');
+        if (pill) {
+          const serv = e.target.closest('.servicio');
+          const nombre = serv?.querySelector('.banda h2')?.textContent;
+          if (nombre) { pill.textContent = nombre; pill.hidden = false; }
+        }
       });
     }, { rootMargin: '-150px 0px -70% 0px' });
     $$('.grupo', zona).forEach(g => obs.observe(g));

@@ -560,3 +560,31 @@ categoría son `h3`: el `h2` es la banda.
 **Contacto desapareció.** Su contenido propio (lista de contacto y formas de
 pago) vive en «Dónde estamos». La navegación es Inicio · Pide aquí · Dónde
 estamos, y «Pide aquí» es la carta: mirar y pedir en la misma página.
+
+
+## Separación de servicios y aviso de disponibilidad
+
+El cliente no veía la separación entre las dos cartas y pidió que cada una
+avisara de que no se sirve a la hora de la otra. Tres piezas, no una:
+
+- **Separación visible al pasar.** `.servicio--rapidas` cambia de fondo
+  (`fondo-hondo`) y abre con un filete de 3 px en `verde-hondo`. El salto entre
+  las dos cartas se ve, no se adivina.
+- **Aviso dentro de la banda** (`.banda__aviso`): dice en prosa que esa carta
+  es de almuerzo o de noche y que a la otra hora no está disponible. Va dentro
+  de la banda para que viaje con ella.
+- **Estado real** (`.banda__cerrado`): calculado con el reloj de
+  `America/Bogota`, no el del navegador. Si el servicio no se está sirviendo
+  ahora mismo lo dice en naranja y atenúa sus platos al 72 %, sin impedir el
+  pedido: se puede pedir igual y se confirma por WhatsApp.
+
+**El indicador pegajoso** (`.barra__serv`) viaja en la barra de categorías, que
+ya está siempre a la vista, y dice en qué servicio estás según bajas. No es una
+tercera capa pegajosa a propósito: a 390 px la cabecera y la barra ya ocupan
+210 px, y una banda más se comería un tercio de la pantalla. Se estiliza como
+un «estás aquí» —sin relleno, con un punto verde— y no como los chips de salto:
+dos píldoras verdes idénticas no dejan claro cuál se pulsa.
+
+La lógica de horario está probada con el reloj falseado en seis momentos: lunes
+12:00, lunes 19:00, lunes 21:30, lunes 22:30, domingo 13:00 y sábado 22:30
+—este último cubre el cierre a las 23:00 del fin de semana—.

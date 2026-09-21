@@ -1301,13 +1301,37 @@
       "id": "almuerzo",
       "nombre": "Almuerzo",
       "horario": "Lunes a sábado, 11:00 a 3:00 de la tarde",
-      "nota": "El domingo no hay almuerzo."
+      "nota": "El domingo no hay almuerzo.",
+      "aviso": "Esto es carta de almuerzo: solo se sirve de 11:00 a 3:00 de la tarde, de lunes a sábado. De noche no está disponible.",
+      "dias": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "abre": "11:00",
+      "cierra": "15:00"
     },
     {
       "id": "rapidas",
       "nombre": "Comidas rápidas",
       "horario": "Todos los días desde las 4:00 de la tarde",
-      "nota": "Domingo a jueves hasta las 10:00; viernes y sábado hasta las 11:00."
+      "nota": "Domingo a jueves hasta las 10:00; viernes y sábado hasta las 11:00.",
+      "aviso": "Esto es carta de noche: se sirve desde las 4:00 de la tarde. Al mediodía no está disponible.",
+      "dias": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "abre": "16:00",
+      "cierraEntreSemana": "22:00",
+      "cierraFinDeSemana": "23:00"
     }
   ]
 }

@@ -223,6 +223,30 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .horario__fila dd { margin: 0; color: var(--tinta-suave); text-align: right; font-variant-numeric: tabular-nums; }
 .horario__aviso { background: var(--verde-claro); padding: var(--r3) var(--r4); font-size: .9rem; font-weight: 600; }
 
+/* --------------------------------------------------------------------------
+   Comentarios del pedido — «sin cebolla» es parte del pedido, no un extra
+   -------------------------------------------------------------------------- */
+
+.notas { margin-bottom: var(--r4); }
+.notas__et {
+  display: block; font-size: .82rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  color: var(--tinta-suave); margin-bottom: var(--r2);
+}
+.notas__et span { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--tinta-tenue); }
+.notas__campo {
+  width: 100%; box-sizing: border-box; resize: vertical; min-height: 3.4rem;
+  font: inherit; font-size: .94rem; color: var(--tinta);
+  background: var(--control); border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio); padding: .6rem .75rem;
+}
+.notas__campo::placeholder { color: var(--tinta-tenue); }
+.notas__campo:focus-visible { outline: 2px solid var(--verde-hondo); outline-offset: 1px; border-color: var(--verde-hondo); }
+.notas__cuenta {
+  margin: .3rem 0 0; text-align: right;
+  font-size: .78rem; color: var(--tinta-tenue); font-variant-numeric: tabular-nums;
+}
+
 .pend {
   display: inline-block; background: var(--alerta-fondo); color: var(--alerta);
   border: 1px dashed var(--alerta); border-radius: var(--radio-chico);
@@ -302,7 +326,16 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    solo dos chips no hay nada escondido y no debe verse ningun degradado. */
 .cats-caja--izq::before, .cats-caja--der::after { opacity: 1; }
 .cats-caja:not(.cats-caja--medida)::after { opacity: 1; }
-.cats { display: flex; gap: var(--r2); overflow-x: auto; padding-block: var(--r3); padding-right: 3rem; scrollbar-width: none; }
+/* El padding/margen de 3px a la izquierda es load-bearing: el chip activo
+   lleva un anillo de 2px POR FUERA de su caja, y con el riel en overflow-x
+   y el chip pegado al borde, ese anillo salia cortado en plano. El margen
+   negativo devuelve los chips a su sitio, alineados con el buscador. */
+.cats {
+  display: flex; gap: var(--r2); overflow-x: auto;
+  padding-block: var(--r3); padding-left: 3px; padding-right: 3rem;
+  margin-left: -3px;
+  scrollbar-width: none;
+}
 .cats::-webkit-scrollbar { display: none; }
 .cats a {
   /* Son enlaces de salto, no texto corrido: sin subrayado. */

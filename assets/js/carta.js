@@ -7,6 +7,10 @@
   'use strict';
 
   const LLAVE = 'kalamarata.pedido.v1';
+  /* Las notas van en su propia clave a proposito: si las metieramos dentro de
+     la del pedido, un carrito ya guardado con el formato viejo se perderia. */
+  const LLAVE_NOTAS = 'kalamarata.notas.v1';
+  const TOPE_NOTAS  = 300;
   /* Límite práctico para el enlace wa.me. Por encima de esto algunos
      navegadores cortan la URL y el mensaje llega mutilado, así que preferimos
      resumir a propósito antes que dejar que se rompa solo. */
@@ -38,6 +42,19 @@
     pintarPedido();
   }
 
+  let notas = leerNotas();
+
+  function leerNotas() {
+    try { return (localStorage.getItem(LLAVE_NOTAS) || '').slice(0, TOPE_NOTAS); }
+    catch { return ''; }
+  }
+
+  function guardarNotas(txt) {
+    notas = String(txt || '').slice(0, TOPE_NOTAS);
+    try { localStorage.setItem(LLAVE_NOTAS, notas); } catch { /* sin memoria */ }
+    pintarPedido();
+  }
+
   function sumar(linea) {
     const k = llave(linea.id, linea.talla);
     const ya = pedido.find(l => llave(l.id, l.talla) === k);
@@ -59,25 +76,35 @@
 
   /* -------------------------------------------------------------- whatsapp */
 
+  /* Las notas son lo que el cliente pidió cambiar: «sin cebolla» no es un
+     adorno del mensaje, es parte del pedido. Por eso viajan en los tres
+     niveles de resumen y nunca se recortan por longitud — para eso el campo
+     tiene un tope de 300 y el contador lo enseña. */
+  function lineasNotas() {
+    const t = notas.trim();
+    return t ? ['', 'Notas del pedido:', t] : [];
+  }
+
   function redactar() {
     const cab = ['Hola Kalamarata, quiero hacer este pedido:', ''];
     const cuerpo = pedido.map(l => {
       const t = l.talla ? ` (${l.talla})` : '';
       return `• ${l.cant} × ${l.nombre}${t} — ${pesos(l.precio * l.cant)}`;
     });
-    const pie = ['', `Total: ${pesos(totalPedido())}`, '', 'Quedo atento para darle la dirección y la forma de pago.'];
+    const pie = ['', `Total: ${pesos(totalPedido())}`, ...lineasNotas(),
+                 '', 'Quedo atento para darle la dirección y la forma de pago.'];
 
     let texto = [...cab, ...cuerpo, ...pie].join('\n');
 
     // Si el pedido es tan largo que rompería el enlace, resumimos y lo decimos.
     if (encodeURIComponent(texto).length > TOPE_URL) {
       const cortas = pedido.map(l => `• ${l.cant} × ${l.nombre}${l.talla ? ` (${l.talla})` : ''}`);
-      texto = [...cab, ...cortas, '', `Total: ${pesos(totalPedido())}`,
+      texto = [...cab, ...cortas, '', `Total: ${pesos(totalPedido())}`, ...lineasNotas(),
         '', `(${piezas()} productos en total. Si falta alguno se lo confirmo por aquí.)`].join('\n');
     }
     if (encodeURIComponent(texto).length > TOPE_URL) {
       texto = [...cab, `${piezas()} productos por un total de ${pesos(totalPedido())}.`,
-        'Le paso el detalle por aquí mismo.'].join('\n');
+        ...lineasNotas(), '', 'Le paso el detalle por aquí mismo.'].join('\n');
     }
     return texto;
   }
@@ -131,6 +158,11 @@
         </li>`;
       }).join('');
     }
+
+    const cuenta = $('#notas-cuenta');
+    if (cuenta) cuenta.textContent = notas.length;
+    const campo = $('#notas');
+    if (campo && campo.value !== notas && document.activeElement !== campo) campo.value = notas;
 
     const enviar = $('#enviar');
     if (enviar) {
@@ -322,6 +354,14 @@
 
     const buscador = $('#buscar');
     buscador?.addEventListener('input', () => filtrar(buscador.value));
+
+    /* El campo de comentarios: se guarda al escribir y el enlace de WhatsApp
+       se rehace, para que lo que se manda sea siempre lo que se ve. */
+    const campoNotas = $('#notas');
+    if (campoNotas) {
+      campoNotas.value = notas;
+      campoNotas.addEventListener('input', () => guardarNotas(campoNotas.value));
+    }
 
     marcarHoy();
     marcarDisponibilidad(d.servicios);

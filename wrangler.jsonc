@@ -20,6 +20,13 @@
     // El sitio ya tiene su propia 404.html; sin esto Workers devolvería un 404
     // pelado del sistema en vez de la página del restaurante.
     "not_found_handling": "404-page"
+
+    // NO poner `"html_handling": "none"` aquí. Tienta, porque por defecto
+    // Workers quita el «.html» y `/carta.html` devuelve un 307 hacia `/carta`
+    // (comprobado el 21/09/2026). Pero `none` apaga TAMBIÉN el mapeo de `/` a
+    // `index.html`, así que la portada empezaría a devolver la página de 404.
+    // El 307 cuesta un salto; `none` tumba la página principal.
+    // https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/
   }
 
   // No hay `main`: no hay código de servidor. Un sitio de solo assets no

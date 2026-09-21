@@ -359,25 +359,6 @@
           </section>`);
       }
 
-      const bar = d.bar.categorias.filter(c => c.servicios.includes(serv.id));
-      if (bar.length) {
-        const id = `${serv.id}--bar`;
-        dentro.push(`
-          <section class="grupo" id="${id}" aria-labelledby="t-${id}">
-            <div class="grupo__tit"><h3 id="t-${id}">Bar</h3></div>
-            <p class="bar-aviso">${esc(d.bar.nota)}</p>
-            ${bar.map(c => `
-              <h4 style="margin-top:var(--r5)">${esc(c.nombre)}</h4>
-              <ul class="lista-bar">
-                ${c.items.map(i => `<li>
-                  <span class="n">${esc(i.nombre)}${i.desc ? ` <span class="linea__d">${esc(i.desc)}</span>` : ''}</span>
-                  <span class="g"></span>
-                  <span class="p">${pesos(i.precio)}</span>
-                </li>`).join('')}
-              </ul>`).join('')}
-          </section>`);
-      }
-
       partes.push(`
         <div class="servicio servicio--${serv.id}">
           <div class="banda" id="s-${serv.id}">
@@ -685,14 +666,6 @@
         p.hidden = !ok;
         if (ok) enGrupo++;
       });
-      const lb = $('.lista-bar', g);
-      if (lb) {
-        $$('li', lb).forEach(li => {
-          const ok = !t || li.textContent.toLowerCase().includes(t);
-          li.hidden = !ok;
-          if (ok) enGrupo++;
-        });
-      }
       g.hidden = enGrupo === 0;
       vistos += enGrupo;
     });

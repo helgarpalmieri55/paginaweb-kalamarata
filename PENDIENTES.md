@@ -202,6 +202,31 @@ Dos cosas que hay que respetar y son fáciles de romper:
 
 El paso a paso completo está en `DEPLOY.md`.
 
+## 1-septies. El bar salió de la carta (21/09/2026)
+
+**Decisión del dueño:** quitar las bebidas alcohólicas de la web y dejar solo
+«Bebidas». Se fueron los 16 productos del bloque `bar` de `carta.json` —10 de
+«Cervezas y licores» y 6 de «Cocteles»— y con ellos el aviso rojo que decía que
+no se podían pedir.
+
+Ninguno tenía imagen, así que no quedaron archivos huérfanos: siguen siendo 156
+imágenes referidas, 156 en disco.
+
+**Lo que NO se quitó, y por qué:**
+
+- El §5 de `terminos.html`, «Bebidas alcohólicas».
+- La línea del pie de las 6 páginas: «El bar se atiende únicamente en el
+  restaurante: no vendemos bebidas alcohólicas por WhatsApp ni a domicilio».
+
+Las dos siguen siendo ciertas —el negocio se llama «Restaurante Bar ·
+Pizzería» y el bar existe— y son **protectoras**: la política de comercio de
+Meta prohíbe vender alcohol por el canal, así que decirlo por escrito ayuda en
+la verificación en vez de estorbar. Quitar toda mención dejaría el asunto sin
+tratar.
+
+Si el dueño prefiere que desaparezca también de ahí, es un cambio de una línea
+por página, pero conviene que sea una decisión consciente y no un descuido.
+
 ## 2. Archivos que faltan
 
 - ~~**El logo**~~ — **entregado el 21/09/2026** en PNG con canal alfa real.

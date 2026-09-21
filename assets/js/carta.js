@@ -282,7 +282,9 @@
             <div class="grupo__tit"><h3 id="t-${id}">Arma tu pizza</h3></div>
             <p class="grupo__nota">${esc(a.nota)} El precio depende del tamaño de la pizza.</p>
             <div class="platos">${a.items.map(i =>
-              tarjetaPizza('arma-tu-pizza', { nombre: i.nombre, desc: '', precios: i.precios },
+              /* `img` va explícito: al reconstruir el objeto se perdía, y las
+                 cuatro tarjetas de adicionales salían sin foto. */
+              tarjetaPizza('arma-tu-pizza', { nombre: i.nombre, desc: '', precios: i.precios, img: i.img },
                            tallas, 'Arma tu pizza adicional')).join('')}</div>
           </section>`);
       }

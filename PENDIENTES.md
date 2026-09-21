@@ -41,9 +41,10 @@ Además, sin marcador en el código pero igual de bloqueantes:
   Está en la cabecera de las 5 páginas (`assets/img/kalamarata-logo.webp`,
   13 KB) y el camarón de la marca es ahora el favicon, sobre el verde de marca
   porque naranja sobre naranja no contrasta. La K provisional se eliminó.
-- **Fotografías propias** de los platos y del local. Las 8 imágenes de
-  `assets/img/` son generadas por IA y salen marcadas «Imagen de referencia»;
-  ver `assets/img/PROCEDENCIA.md`.
+- **Fotografías propias** de los platos y del local. Las **156** imágenes de
+  platos de `assets/img/` son generadas por IA y salen marcadas «Imagen de
+  referencia»; ver `assets/img/PROCEDENCIA.md`. Reemplazarlas por fotografía
+  real en cuanto el restaurante la tenga, y quitar entonces esa marca.
 
 ## 3. Un paso manual en GitHub, una sola vez
 

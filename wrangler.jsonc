@@ -1,0 +1,27 @@
+{
+  // Configuración para desplegar en Cloudflare Workers con assets estáticos.
+  //
+  // El panel de Cloudflare ya no ofrece Pages por defecto para un proyecto
+  // nuevo: mete el repositorio en el flujo de Workers, que ejecuta
+  // `npx wrangler deploy` y necesita ESTE archivo para saber qué publicar.
+  //
+  // OJO: `name` tiene que coincidir EXACTAMENTE con el nombre del Worker en el
+  // panel. Si no coinciden, la construcción falla. Documentado en
+  // https://developers.cloudflare.com/workers/ci-cd/builds/
+  "name": "kalamarata",
+  "compatibility_date": "2026-09-21",
+
+  "assets": {
+    // Lo que arma construir.sh. NO es la raíz del repositorio: publicar la raíz
+    // sacaría a la calle PENDIENTES.md, PRODUCT.md, DEPLOY.md y .claude/, que
+    // llevan el NIT, la cédula del dueño y el código del certificado.
+    "directory": "./_site",
+
+    // El sitio ya tiene su propia 404.html; sin esto Workers devolvería un 404
+    // pelado del sistema en vez de la página del restaurante.
+    "not_found_handling": "404-page"
+  }
+
+  // No hay `main`: no hay código de servidor. Un sitio de solo assets no
+  // necesita script de entrada.
+}

@@ -183,6 +183,25 @@ es trabajo aparte que hoy no bloquea publicar.
 | Pin del mapa y dirección | **Está bien así** |
 | Especial guardado de otro día | **Se queda marcándose**, no se borra solo. Borrar el pedido de alguien sin avisar es peor que avisarle |
 
+## 1-sexies. Cloudflare mete el proyecto en Workers, no en Pages
+
+Al conectar el repositorio el 21/09/2026, el panel llevó el proyecto al flujo de
+**Workers** —«Configure your Worker project», con `npx wrangler deploy` y sin
+casilla «Build output directory»—, no al de Pages.
+
+Por eso el repositorio lleva ahora **`wrangler.jsonc`** en la raíz: sin él,
+`wrangler deploy` no sabe qué carpeta publicar y la construcción falla.
+
+Dos cosas que hay que respetar y son fáciles de romper:
+
+1. El **Project name del panel** tiene que ser exactamente `kalamarata`, igual
+   que el `name` del archivo. Si no coinciden, falla la construcción.
+2. `assets.directory` es **`./_site`**, nunca la raíz. Publicar la raíz sacaría
+   a la calle `PENDIENTES.md`, `PRODUCT.md` y `DEPLOY.md`, que llevan el NIT, la
+   cédula del dueño y el código del certificado.
+
+El paso a paso completo está en `DEPLOY.md`.
+
 ## 2. Archivos que faltan
 
 - ~~**El logo**~~ — **entregado el 21/09/2026** en PNG con canal alfa real.

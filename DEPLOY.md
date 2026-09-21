@@ -10,94 +10,80 @@ Hay dos destinos y **los dos usan el mismo guion**, `construir.sh`, que arma en
 
 ---
 
-## Cloudflare Pages, paso a paso
+## Cloudflare, paso a paso
 
-Verificado contra la documentación de Cloudflare el 21/09/2026:
-<https://developers.cloudflare.com/pages/get-started/git-integration/> y
-<https://developers.cloudflare.com/pages/configuration/custom-domains/>.
+Verificado contra la documentación de Cloudflare el 21/09/2026.
 
-### 1. Crear el proyecto
+### Aviso: el panel ya no lleva a Pages
 
-1. Entra al panel de Cloudflare y abre **Workers & Pages**.
-2. **Create application → Pages → Connect to Git**.
-3. Inicia sesión en GitHub y autoriza. En **Install & Authorize** puedes darle
-   acceso solo a `paginaweb-kalamarata`; no hace falta darle todos los
-   repositorios.
-4. Elige `helgarpalmieri55/paginaweb-kalamarata` y pulsa **Begin setup**.
+Al conectar un repositorio nuevo, Cloudflare mete el proyecto en **Workers**, no
+en Pages. Se reconoce porque la pantalla dice «Configure your **Worker**
+project», pide un **Deploy command** (`npx wrangler deploy`) y **no tiene la
+casilla «Build output directory»**.
 
-### 2. Las casillas de construcción
+Eso cambia una cosa importante: **Workers necesita `wrangler.jsonc` en el
+repositorio** para saber qué carpeta publicar. Ya está puesto en la raíz. Pages
+no lo necesitaba, pero Pages ya no es lo que ofrece el panel por defecto.
 
-Esta es la pantalla que importa. **Si estas dos se quedan en blanco, Cloudflare
-sirve el repositorio ENTERO** y publica `PENDIENTES.md`, `PRODUCT.md`,
-`DESIGN.md`, `DEPLOY.md` y `.claude/` — con el NIT, la cédula del dueño y el
-código del certificado dentro. Es el mismo fallo que ya ocurrió aquí con GitHub
-Pages en modo «Deploy from a branch» el 21/09/2026.
+Las dos rutas funcionan para este sitio. Abajo va la de Workers, que es la que
+da el panel; al final, cómo volver a Pages si se prefiere.
 
-| Casilla | Valor |
-|---|---|
-| **Project name** | `kalamarata` (genera `kalamarata.pages.dev`) |
-| **Production branch** | `main` |
-| **Build command** | `bash construir.sh` |
-| **Build output directory** | `_site` |
-| **Root directory (advanced)** | *dejar vacío* |
-| **Environment variables** | ninguna |
+### 1. Crear la aplicación
 
-Pulsa **Save and Deploy**. El primer despliegue tarda un par de minutos.
+1. Panel de Cloudflare → **Workers & Pages** → **Create** → **Connect to Git**.
+2. Autoriza GitHub. Puedes darle acceso solo a `paginaweb-kalamarata`.
+3. Elige el repositorio.
 
-`construir.sh` solo necesita `bash` y `python3`, y la imagen de construcción de
-Cloudflare (v3, Ubuntu 22.04) trae Python 3.13 por defecto, así que no hay que
-fijar versión ni añadir `.python-version`.
+### 2. La pantalla «Set up your application»
 
-### 3. Comprobar ANTES de apuntar el dominio
+| Casilla | Valor | Por qué |
+|---|---|---|
+| **Project name** | `kalamarata` | **Tiene que coincidir con el `name` de `wrangler.jsonc`.** Si no, la construcción falla |
+| **Build command** | `bash construir.sh` | Arma `_site/` con solo lo publicable |
+| **Deploy command** | `npx wrangler deploy` | Lo que trae por defecto; se deja |
+| **Builds for non-production branches** | a gusto | Si se desmarca, solo construye `main` |
+| **Protect with Cloudflare Access** | apagado | El sitio es público |
+| **Path** (Advanced) | `/` | La raíz del repositorio |
+| **API token** | *Create new token* | Lo crea solo |
+| **Variable name / value** | vacías | El sitio no usa variables |
 
-Cuando termine, Cloudflare te da una URL `…pages.dev`. Compruébala:
+### 3. `wrangler.jsonc` tiene que estar en `main` ANTES de desplegar
+
+La construcción lee la rama de producción. Si se pulsa **Deploy** antes de que
+el archivo esté en `main`, el despliegue falla con un error de configuración
+—no es un fallo del panel—. Basta con volver a lanzar la construcción cuando ya
+esté.
+
+### 4. Comprobar ANTES de apuntar el dominio
+
+Cloudflare da una URL `…workers.dev`. Compruébala:
 
 ```bash
-# Debe dar 404. Si da 200, las casillas del paso 2 están mal.
-curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.pages.dev/PENDIENTES.md
+# Debe dar 404. Si da 200, se está publicando la raíz del repositorio.
+curl -s -o /dev/null -w '%{http_code}\n' https://<tu-url>.workers.dev/PENDIENTES.md
 
 # Debe dar 200.
-curl -s -o /dev/null -w '%{http_code}\n' https://kalamarata.pages.dev/carta.html
+curl -s -o /dev/null -w '%{http_code}\n' https://<tu-url>.workers.dev/carta.html
 ```
 
-**No pases al paso 4 hasta que el primero dé 404.**
+**No pases al paso 5 hasta que el primero dé 404.**
 
-### 4. El dominio propio
+### 5. El dominio propio
 
-El dominio ya está en Cloudflare (nameservers apuntados desde GoDaddy), así que
-esto es lo corto:
+Con el proyecto abierto: **Settings → Domains & Routes → Add → Custom domain**,
+y escribe `kalamarata.com`. Como el dominio ya es zona de Cloudflare, el
+registro DNS se crea solo. Repite con `www.kalamarata.com`.
 
-1. **Workers & Pages → kalamarata → Custom domains → Set up a domain**.
-2. Escribe `kalamarata.com` y confirma. Al ser ya una zona de Cloudflare, **el
-   registro DNS se crea solo**; no hay que tocar nada a mano.
-3. Repite con `www.kalamarata.com`. Ahí Cloudflare crea un `CNAME` hacia
-   `kalamarata.pages.dev`.
+### 6. A partir de ahí
 
-**No crees el CNAME a mano en el DNS sin hacer antes el paso 1.** La
-documentación de Cloudflare avisa de que añadir el registro por tu cuenta sin
-asociar primero el dominio al proyecto hace que el dominio no resuelva.
+Cada `git push` a `main` construye y despliega. Nada más que hacer.
 
-Para que `www` lleve al dominio sin `www` (o al revés, como prefieras), se hace
-con una **Redirect Rule** en la sección **Rules** de la zona.
+### Si se prefiere Pages
 
-### 5. A partir de ahí
-
-Cada `git push` a `main` dispara una construcción y un despliegue nuevos. No hay
-que hacer nada más.
-
-Las ramas distintas de `main` generan **vistas previas** en URLs propias. Son
-públicas si alguien acierta la URL; si eso molesta, se apagan en
-**Settings → Builds & deployments → Preview deployments**.
-
-### 6. Dos cosas que conviene mirar después
-
-**El caché.** Los recursos se sirven sin marca de versión, así que un visitante
-que vuelve puede recibir el CSS y el JS viejos. En Cloudflare se arregla con un
-archivo `_headers`; no está puesto todavía.
-
-**GitHub Pages sigue vivo.** La copia de `github.io` no estorba —lleva `noindex`
-y `Disallow: /`, así que no compite con kalamarata.com— pero si quieres apagarla
-del todo es **Settings → Pages → Source = None** en GitHub.
+Sigue existiendo: **Workers & Pages → Create → Pages → Connect to Git**. Ahí las
+casillas son **Build command** `bash construir.sh` y **Build output directory**
+`_site`, y `wrangler.jsonc` se ignora. Es más simple de explicar; Workers es
+donde Cloudflare está invirtiendo. Para un sitio estático como este, da igual.
 
 ### Lo que Cloudflare NO lleva
 
@@ -106,6 +92,19 @@ workflow, no en `construir.sh`. Cloudflare publica el `robots.txt` del
 repositorio, que permite la indexación: kalamarata.com **tiene** que ser
 indexable, porque es la prueba de que el negocio existe para la verificación de
 Meta.
+
+### Pendiente: el caché
+
+Los recursos se sirven sin marca de versión, así que un visitante que vuelve
+puede recibir el CSS y el JS viejos. Se arregla con un archivo `_headers` dentro
+de `_site/`; no está puesto todavía.
+
+**Fuentes** (consultadas el 21/09/2026):
+<https://developers.cloudflare.com/workers/static-assets/>,
+<https://developers.cloudflare.com/workers/ci-cd/builds/>,
+<https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/>,
+<https://developers.cloudflare.com/pages/get-started/git-integration/>,
+<https://developers.cloudflare.com/pages/configuration/custom-domains/>
 
 ---
 

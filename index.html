@@ -14,7 +14,9 @@
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fuentes.css">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/favicon-256.png" type="image/png" sizes="256x256">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/kalamarata.css">
 </head>
 <body>
@@ -23,10 +25,9 @@
 <header class="cab">
   <div class="env cab__fila">
     <a class="marca" href="index.html" aria-label="Kalamarata, inicio">
-      <span class="marca__texto">
-        <span class="marca__nombre"><b>K</b>alamarata</span>
-        <span class="marca__bajada">Restaurante Bar · Pizzería</span>
-      </span>
+      <img class="marca__logo" src="assets/img/kalamarata-logo.webp"
+           alt="Kalamarata — Restaurante Bar y Pizzería"
+           width="286" height="160" fetchpriority="high" decoding="async">
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="index.html" aria-current="page">Inicio</a>

@@ -37,9 +37,10 @@ Además, sin marcador en el código pero igual de bloqueantes:
 
 ## 2. Archivos que faltan
 
-- **El logo**, en PNG con fondo transparente o SVG. La cabecera usa hoy el
-  nombre compuesto con tipografía. Al llegar, reemplazar en `.marca` de las 6
-  páginas y rehacer `favicon.svg`, que hoy es una K provisional.
+- ~~**El logo**~~ — **entregado el 21/09/2026** en PNG con canal alfa real.
+  Está en la cabecera de las 6 páginas (`assets/img/kalamarata-logo.webp`,
+  13 KB) y el camarón de la marca es ahora el favicon, sobre el verde de marca
+  porque naranja sobre naranja no contrasta. La K provisional se eliminó.
 - **Fotografías propias** de los platos y del local. Las 8 imágenes de
   `assets/img/` son generadas por IA y salen marcadas «Imagen de referencia»;
   ver `assets/img/PROCEDENCIA.md`.
@@ -87,3 +88,4 @@ Esto se revisa al final, cuando ya estén los datos de arriba:
 - [x] El sitio se ve bien a 390 px, sin desborde horizontal
 - [x] Contraste WCAG AA (4.5:1) en tema claro y oscuro
 - [x] El sitio es indexable: `robots.txt` lo permite explícitamente
+- [x] El logo real del cliente está en la cabecera y en los iconos

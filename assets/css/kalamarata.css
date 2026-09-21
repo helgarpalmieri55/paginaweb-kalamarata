@@ -53,12 +53,15 @@
   --radio:      10px;
   --radio-chico: 6px;
   --ancho:      1180px;
+  --cab-alto:   84px;
 
   --sombra-alta: 0 2px 4px rgba(26, 21, 18, .08), 0 12px 28px rgba(26, 21, 18, .12);
 
   color-scheme: light;
   accent-color: var(--naranja);
 }
+
+@media (max-width: 52rem) { :root { --cab-alto: 72px; } }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-tema="claro"]) {
@@ -167,7 +170,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 }
 .cab__fila {
   display: flex; align-items: center; gap: var(--r4);
-  min-height: 68px; padding-block: var(--r2);
+  min-height: var(--cab-alto); padding-block: var(--r2);
 }
 .marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; flex: 0 0 auto; }
 .marca__texto { display: block; }
@@ -180,7 +183,10 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--tinta-suave); margin-top: .18rem; font-weight: 600;
 }
-.marca__logo { height: 42px; width: auto; }
+/* El lockup del cliente es horizontal y lleva la bajada incrustada: se usa
+   entero y la bajada viaja en el alt, que sí leen buscadores y lectores. */
+.marca__logo { height: 68px; width: auto; }
+@media (max-width: 52rem) { .marca__logo { height: 56px; } }
 
 .nav { display: flex; gap: var(--r5); margin-left: auto; }
 .nav a {
@@ -290,7 +296,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    -------------------------------------------------------------------------- */
 
 .barra {
-  position: sticky; top: 68px; z-index: 30;
+  position: sticky; top: var(--cab-alto); z-index: 30;
   background: var(--papel); border-bottom: 1px solid var(--linea);
 }
 .barra__caja { display: flex; align-items: center; gap: var(--r3); padding-block: var(--r3); }
@@ -317,6 +323,8 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .cats { display: flex; gap: var(--r2); overflow-x: auto; padding-block: var(--r3); padding-right: 3rem; scrollbar-width: none; }
 .cats::-webkit-scrollbar { display: none; }
 .cats a {
+  /* Son enlaces de salto, no texto corrido: sin subrayado. */
+  text-decoration: none;
   flex: 0 0 auto; font: inherit; font-weight: 700; font-size: .9rem;
   padding: .5rem .9rem; border-radius: 99px; cursor: pointer;
   background: var(--fondo); color: var(--tinta-suave);
@@ -327,7 +335,9 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .cats a:hover { border-color: var(--tinta-tenue); color: var(--tinta); }
 .cats a[aria-current="true"] { background: var(--verde-hondo); border-color: var(--verde-hondo); color: var(--sobre-marca); }
 
-.grupo { padding-block: var(--r6) var(--r2); scroll-margin-top: 140px; }
+/* --desplazamiento lo mide el JS: ver ajustarDesplazamiento() en carta.js.
+   El calc es el respaldo si el script no corre. */
+.grupo { padding-block: var(--r6) var(--r2); scroll-margin-top: var(--desplazamiento, calc(var(--cab-alto) + 9rem)); }
 .grupo__tit { display: flex; align-items: baseline; gap: var(--r3); flex-wrap: wrap; }
 .grupo__nota { color: var(--tinta-suave); font-size: .9rem; margin: var(--r2) 0 0; }
 
@@ -466,8 +476,6 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 @media (max-width: 52rem) {
   .barra-movil { display: block; }
   body.con-barra { padding-bottom: 5.5rem; }
-  .barra { top: 60px; }
-  .cab__fila { min-height: 60px; }
 }
 .barra-movil .btn { width: 100%; }
 

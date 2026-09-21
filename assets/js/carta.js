@@ -400,7 +400,22 @@
     }
   }
 
+  /* La pila pegajosa son dos piezas (cabecera + barra de carta) y la barra
+     cambia de alto segun envuelva los chips y segun cargue la tipografia.
+     Medirla es la unica forma de que el titulo de categoria no quede debajo
+     al saltar: un numero fijo se desincroniza en cuanto algo envuelve. */
+  function ajustarDesplazamiento() {
+    const cab   = $('.cab');
+    const barra = $('.barra');
+    if (!cab || !barra) return;
+    const alto = Math.round(cab.getBoundingClientRect().height + barra.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--desplazamiento', `${alto + 16}px`);
+  }
+
   function observarGrupos(cats) {
+    ajustarDesplazamiento();
+    window.addEventListener('resize', ajustarDesplazamiento, { passive: true });
+    document.fonts?.ready.then(ajustarDesplazamiento);
     if (!('IntersectionObserver' in window)) return;
     const obs = new IntersectionObserver(entradas => {
       entradas.forEach(e => {

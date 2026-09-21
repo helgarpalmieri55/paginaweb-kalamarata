@@ -905,14 +905,12 @@
         {
           "nombre": "Té o jugos Hit",
           "desc": "",
-          "precio": 6500,
-          "img": "te-o-jugos-hit.webp"
+          "precio": 6500
         },
         {
           "nombre": "Coca-Cola mega",
           "desc": "",
-          "precio": 16000,
-          "img": "coca-cola-mega.webp"
+          "precio": 16000
         },
         {
           "nombre": "Jugo natural",
@@ -947,8 +945,7 @@
         {
           "nombre": "Té Hatsu",
           "desc": "",
-          "precio": 10000,
-          "img": "te-hatsu.webp"
+          "precio": 10000
         },
         {
           "nombre": "Ginger ale",

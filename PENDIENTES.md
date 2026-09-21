@@ -41,10 +41,14 @@ Además, sin marcador en el código pero igual de bloqueantes:
   Está en la cabecera de las 5 páginas (`assets/img/kalamarata-logo.webp`,
   13 KB) y el camarón de la marca es ahora el favicon, sobre el verde de marca
   porque naranja sobre naranja no contrasta. La K provisional se eliminó.
-- **Fotografías propias** de los platos y del local. Las **156** imágenes de
+- **Fotografías propias** de los platos y del local. Las **153** imágenes de
   platos de `assets/img/` son generadas por IA y salen marcadas «Imagen de
   referencia»; ver `assets/img/PROCEDENCIA.md`. Reemplazarlas por fotografía
   real en cuanto el restaurante la tenga, y quitar entonces esa marca.
+- **Foto de las tres bebidas de marca** (Coca-Cola mega, Té o jugos Hit, Té
+  Hatsu). Hoy salen sin imagen: las generadas no concordaban con el producto
+  real. Con una foto de las botellas de la nevera se resuelve en un minuto, y
+  además es la que enseña el envase y el tamaño de verdad.
 
 ## 3. Un paso manual en GitHub, una sola vez
 

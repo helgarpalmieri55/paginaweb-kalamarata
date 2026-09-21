@@ -1,0 +1,1219 @@
+{
+  "_fuente": "Transcrito de las 4 laminas de la carta impresa entregadas por el cliente (fotos 1-4). Cada precio fue verificado contra la imagen. No hay ningun precio inferido.",
+  "_actualizado": "2026-09-21",
+  "negocio": {
+    "nombre": "Kalamarata",
+    "bajada": "Restaurante Bar · Pizzería",
+    "direccion": "Calle 72 #61 esquina",
+    "ciudad": "Barranquilla",
+    "telefono": "+57 311 428 0292",
+    "whatsapp": "573114280292",
+    "instagram": "kalamaratapizzeria",
+    "coordenadas": {
+      "lat": 11.0029612,
+      "lng": -74.79649
+    }
+  },
+  "tamanosPizza": [
+    {
+      "id": "personal",
+      "nombre": "Personal",
+      "porciones": 6
+    },
+    {
+      "id": "small",
+      "nombre": "Small",
+      "porciones": 8
+    },
+    {
+      "id": "medium",
+      "nombre": "Medium",
+      "porciones": 12
+    },
+    {
+      "id": "large",
+      "nombre": "Large",
+      "porciones": 16
+    }
+  ],
+  "categorias": [
+    {
+      "id": "especiales-del-dia",
+      "nombre": "Especiales del día",
+      "nota": "Un plato distinto cada día. El domingo no hay almuerzo.",
+      "items": [
+        {
+          "nombre": "Lunes · Arroz mixto",
+          "desc": "Carne, pollo, cerdo y chorizo. Acompañado de papas a la francesa y ensalada.",
+          "precio": 21000
+        },
+        {
+          "nombre": "Martes · Chuleta valluna",
+          "desc": "",
+          "precio": 21000
+        },
+        {
+          "nombre": "Miércoles · Pollo cordon bleu",
+          "desc": "",
+          "precio": 21000
+        },
+        {
+          "nombre": "Jueves · Bandeja paisa",
+          "desc": "",
+          "precio": 24000,
+          "img": "bandeja-paisa.webp"
+        },
+        {
+          "nombre": "Viernes · Carne en posta",
+          "desc": "",
+          "precio": 21000
+        },
+        {
+          "nombre": "Sábado · Chicken tenders",
+          "desc": "",
+          "precio": 21000
+        }
+      ]
+    },
+    {
+      "id": "ejecutivo-pollo",
+      "nombre": "Ejecutivo de pollo",
+      "nota": "Servido con los acompañamientos del día, sopa y bebida.",
+      "items": [
+        {
+          "nombre": "Milanesa de pollo",
+          "desc": "",
+          "precio": 17500
+        },
+        {
+          "nombre": "Pechuga a la plancha",
+          "desc": "",
+          "precio": 18500
+        },
+        {
+          "nombre": "Pechuga en salsa de champiñones",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Pechuga en salsa de miel mostaza",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Pechuga en salsa BBQ",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Pechuga gratinada",
+          "desc": "",
+          "precio": 20500
+        },
+        {
+          "nombre": "Pechuga a la criolla",
+          "desc": "",
+          "precio": 19500
+        }
+      ]
+    },
+    {
+      "id": "ejecutivo-cerdo",
+      "nombre": "Ejecutivo de cerdo",
+      "nota": "Servido con los acompañamientos del día, sopa y bebida.",
+      "items": [
+        {
+          "nombre": "Lomo de cerdo asado",
+          "desc": "",
+          "precio": 18500
+        },
+        {
+          "nombre": "Lomo de cerdo BBQ",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Lomo de cerdo teriyaki",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Lomo en salsa de champiñones",
+          "desc": "",
+          "precio": 20500
+        },
+        {
+          "nombre": "Lomo de cerdo a la criolla",
+          "desc": "",
+          "precio": 20500
+        }
+      ]
+    },
+    {
+      "id": "ejecutivo-res",
+      "nombre": "Ejecutivo de res",
+      "nota": "Servido con los acompañamientos del día, sopa y bebida.",
+      "items": [
+        {
+          "nombre": "Carne asada",
+          "desc": "",
+          "precio": 18500
+        },
+        {
+          "nombre": "Carne encebollada",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Carne en bisteck",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Carne desmechada",
+          "desc": "",
+          "precio": 18000
+        },
+        {
+          "nombre": "Sobrebarriga asada",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Sobrebarriga criolla",
+          "desc": "",
+          "precio": 20500
+        }
+      ]
+    },
+    {
+      "id": "pescados",
+      "nombre": "Pescados",
+      "nota": "Acompañado de arroz, patacones y ensalada.",
+      "items": [
+        {
+          "nombre": "Mojarra roja frita",
+          "desc": "",
+          "precio": 30000,
+          "img": "mojarra-roja-frita.webp"
+        },
+        {
+          "nombre": "Mojarra roja guisada",
+          "desc": "",
+          "precio": 33000
+        },
+        {
+          "nombre": "Mojarra roja frito-guisada",
+          "desc": "",
+          "precio": 33000
+        },
+        {
+          "nombre": "Mojarra roja en salsa de camarones",
+          "desc": "",
+          "precio": 33000
+        },
+        {
+          "nombre": "Mojarra roja al ajillo",
+          "desc": "",
+          "precio": 33000
+        },
+        {
+          "nombre": "Salmón a la plancha",
+          "desc": "",
+          "precio": 38000
+        },
+        {
+          "nombre": "Salmón en salsa de camarones",
+          "desc": "",
+          "precio": 41000
+        },
+        {
+          "nombre": "Salmón en finas hierbas",
+          "desc": "",
+          "precio": 38000
+        },
+        {
+          "nombre": "Filete de pescado apanado",
+          "desc": "",
+          "precio": 25000
+        },
+        {
+          "nombre": "Filete de pescado al ajillo",
+          "desc": "",
+          "precio": 27000
+        },
+        {
+          "nombre": "Filete en salsa de camarones",
+          "desc": "",
+          "precio": 29000
+        },
+        {
+          "nombre": "Filete de pescado gratinado",
+          "desc": "",
+          "precio": 27000
+        },
+        {
+          "nombre": "Filete de pescado a la criolla",
+          "desc": "",
+          "precio": 27000
+        }
+      ]
+    },
+    {
+      "id": "asados",
+      "nombre": "Asados y parrilladas",
+      "nota": "Acompañados de papitas y ensalada.",
+      "items": [
+        {
+          "nombre": "Sobrebarriga a la parrilla",
+          "desc": "",
+          "precio": 37000
+        },
+        {
+          "nombre": "Costillas de cerdo BBQ",
+          "desc": "",
+          "precio": 40000
+        },
+        {
+          "nombre": "Lomo ancho",
+          "desc": "",
+          "precio": 32000
+        },
+        {
+          "nombre": "Lomo de cerdo",
+          "desc": "",
+          "precio": 32000
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "desc": "",
+          "precio": 32000
+        },
+        {
+          "nombre": "Alitas de pollo BBQ",
+          "desc": "",
+          "precio": 25000
+        },
+        {
+          "nombre": "Parrillada mixta",
+          "desc": "Pollo, carne y cerdo.",
+          "precio": 37000,
+          "img": "parrillada-mixta.webp"
+        },
+        {
+          "nombre": "Pechuga hawaiana",
+          "desc": "Gratinada con jamón y piña.",
+          "precio": 37000
+        },
+        {
+          "nombre": "Pechuga gratinada",
+          "desc": "",
+          "precio": 35000
+        }
+      ]
+    },
+    {
+      "id": "hamburguesas",
+      "nombre": "Hamburguesas",
+      "nota": "Todas vienen acompañadas de papitas a la francesa.",
+      "items": [
+        {
+          "nombre": "Kalamarata Burger",
+          "desc": "Camarones y calamares salteados en salsa de queso, 150 g de carne angus, queso cheddar, vegetales y salsa de la casa.",
+          "precio": 35000,
+          "img": "kalamarata-burger.webp"
+        },
+        {
+          "nombre": "Classic Cheese Burger",
+          "desc": "150 g de carne angus, queso cheddar, vegetales y salsa de la casa.",
+          "precio": 29000
+        },
+        {
+          "nombre": "Chicken Burger",
+          "desc": "Pechuga de pollo a la plancha, queso cheddar, vegetales y salsa de la casa.",
+          "precio": 29000
+        },
+        {
+          "nombre": "Quillera Burger",
+          "desc": "150 g de carne angus, queso costeño asado, cebolla caramelizada en vino tinto, vegetales y salsa de la casa.",
+          "precio": 32000
+        },
+        {
+          "nombre": "Bacon Cheese Burger",
+          "desc": "150 g de carne angus, tocineta, queso cheddar, vegetales y salsa de la casa.",
+          "precio": 31000
+        },
+        {
+          "nombre": "La Suprema Burger",
+          "desc": "150 g de carne angus, queso cheddar, queso mozzarella, jamón, tocineta, cebolla, vegetales y salsa de la casa.",
+          "precio": 34000
+        },
+        {
+          "nombre": "Doble carne",
+          "desc": "300 g de carne angus, doble queso cheddar, vegetales y salsa de la casa.",
+          "precio": 36000
+        },
+        {
+          "nombre": "Doble pollo",
+          "desc": "Doble pechuga de pollo a la plancha, queso cheddar, vegetales y salsa de la casa.",
+          "precio": 36000
+        },
+        {
+          "nombre": "Hamburguesa mixta",
+          "desc": "150 g de carne angus, pechuga de pollo a la plancha, vegetales y salsa de la casa.",
+          "precio": 36000
+        }
+      ]
+    },
+    {
+      "id": "salchipapas",
+      "nombre": "Salchipapas",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Kalamarata",
+          "desc": "Camarón y calamar en salsa de queso, chorizo, butifarra, carne y pollo.",
+          "precio": 41000,
+          "img": "salchipapa-kalamarata.webp"
+        },
+        {
+          "nombre": "Especial de la casa",
+          "desc": "Carne, pollo, salchicha, suiza, chorizo y butifarra. Ideal para 4 personas.",
+          "precio": 61000
+        },
+        {
+          "nombre": "Sencilla",
+          "desc": "",
+          "precio": 17500
+        },
+        {
+          "nombre": "Chori-papa",
+          "desc": "",
+          "precio": 22000
+        },
+        {
+          "nombre": "Buti-papa",
+          "desc": "",
+          "precio": 22000
+        },
+        {
+          "nombre": "Suiza",
+          "desc": "",
+          "precio": 23500
+        },
+        {
+          "nombre": "Pollo-papa",
+          "desc": "",
+          "precio": 25500
+        },
+        {
+          "nombre": "Carne-papa",
+          "desc": "",
+          "precio": 25500
+        },
+        {
+          "nombre": "Combinada",
+          "desc": "Carne y pollo.",
+          "precio": 28500
+        },
+        {
+          "nombre": "Mixta",
+          "desc": "Chorizo, pollo, carne y butifarra.",
+          "precio": 31000
+        }
+      ]
+    },
+    {
+      "id": "chuzos-desgranados",
+      "nombre": "Chuzos desgranados",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Chorizo",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Butifarra",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Pollo",
+          "desc": "",
+          "precio": 23500
+        },
+        {
+          "nombre": "Carne",
+          "desc": "",
+          "precio": 23500
+        },
+        {
+          "nombre": "Combinado de carne y pollo",
+          "desc": "",
+          "precio": 26500
+        },
+        {
+          "nombre": "Combinado de chorizo y butifarra",
+          "desc": "",
+          "precio": 24500
+        },
+        {
+          "nombre": "Mixto",
+          "desc": "Carne, pollo, chorizo y butifarra.",
+          "precio": 29500
+        }
+      ]
+    },
+    {
+      "id": "chuzo-grille",
+      "nombre": "Chuzo grillé",
+      "nota": "Proteína salteada con cebolla y pimentón, acompañada de bollo y ensalada.",
+      "items": [
+        {
+          "nombre": "Chuzo grillé de carne",
+          "desc": "",
+          "precio": 25000
+        },
+        {
+          "nombre": "Chuzo grillé de pollo",
+          "desc": "",
+          "precio": 25000
+        },
+        {
+          "nombre": "Chuzo grillé combinado de carne y pollo",
+          "desc": "",
+          "precio": 28500
+        }
+      ]
+    },
+    {
+      "id": "mazorcas-desgranadas",
+      "nombre": "Mazorcas desgranadas",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Sencilla gratinada",
+          "desc": "Mazorca y mozzarella.",
+          "precio": 18500
+        },
+        {
+          "nombre": "Pollo y tocineta",
+          "desc": "",
+          "precio": 26500
+        },
+        {
+          "nombre": "Especial",
+          "desc": "Pollo, carne y tocineta.",
+          "precio": 28500
+        },
+        {
+          "nombre": "Mixta",
+          "desc": "Carne, pollo, chorizo y butifarra.",
+          "precio": 30500
+        },
+        {
+          "nombre": "Suiza",
+          "desc": "",
+          "precio": 25500
+        }
+      ]
+    },
+    {
+      "id": "lasanas",
+      "nombre": "Lasañas",
+      "nota": "Acompañada de pan tostado de ajo.",
+      "items": [
+        {
+          "nombre": "Lasaña de pollo",
+          "desc": "",
+          "precio": 25000
+        },
+        {
+          "nombre": "Lasaña mixta",
+          "desc": "Carne y pollo.",
+          "precio": 25000
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "nombre": "Sándwiches",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Kalamarata",
+          "desc": "Camarón y calamar en salsa de queso, lechuga, tomate y salsa tártara.",
+          "precio": 27500,
+          "img": "sandwich-kalamarata.webp"
+        },
+        {
+          "nombre": "Jamón y queso",
+          "desc": "",
+          "precio": 11500
+        },
+        {
+          "nombre": "Pollo",
+          "desc": "",
+          "precio": 17500
+        },
+        {
+          "nombre": "Bellavista",
+          "desc": "Pollo, piña, maíz y tocineta.",
+          "precio": 21500
+        },
+        {
+          "nombre": "Texano",
+          "desc": "Carne a la grillé y tocineta.",
+          "precio": 21500
+        }
+      ]
+    },
+    {
+      "id": "entradas",
+      "nombre": "Entradas",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Yuquitas fritas con tártara y tocineta",
+          "desc": "",
+          "precio": 11000
+        },
+        {
+          "nombre": "Picada de bollo",
+          "desc": "",
+          "precio": 9000
+        },
+        {
+          "nombre": "Picada de papitas",
+          "desc": "",
+          "precio": 11000
+        },
+        {
+          "nombre": "Porción de papitas",
+          "desc": "",
+          "precio": 9000
+        },
+        {
+          "nombre": "Patacones con queso",
+          "desc": "",
+          "precio": 13000
+        }
+      ]
+    },
+    {
+      "id": "crunchy-fries",
+      "nombre": "Crunchy fries",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Papitas chicken crispy",
+          "desc": "Pechuga de pollo apanada, tocino crocante, piña caramelizada, queso costeño y salsa tártara de la casa.",
+          "precio": 30000
+        },
+        {
+          "nombre": "Papitas órale",
+          "desc": "Carne molida en BBQ picante, chorizo, nachos, tocineta crocante, papitas, queso costeño y salsa de queso cheddar.",
+          "precio": 30000
+        }
+      ]
+    },
+    {
+      "id": "perros-calientes",
+      "nombre": "Perros calientes",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Ítalo-suizo",
+          "desc": "Salchicha suiza, queso mozzarella y jamón.",
+          "precio": 22000,
+          "img": "perro-italo-suizo.webp"
+        },
+        {
+          "nombre": "Sencillo",
+          "desc": "",
+          "precio": 10000
+        },
+        {
+          "nombre": "Gemelo",
+          "desc": "",
+          "precio": 15000
+        },
+        {
+          "nombre": "Suizo",
+          "desc": "",
+          "precio": 18500
+        },
+        {
+          "nombre": "Medio suizo",
+          "desc": "",
+          "precio": 13500
+        },
+        {
+          "nombre": "Choriperro",
+          "desc": "",
+          "precio": 15500
+        },
+        {
+          "nombre": "Butiperro",
+          "desc": "",
+          "precio": 15500
+        },
+        {
+          "nombre": "Perro pollo",
+          "desc": "",
+          "precio": 19500
+        },
+        {
+          "nombre": "Hawaiano",
+          "desc": "Trozos de piña, tocineta y mozzarella.",
+          "precio": 16500
+        },
+        {
+          "nombre": "Mexicano",
+          "desc": "Mozzarella y chimichurri.",
+          "precio": 14500
+        },
+        {
+          "nombre": "Italiano",
+          "desc": "Jamón y mozzarella.",
+          "precio": 14500
+        },
+        {
+          "nombre": "Ítalo hawaiano",
+          "desc": "Trozos de piña, tocineta, jamón y mozzarella.",
+          "precio": 19500
+        },
+        {
+          "nombre": "Ítalo suizo hawaiano",
+          "desc": "Trozos de piña, tocineta, suiza, jamón y mozzarella.",
+          "precio": 23500
+        },
+        {
+          "nombre": "Suizo hawaiano",
+          "desc": "Trozos de piña, tocineta, suiza y mozzarella.",
+          "precio": 21500
+        }
+      ]
+    },
+    {
+      "id": "adicionales",
+      "nombre": "Adicionales",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Gratinado",
+          "desc": "",
+          "precio": 6500
+        },
+        {
+          "nombre": "Grillé",
+          "desc": "",
+          "precio": 4500
+        },
+        {
+          "nombre": "Maíz",
+          "desc": "",
+          "precio": 5500
+        }
+      ]
+    },
+    {
+      "id": "bebidas-no-alcoholicas",
+      "nombre": "Bebidas",
+      "nota": "",
+      "items": [
+        {
+          "nombre": "Limonada de coco",
+          "desc": "",
+          "precio": 11000
+        },
+        {
+          "nombre": "Limonada natural",
+          "desc": "",
+          "precio": 8000
+        },
+        {
+          "nombre": "Limonada cerezada",
+          "desc": "",
+          "precio": 10000
+        },
+        {
+          "nombre": "Té o jugos Hit",
+          "desc": "",
+          "precio": 6500
+        },
+        {
+          "nombre": "Coca-Cola mega",
+          "desc": "",
+          "precio": 16000
+        },
+        {
+          "nombre": "Jugo natural",
+          "desc": "En agua o en leche.",
+          "precio": 10000
+        },
+        {
+          "nombre": "Botella de agua",
+          "desc": "",
+          "precio": 4000
+        },
+        {
+          "nombre": "Soda",
+          "desc": "",
+          "precio": 5000
+        },
+        {
+          "nombre": "Gaseosa PET 400",
+          "desc": "",
+          "precio": 5000
+        },
+        {
+          "nombre": "Gaseosa 1.5 L PET",
+          "desc": "",
+          "precio": 11000
+        },
+        {
+          "nombre": "Té Hatsu",
+          "desc": "",
+          "precio": 10000
+        },
+        {
+          "nombre": "Ginger ale",
+          "desc": "",
+          "precio": 7000
+        },
+        {
+          "nombre": "Soda saborizada de maracuyá",
+          "desc": "",
+          "precio": 10000
+        },
+        {
+          "nombre": "Soda saborizada de frutos rojos",
+          "desc": "",
+          "precio": 10000
+        }
+      ]
+    }
+  ],
+  "pizzas": [
+    {
+      "id": "pizzas-especiales",
+      "nombre": "Pizzas especiales",
+      "items": [
+        {
+          "nombre": "Kalamarata",
+          "desc": "Calamar, camarón, cebolla, pimentón, ajo y cilantro.",
+          "precios": {
+            "personal": 23500,
+            "small": 54000,
+            "medium": 67000,
+            "large": 80500
+          },
+          "img": "pizza-kalamarata.webp"
+        },
+        {
+          "nombre": "De la casa",
+          "desc": "Jamón, salami, peperoni, pollo, ajo, champiñón, aceitunas, tocineta y cebolla.",
+          "precios": {
+            "personal": 22000,
+            "small": 47000,
+            "medium": 58500,
+            "large": 69000
+          }
+        },
+        {
+          "nombre": "Pizza Burger",
+          "desc": "Carne de hamburguesa, cebolla caramelizada, tocineta y queso cheddar.",
+          "precios": {
+            "personal": 22000,
+            "small": 47000,
+            "medium": 58500,
+            "large": 69000
+          }
+        },
+        {
+          "nombre": "Mexicana",
+          "desc": "Carne molida, nachos, jalapeño, tocineta, maíz, cebolla, pimentón y tomate.",
+          "precios": {
+            "personal": 22000,
+            "small": 47000,
+            "medium": 58500,
+            "large": 69000
+          }
+        },
+        {
+          "nombre": "Tres quesos",
+          "desc": "Queso mozzarella, holandés y parmesano.",
+          "precios": {
+            "personal": 19500,
+            "small": 43000,
+            "medium": 54000,
+            "large": 65000
+          }
+        },
+        {
+          "nombre": "Vegetariana",
+          "desc": "Berenjena, pepinillo, ajo, cebolla, pimentón y aceitunas.",
+          "precios": {
+            "personal": 19500,
+            "small": 43000,
+            "medium": 54000,
+            "large": 65000
+          }
+        },
+        {
+          "nombre": "Silvestre",
+          "desc": "Champiñón, pepinillo, ajo, cebolla, pimentón y aceitunas.",
+          "precios": {
+            "personal": 19500,
+            "small": 43000,
+            "medium": 54000,
+            "large": 65000
+          }
+        },
+        {
+          "nombre": "Campesina",
+          "desc": "Chorizo, butifarra, pimentón, tocineta, cebolla y ajo.",
+          "precios": {
+            "personal": 20500,
+            "small": 44500,
+            "medium": 55500,
+            "large": 66500
+          }
+        },
+        {
+          "nombre": "Tropical",
+          "desc": "Tocineta, ciruela y piña.",
+          "precios": {
+            "personal": 19000,
+            "small": 42000,
+            "medium": 53000,
+            "large": 66000
+          }
+        },
+        {
+          "nombre": "Cuatro carnes",
+          "desc": "Jamón, salami, peperoni y pollo.",
+          "precios": {
+            "personal": 20500,
+            "small": 44500,
+            "medium": 55500,
+            "large": 66500
+          }
+        },
+        {
+          "nombre": "Bella Vista",
+          "desc": "Pollo, maíz, piña y tocineta.",
+          "precios": {
+            "personal": 20500,
+            "small": 44500,
+            "medium": 55500,
+            "large": 66500
+          }
+        }
+      ]
+    },
+    {
+      "id": "pizzas-tradicionales",
+      "nombre": "Pizzas tradicionales",
+      "items": [
+        {
+          "nombre": "Jamón y queso",
+          "desc": "",
+          "precios": {
+            "personal": 14500,
+            "small": 36000,
+            "medium": 47000,
+            "large": 57500
+          }
+        },
+        {
+          "nombre": "Salami",
+          "desc": "",
+          "precios": {
+            "personal": 14500,
+            "small": 36000,
+            "medium": 47000,
+            "large": 57500
+          }
+        },
+        {
+          "nombre": "Peperoni (cabano)",
+          "desc": "",
+          "precios": {
+            "personal": 14500,
+            "small": 36000,
+            "medium": 47000,
+            "large": 57500
+          }
+        },
+        {
+          "nombre": "Pollo",
+          "desc": "",
+          "precios": {
+            "personal": 16000,
+            "small": 39500,
+            "medium": 51000,
+            "large": 61500
+          }
+        },
+        {
+          "nombre": "Tocineta",
+          "desc": "",
+          "precios": {
+            "personal": 16000,
+            "small": 39500,
+            "medium": 51000,
+            "large": 61500
+          }
+        },
+        {
+          "nombre": "Queso y ajo",
+          "desc": "",
+          "precios": {
+            "personal": 14500,
+            "small": 36000,
+            "medium": 47000,
+            "large": 58500
+          }
+        },
+        {
+          "nombre": "Napolitana",
+          "desc": "",
+          "precios": {
+            "personal": 14500,
+            "small": 36000,
+            "medium": 47000,
+            "large": 58500
+          }
+        },
+        {
+          "nombre": "Bocadillo",
+          "desc": "",
+          "precios": {
+            "personal": 14500,
+            "small": 36000,
+            "medium": 47000,
+            "large": 58500
+          }
+        },
+        {
+          "nombre": "Peperoni americano",
+          "desc": "",
+          "precios": {
+            "personal": 17500,
+            "small": 43000,
+            "medium": 56000,
+            "large": 69500
+          }
+        }
+      ]
+    },
+    {
+      "id": "pizzas-combinadas",
+      "nombre": "Pizzas combinadas",
+      "items": [
+        {
+          "nombre": "Hawaiana",
+          "desc": "",
+          "precios": {
+            "personal": 16500,
+            "small": 40000,
+            "medium": 51000,
+            "large": 61000
+          }
+        },
+        {
+          "nombre": "Pollo y champiñón",
+          "desc": "",
+          "precios": {
+            "personal": 17500,
+            "small": 42500,
+            "medium": 55000,
+            "large": 65000
+          }
+        },
+        {
+          "nombre": "Pollo y jamón",
+          "desc": "",
+          "precios": {
+            "personal": 17500,
+            "small": 42500,
+            "medium": 55000,
+            "large": 65000
+          }
+        },
+        {
+          "nombre": "Pollo y tocineta",
+          "desc": "",
+          "precios": {
+            "personal": 17500,
+            "small": 42500,
+            "medium": 55000,
+            "large": 65000
+          }
+        },
+        {
+          "nombre": "Salami y peperoni",
+          "desc": "",
+          "precios": {
+            "personal": 16500,
+            "small": 39000,
+            "medium": 50000,
+            "large": 60000
+          }
+        },
+        {
+          "nombre": "Jamón y pimentón",
+          "desc": "",
+          "precios": {
+            "personal": 16000,
+            "small": 38000,
+            "medium": 48000,
+            "large": 58500
+          }
+        },
+        {
+          "nombre": "Tocineta y peperoni",
+          "desc": "",
+          "precios": {
+            "personal": 16500,
+            "small": 39000,
+            "medium": 50500,
+            "large": 60500
+          }
+        }
+      ]
+    }
+  ],
+  "adicionalesPizza": {
+    "nota": "Arma tu pizza a tu gusto.",
+    "items": [
+      {
+        "nombre": "Queso",
+        "precios": {
+          "personal": 4500,
+          "small": 7000,
+          "medium": 9000,
+          "large": 10000
+        }
+      },
+      {
+        "nombre": "Verduras (cada una)",
+        "precios": {
+          "personal": 3500,
+          "small": 4500,
+          "medium": 5500,
+          "large": 6500
+        }
+      },
+      {
+        "nombre": "Carnes (cada una)",
+        "precios": {
+          "personal": 4000,
+          "small": 5000,
+          "medium": 6000,
+          "large": 7000
+        }
+      },
+      {
+        "nombre": "Pollo",
+        "precios": {
+          "personal": 4500,
+          "small": 6000,
+          "medium": 7000,
+          "large": 9000
+        }
+      }
+    ]
+  },
+  "bar": {
+    "nota": "El bar se atiende únicamente en el restaurante. No se toman pedidos de bebidas alcohólicas por WhatsApp ni se envían a domicilio.",
+    "categorias": [
+      {
+        "id": "bebidas-alcoholicas",
+        "nombre": "Cervezas y licores",
+        "items": [
+          {
+            "nombre": "Costeñita",
+            "precio": 3500
+          },
+          {
+            "nombre": "Águila Original",
+            "precio": 4000
+          },
+          {
+            "nombre": "Águila Light",
+            "precio": 4500
+          },
+          {
+            "nombre": "Corona",
+            "precio": 8500
+          },
+          {
+            "nombre": "Coronita",
+            "precio": 5500
+          },
+          {
+            "nombre": "Miller Lite",
+            "precio": 4000
+          },
+          {
+            "nombre": "Club Colombia Dorada",
+            "precio": 5000
+          },
+          {
+            "nombre": "Stella Artois",
+            "precio": 8500
+          },
+          {
+            "nombre": "Smirnoff",
+            "precio": 10500
+          },
+          {
+            "nombre": "Michelada",
+            "precio": 2500
+          }
+        ]
+      },
+      {
+        "id": "cocteles",
+        "nombre": "Cocteles",
+        "items": [
+          {
+            "nombre": "Margarita tradicional",
+            "desc": "",
+            "precio": 22000
+          },
+          {
+            "nombre": "Mojito",
+            "desc": "",
+            "precio": 22000
+          },
+          {
+            "nombre": "Margarita de maracuyá",
+            "desc": "",
+            "precio": 22000
+          },
+          {
+            "nombre": "Moscow mule",
+            "desc": "",
+            "precio": 22000
+          },
+          {
+            "nombre": "Quilla sour",
+            "desc": "Ron, almíbar de hierbas y vino.",
+            "precio": 22000
+          },
+          {
+            "nombre": "Martini Caribe",
+            "desc": "Vodka, maracuyá y blue curaçao.",
+            "precio": 22000
+          }
+        ]
+      }
+    ]
+  },
+  "_imagenes": "Las imagenes de assets/img/ son generadas por IA y se muestran marcadas como 'Imagen de referencia'. NO son fotografias de los platos de Kalamarata. Reemplazar por fotografia propia del restaurante en cuanto exista."
+}

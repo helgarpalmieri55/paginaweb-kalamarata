@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carta · Kalamarata</title>
+<meta name="description" content="La carta completa de Kalamarata: pescados, parrilladas, pizzas, hamburguesas, salchipapas, perros y bebidas. Arma tu pedido y envíalo por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/kalamarata.css">
+</head>
+<body>
+<a class="saltar" href="#principal">Saltar al contenido</a>
+<header class="cab">
+  <div class="env cab__fila">
+    <a class="marca" href="index.html" aria-label="Kalamarata, inicio">
+      <span class="marca__texto">
+        <span class="marca__nombre"><b>K</b>alamarata</span>
+        <span class="marca__bajada">Restaurante Bar · Pizzería</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Inicio</a>
+      <a href="carta.html" aria-current="page">Carta</a>
+      <a href="donde-estamos.html">Dónde estamos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="btn btn--linea pedido-btn" type="button" data-abrir-pedido style="margin-left:auto">
+      Tu pedido <span class="cuenta" data-cuenta hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<div class="barra">
+  <div class="env barra__caja">
+    <div class="buscar">
+      <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4" stroke-linecap="round"/>
+      </svg>
+      <label class="vo" for="buscar">Buscar en la carta</label>
+      <input id="buscar" type="search" placeholder="¿Qué se te antoja?" autocomplete="off">
+    </div>
+  </div>
+  <div class="env">
+    <div class="cats" id="cats" role="group" aria-label="Categorías de la carta"></div>
+  </div>
+</div>
+
+<main id="principal" class="env">
+  <h1 class="vo">Carta de Kalamarata</h1>
+  <div id="carta">
+    <div class="vacio"><strong>Cargando la carta…</strong>Un momento.</div>
+  </div>
+  <p style="margin:var(--r7) 0;color:var(--tinta-suave);font-size:.9rem">
+    Los precios pueden cambiar sin previo aviso. En caso de diferencia, manda el
+    precio del local. Esta carta se transcribió de la carta impresa del
+    restaurante.
+  </p>
+</main>
+
+<div class="barra-movil">
+  <button class="btn btn--ped" id="barra-movil-btn" type="button" data-abrir-pedido disabled aria-disabled="true">
+    Aún no has elegido nada
+  </button>
+</div>
+
+<div class="velo" id="velo" aria-hidden="true"></div>
+
+<aside class="panel" id="panel" aria-hidden="true" aria-label="Tu pedido">
+  <div class="panel__cab">
+    <h2>Tu pedido</h2>
+    <button class="panel__cerrar" id="panel-cerrar" type="button" aria-label="Cerrar el pedido">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="m6 6 10 10M16 6 6 16"/>
+      </svg>
+    </button>
+  </div>
+  <ul class="panel__lista" id="panel-lista"></ul>
+  <div class="panel__pie">
+    <dl class="total"><dt>Total</dt><dd data-total>$0</dd></dl>
+    <p class="total__nota">
+      El domicilio se cobra aparte según la distancia y no está incluido en este
+      total. El pedido se confirma por WhatsApp.
+    </p>
+    <a class="btn btn--wa" id="enviar" data-wa="573114280292" aria-disabled="true"
+       style="width:100%" rel="noopener" target="_blank">Enviar por WhatsApp</a>
+  </div>
+</aside>
+
+<script src="assets/js/carta.js" defer></script>
+<footer class="pie">
+  <div class="env">
+    <div class="pie__rejilla">
+      <div>
+        <h2>Kalamarata</h2>
+        <address>
+          Calle 72 #61 esquina<br>
+          Barranquilla, Atlántico, Colombia
+        </address>
+        <p><a href="tel:+573114280292">+57 311 428 0292</a></p>
+        <p><a href="https://instagram.com/kalamaratapizzeria" rel="noopener">@kalamaratapizzeria</a></p>
+      </div>
+      <div>
+        <h2>Datos legales</h2>
+        <p>Razón social: <span class="pend">PENDIENTE_RAZON_SOCIAL</span></p>
+        <p>NIT: <span class="pend">PENDIENTE_NIT</span></p>
+        <p>Correo: <span class="pend">PENDIENTE_CORREO_CORPORATIVO</span></p>
+      </div>
+      <div>
+        <h2>Horarios</h2>
+        <p>Almuerzo: lunes a sábado, 11:00 – 15:00</p>
+        <p>Pizzería: domingo a jueves, 16:00 – 22:00</p>
+        <p>Pizzería: viernes y sábado, 16:00 – 23:00</p>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <p><a href="politica-de-datos.html">Política de tratamiento de datos</a></p>
+        <p><a href="terminos.html">Términos y condiciones</a></p>
+      </div>
+    </div>
+    <p class="pie__legal">
+      El bar se atiende únicamente en el restaurante: no vendemos bebidas
+      alcohólicas por WhatsApp ni a domicilio. Los precios pueden cambiar sin
+      previo aviso; manda siempre el precio del local.
+    </p>
+  </div>
+</footer>
+</body>
+</html>

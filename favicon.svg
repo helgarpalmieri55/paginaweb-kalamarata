@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kalamarata">
+  <!-- Provisional: la K de la marca en el naranja del logo. Reemplazar por el
+       isotipo real (el camarón) en cuanto llegue el archivo del cliente. -->
+  <rect width="64" height="64" rx="13" fill="#E8720C"/>
+  <path fill="#fff" d="M17 13h9v16.4L40.3 13H52L35.6 31.3 52.8 51H41.2L26 33.4V51h-9z"/>
+</svg>

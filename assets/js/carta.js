@@ -151,8 +151,31 @@
 
   /* --------------------------------------------------------------- panel   */
 
-  function abrir()  { panel?.classList.add('abierto'); velo?.classList.add('abierto'); panel?.setAttribute('aria-hidden', 'false'); $('#panel-cerrar')?.focus(); }
-  function cerrar() { panel?.classList.remove('abierto'); velo?.classList.remove('abierto'); panel?.setAttribute('aria-hidden', 'true'); }
+  let abridor = null;
+
+  function abrir() {
+    if (!panel) return;
+    abridor = document.activeElement;
+    panel.classList.add('abierto');
+    velo?.classList.add('abierto');
+    panel.removeAttribute('inert');
+    panel.setAttribute('aria-hidden', 'false');
+    $('#panel-cerrar')?.focus();
+  }
+
+  function cerrar() {
+    if (!panel) return;
+    const teniaFoco = panel.contains(document.activeElement);
+    panel.classList.remove('abierto');
+    velo?.classList.remove('abierto');
+    /* inert saca los controles del panel cerrado del orden de tabulación:
+       sin esto el teclado aterriza en botones que están fuera de pantalla. */
+    panel.setAttribute('inert', '');
+    panel.setAttribute('aria-hidden', 'true');
+    if (teniaFoco) (abridor || $('[data-abrir-pedido]'))?.focus();
+  }
+
+  panel?.setAttribute('inert', '');
 
   $$('[data-abrir-pedido]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); abrir(); }));
   $('#panel-cerrar')?.addEventListener('click', cerrar);

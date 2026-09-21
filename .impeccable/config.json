@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "*.html"
+        ],
+        "createdAt": "2026-09-21T00:56:44.816Z",
+        "reason": "Claude, verificado midiendo en navegador (no asumido): el margen lateral vive en el contenedor interno .env, no en el padding de la seccion. Medido 16px a 390px y 130px a 1440px; vertical 32-48px. El detector no ve a traves del envoltorio. NO confirmado por el usuario."
+      }
+    ]
+  }
+}

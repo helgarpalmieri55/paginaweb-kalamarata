@@ -17,6 +17,8 @@
   --verde:          #2C8B2B;
   --verde-hondo:    #1E6B1D;
   --verde-claro:    #E8F4E7;
+  --enlace:         #1E6B1D;
+  --verde-prensa:   #175616;
 
   /* Superficies */
   --papel:          #FFFFFF;
@@ -62,6 +64,8 @@
     --linea:        #362D27;
     --linea-fuerte: #4A3F37;
     --verde-claro:  #1C2E1B;
+    --enlace:       #4FB24D;
+    --verde-prensa: #86D884;
     --naranja:      #F5861E;
     --naranja-vivo: #FF9833;
     --verde:        #4FB24D;
@@ -121,8 +125,7 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--tinta-tenue); }
 
-a { color: var(--verde-hondo); text-underline-offset: .18em; text-decoration-thickness: from-font; }
-@media (prefers-color-scheme: dark) { :root:not([data-tema="claro"]) a { color: var(--verde); } }
+a { color: var(--enlace); text-underline-offset: .18em; text-decoration-thickness: from-font; }
 
 img { max-width: 100%; display: block; }
 
@@ -137,7 +140,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 
 .saltar {
   position: absolute; left: var(--r4); top: -4rem; z-index: 100;
-  background: var(--tinta); color: #fff; padding: var(--r3) var(--r4);
+  background: var(--tinta); color: var(--papel); padding: var(--r3) var(--r4);
   border-radius: var(--radio); font-weight: 700; transition: top .18s cubic-bezier(.2,.8,.2,1);
 }
 .saltar:focus { top: var(--r4); }
@@ -168,7 +171,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 }
 .marca__nombre b { color: var(--naranja); font-weight: inherit; }
 .marca__bajada {
-  display: block; font-size: .58rem; letter-spacing: .13em; text-transform: uppercase;
+  display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--tinta-suave); margin-top: .18rem; font-weight: 600;
 }
 .marca__logo { height: 42px; width: auto; }
@@ -199,7 +202,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 }
 .btn:active { transform: translateY(1px); }
 .btn--wa    { background: var(--verde-hondo); color: var(--sobre-marca); }
-.btn--wa:hover { background: #175616; }
+.btn--wa:hover { background: var(--verde-prensa); }
 .btn--ped   { background: var(--naranja-hondo); color: var(--sobre-marca); }
 .btn--ped:hover { background: var(--naranja-prensa); }
 .btn--linea { background: transparent; color: var(--tinta); border-color: var(--linea-fuerte); }
@@ -318,9 +321,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 /* Sin foto: el hueco queda preparado y se llena con tipografía, no con un icono genérico */
 .plato__sinfoto {
   width: 100%; height: 100%; display: grid; place-items: center; padding: var(--r4);
-  background:
-    repeating-linear-gradient(135deg, transparent 0 11px, rgba(232,114,12,.055) 11px 22px),
-    var(--verde-claro);
+  background: var(--verde-claro);
   text-align: center;
 }
 .plato__sinfoto span {

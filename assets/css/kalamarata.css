@@ -223,6 +223,30 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .horario__fila dd { margin: 0; color: var(--tinta-suave); text-align: right; font-variant-numeric: tabular-nums; }
 .horario__aviso { background: var(--verde-claro); padding: var(--r3) var(--r4); font-size: .9rem; font-weight: 600; }
 
+/* --------------------------------------------------------------------------
+   Comentarios del pedido — «sin cebolla» es parte del pedido, no un extra
+   -------------------------------------------------------------------------- */
+
+.notas { margin-bottom: var(--r4); }
+.notas__et {
+  display: block; font-size: .82rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  color: var(--tinta-suave); margin-bottom: var(--r2);
+}
+.notas__et span { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--tinta-tenue); }
+.notas__campo {
+  width: 100%; box-sizing: border-box; resize: vertical; min-height: 3.4rem;
+  font: inherit; font-size: .94rem; color: var(--tinta);
+  background: var(--control); border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio); padding: .6rem .75rem;
+}
+.notas__campo::placeholder { color: var(--tinta-tenue); }
+.notas__campo:focus-visible { outline: 2px solid var(--verde-hondo); outline-offset: 1px; border-color: var(--verde-hondo); }
+.notas__cuenta {
+  margin: .3rem 0 0; text-align: right;
+  font-size: .78rem; color: var(--tinta-tenue); font-variant-numeric: tabular-nums;
+}
+
 .pend {
   display: inline-block; background: var(--alerta-fondo); color: var(--alerta);
   border: 1px dashed var(--alerta); border-radius: var(--radio-chico);
@@ -302,7 +326,16 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    solo dos chips no hay nada escondido y no debe verse ningun degradado. */
 .cats-caja--izq::before, .cats-caja--der::after { opacity: 1; }
 .cats-caja:not(.cats-caja--medida)::after { opacity: 1; }
-.cats { display: flex; gap: var(--r2); overflow-x: auto; padding-block: var(--r3); padding-right: 3rem; scrollbar-width: none; }
+/* El padding/margen de 3px a la izquierda es load-bearing: el chip activo
+   lleva un anillo de 2px POR FUERA de su caja, y con el riel en overflow-x
+   y el chip pegado al borde, ese anillo salia cortado en plano. El margen
+   negativo devuelve los chips a su sitio, alineados con el buscador. */
+.cats {
+  display: flex; gap: var(--r2); overflow-x: auto;
+  padding-block: var(--r3); padding-left: 3px; padding-right: 3rem;
+  margin-left: -3px;
+  scrollbar-width: none;
+}
 .cats::-webkit-scrollbar { display: none; }
 .cats a {
   /* Son enlaces de salto, no texto corrido: sin subrayado. */
@@ -484,12 +517,18 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    Pie — el bloque legal va en TODAS las páginas, aunque quede feo
    -------------------------------------------------------------------------- */
 
-.pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r7) var(--r5); }
+.pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r4); }
 .pie a { color: #fff; }
-.pie__rejilla { display: grid; gap: var(--r5); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r3); font-family: var(--texto); font-weight: 800; }
-.pie p, .pie address { font-style: normal; margin: 0 0 var(--r2); font-size: .94rem; }
-.pie__legal { border-top: 1px solid var(--pie-linea); margin-top: var(--r6); padding-top: var(--r4); font-size: .9rem; color: var(--pie-rotulo); }
+.pie__rejilla { display: grid; gap: var(--r4) var(--r5); grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+/* En ancho, cinco columnas exactas. Con `auto-fit` a 1440 salian SEIS pistas
+   —una vacia— y las otras mas estrechas partian los nombres largos, que es lo
+   que estiraba el pie. */
+@media (min-width: 62rem) { .pie__rejilla { grid-template-columns: repeat(5, 1fr); } }
+.pie__rejilla { border-bottom: 1px solid var(--pie-linea); padding-bottom: var(--r4); }
+.pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r2); font-family: var(--texto); font-weight: 800; }
+.pie p, .pie address { font-style: normal; margin: 0 0 var(--r1); font-size: .9rem; line-height: 1.45; }
+.pie__legal { margin: var(--r3) 0 0; font-size: .85rem; line-height: 1.5; color: var(--pie-rotulo); }
+.pie__legal a { color: var(--pie-texto); }
 .pie__legal a { color: var(--pie-texto); }
 .pie .pend { background: var(--pie-pend-fondo); border-color: var(--pie-pend-filo); color: var(--pie-pend-tinta); }
 
@@ -504,6 +543,12 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   color: #fff;
   padding-block: var(--r8);
   text-align: center;
+  /* El campo verde ocupa la primera pantalla entera por debajo de la cabecera.
+     `svh` y no `vh`: en el móvil `vh` cuenta la barra del navegador que luego
+     se retrae, y el héroe quedaba cortado por abajo al abrir.
+     La cabecera mide --cab-alto + 1px de su borde inferior. */
+  min-height: calc(100svh - var(--cab-alto) - 1px);
+  display: flex; flex-direction: column; justify-content: center;
 }
 .hero h1 {
   font-size: clamp(2.1rem, 1.3rem + 3.4vw, 4rem);

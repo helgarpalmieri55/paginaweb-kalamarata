@@ -25,23 +25,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Reunir solo lo que es el sitio
-        run: |
-          set -euo pipefail
-          mkdir -p _site
-
-          # Lista explícita, no exclusiones: así nada nuevo se publica por
-          # descuido. Quedan fuera .claude (18 MB de la skill de diseño),
-          # .impeccable, y PRODUCT.md / DESIGN.md / PENDIENTES.md, que son
-          # documentación interna — PENDIENTES.md además dice en voz alta qué
-          # datos del negocio faltan.
-          cp index.html carta.html donde-estamos.html \
-             politica-de-datos.html terminos.html 404.html \
-             robots.txt sitemap.xml favicon.ico _site/
-          cp -r assets data _site/
-
-          # Sin esto GitHub Pages pasa el sitio por Jekyll, que se salta
-          # cualquier archivo o carpeta que empiece por guion bajo.
-          touch _site/.nojekyll
+        run: bash construir.sh
 
       - name: Marcar la vista previa como no indexable
         run: |
@@ -60,12 +44,6 @@ jobs:
       - name: Comprobar que no se publica nada roto
         run: |
           set -euo pipefail
-          test -s _site/index.html
-          test -s _site/data/carta.json
-          test -s _site/assets/css/kalamarata.css
-          test -s _site/assets/js/carta.js
-          test -s _site/assets/img/kalamarata-logo.webp
-          python3 -c "import json;d=json.load(open('_site/data/carta.json'));print('carta.json válido')"
           # Ningún recurso referenciado puede faltar.
           fallos=0
           for ruta in $(grep -ohE '(href|src)="[^"#:]+"' _site/*.html \

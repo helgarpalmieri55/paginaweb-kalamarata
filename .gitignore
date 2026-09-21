@@ -7,3 +7,6 @@
 
 # Capturas para la revisión final: evidencia de trabajo, no entregable.
 .impeccable/review/
+
+# El sitio armado por construir.sh: se genera en cada despliegue.
+_site/

@@ -4,7 +4,7 @@
   "negocio": {
     "nombre": "Kalamarata",
     "bajada": "Restaurante Bar · Pizzería",
-    "direccion": "Calle 72 #61 esquina",
+    "direccion": "Calle 72 No. 60-53",
     "ciudad": "Barranquilla",
     "telefono": "+57 311 428 0292",
     "whatsapp": "573114280292",
@@ -45,17 +45,20 @@
         {
           "nombre": "Lunes · Arroz mixto",
           "desc": "Carne, pollo, cerdo y chorizo. Acompañado de papas a la francesa y ensalada.",
-          "precio": 21000
+          "precio": 21000,
+          "img": "lunes-arroz-mixto.webp"
         },
         {
           "nombre": "Martes · Chuleta valluna",
           "desc": "",
-          "precio": 21000
+          "precio": 21000,
+          "img": "martes-chuleta-valluna.webp"
         },
         {
           "nombre": "Miércoles · Pollo cordon bleu",
           "desc": "",
-          "precio": 21000
+          "precio": 21000,
+          "img": "miercoles-pollo-cordon-bleu.webp"
         },
         {
           "nombre": "Jueves · Bandeja paisa",
@@ -66,12 +69,14 @@
         {
           "nombre": "Viernes · Carne en posta",
           "desc": "",
-          "precio": 21000
+          "precio": 21000,
+          "img": "viernes-carne-en-posta.webp"
         },
         {
           "nombre": "Sábado · Chicken tenders",
           "desc": "",
-          "precio": 21000
+          "precio": 21000,
+          "img": "sabado-chicken-tenders.webp"
         }
       ],
       "servicios": [
@@ -86,37 +91,44 @@
         {
           "nombre": "Milanesa de pollo",
           "desc": "",
-          "precio": 17500
+          "precio": 17500,
+          "img": "milanesa-de-pollo.webp"
         },
         {
           "nombre": "Pechuga a la plancha",
           "desc": "",
-          "precio": 18500
+          "precio": 18500,
+          "img": "pechuga-a-la-plancha.webp"
         },
         {
           "nombre": "Pechuga en salsa de champiñones",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "pechuga-en-salsa-de-champinones.webp"
         },
         {
           "nombre": "Pechuga en salsa de miel mostaza",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "pechuga-en-salsa-de-miel-mostaza.webp"
         },
         {
           "nombre": "Pechuga en salsa BBQ",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "pechuga-en-salsa-bbq.webp"
         },
         {
           "nombre": "Pechuga gratinada",
           "desc": "",
-          "precio": 20500
+          "precio": 20500,
+          "img": "pechuga-gratinada.webp"
         },
         {
           "nombre": "Pechuga a la criolla",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "pechuga-a-la-criolla.webp"
         }
       ],
       "servicios": [
@@ -131,27 +143,32 @@
         {
           "nombre": "Lomo de cerdo asado",
           "desc": "",
-          "precio": 18500
+          "precio": 18500,
+          "img": "lomo-de-cerdo-asado.webp"
         },
         {
           "nombre": "Lomo de cerdo BBQ",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "lomo-de-cerdo-bbq.webp"
         },
         {
           "nombre": "Lomo de cerdo teriyaki",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "lomo-de-cerdo-teriyaki.webp"
         },
         {
           "nombre": "Lomo en salsa de champiñones",
           "desc": "",
-          "precio": 20500
+          "precio": 20500,
+          "img": "lomo-en-salsa-de-champinones.webp"
         },
         {
           "nombre": "Lomo de cerdo a la criolla",
           "desc": "",
-          "precio": 20500
+          "precio": 20500,
+          "img": "lomo-de-cerdo-a-la-criolla.webp"
         }
       ],
       "servicios": [
@@ -166,32 +183,38 @@
         {
           "nombre": "Carne asada",
           "desc": "",
-          "precio": 18500
+          "precio": 18500,
+          "img": "carne-asada.webp"
         },
         {
           "nombre": "Carne encebollada",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "carne-encebollada.webp"
         },
         {
           "nombre": "Carne en bisteck",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "carne-en-bisteck.webp"
         },
         {
           "nombre": "Carne desmechada",
           "desc": "",
-          "precio": 18000
+          "precio": 18000,
+          "img": "carne-desmechada.webp"
         },
         {
           "nombre": "Sobrebarriga asada",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "sobrebarriga-asada.webp"
         },
         {
           "nombre": "Sobrebarriga criolla",
           "desc": "",
-          "precio": 20500
+          "precio": 20500,
+          "img": "sobrebarriga-criolla.webp"
         }
       ],
       "servicios": [
@@ -212,62 +235,74 @@
         {
           "nombre": "Mojarra roja guisada",
           "desc": "",
-          "precio": 33000
+          "precio": 33000,
+          "img": "mojarra-roja-guisada.webp"
         },
         {
           "nombre": "Mojarra roja frito-guisada",
           "desc": "",
-          "precio": 33000
+          "precio": 33000,
+          "img": "mojarra-roja-frito-guisada.webp"
         },
         {
           "nombre": "Mojarra roja en salsa de camarones",
           "desc": "",
-          "precio": 33000
+          "precio": 33000,
+          "img": "mojarra-roja-en-salsa-de-camarones.webp"
         },
         {
           "nombre": "Mojarra roja al ajillo",
           "desc": "",
-          "precio": 33000
+          "precio": 33000,
+          "img": "mojarra-roja-al-ajillo.webp"
         },
         {
           "nombre": "Salmón a la plancha",
           "desc": "",
-          "precio": 38000
+          "precio": 38000,
+          "img": "salmon-a-la-plancha.webp"
         },
         {
           "nombre": "Salmón en salsa de camarones",
           "desc": "",
-          "precio": 41000
+          "precio": 41000,
+          "img": "salmon-en-salsa-de-camarones.webp"
         },
         {
           "nombre": "Salmón en finas hierbas",
           "desc": "",
-          "precio": 38000
+          "precio": 38000,
+          "img": "salmon-en-finas-hierbas.webp"
         },
         {
           "nombre": "Filete de pescado apanado",
           "desc": "",
-          "precio": 25000
+          "precio": 25000,
+          "img": "filete-de-pescado-apanado.webp"
         },
         {
           "nombre": "Filete de pescado al ajillo",
           "desc": "",
-          "precio": 27000
+          "precio": 27000,
+          "img": "filete-de-pescado-al-ajillo.webp"
         },
         {
           "nombre": "Filete en salsa de camarones",
           "desc": "",
-          "precio": 29000
+          "precio": 29000,
+          "img": "filete-en-salsa-de-camarones.webp"
         },
         {
           "nombre": "Filete de pescado gratinado",
           "desc": "",
-          "precio": 27000
+          "precio": 27000,
+          "img": "filete-de-pescado-gratinado.webp"
         },
         {
           "nombre": "Filete de pescado a la criolla",
           "desc": "",
-          "precio": 27000
+          "precio": 27000,
+          "img": "filete-de-pescado-a-la-criolla.webp"
         }
       ],
       "servicios": [
@@ -282,32 +317,38 @@
         {
           "nombre": "Sobrebarriga a la parrilla",
           "desc": "",
-          "precio": 37000
+          "precio": 37000,
+          "img": "sobrebarriga-a-la-parrilla.webp"
         },
         {
           "nombre": "Costillas de cerdo BBQ",
           "desc": "",
-          "precio": 40000
+          "precio": 40000,
+          "img": "costillas-de-cerdo-bbq.webp"
         },
         {
           "nombre": "Lomo ancho",
           "desc": "",
-          "precio": 32000
+          "precio": 32000,
+          "img": "lomo-ancho.webp"
         },
         {
           "nombre": "Lomo de cerdo",
           "desc": "",
-          "precio": 32000
+          "precio": 32000,
+          "img": "lomo-de-cerdo.webp"
         },
         {
           "nombre": "Pechuga de pollo",
           "desc": "",
-          "precio": 32000
+          "precio": 32000,
+          "img": "pechuga-de-pollo.webp"
         },
         {
           "nombre": "Alitas de pollo BBQ",
           "desc": "",
-          "precio": 25000
+          "precio": 25000,
+          "img": "alitas-de-pollo-bbq.webp"
         },
         {
           "nombre": "Parrillada mixta",
@@ -318,12 +359,14 @@
         {
           "nombre": "Pechuga hawaiana",
           "desc": "Gratinada con jamón y piña.",
-          "precio": 37000
+          "precio": 37000,
+          "img": "pechuga-hawaiana.webp"
         },
         {
           "nombre": "Pechuga gratinada",
           "desc": "",
-          "precio": 35000
+          "precio": 35000,
+          "img": "pechuga-gratinada-2.webp"
         }
       ],
       "servicios": [
@@ -349,42 +392,50 @@
         {
           "nombre": "Classic Cheese Burger",
           "desc": "150 g de carne angus, queso cheddar, vegetales y salsa de la casa.",
-          "precio": 29000
+          "precio": 29000,
+          "img": "classic-cheese-burger.webp"
         },
         {
           "nombre": "Chicken Burger",
           "desc": "Pechuga de pollo a la plancha, queso cheddar, vegetales y salsa de la casa.",
-          "precio": 29000
+          "precio": 29000,
+          "img": "chicken-burger.webp"
         },
         {
           "nombre": "Quillera Burger",
           "desc": "150 g de carne angus, queso costeño asado, cebolla caramelizada en vino tinto, vegetales y salsa de la casa.",
-          "precio": 32000
+          "precio": 32000,
+          "img": "quillera-burger.webp"
         },
         {
           "nombre": "Bacon Cheese Burger",
           "desc": "150 g de carne angus, tocineta, queso cheddar, vegetales y salsa de la casa.",
-          "precio": 31000
+          "precio": 31000,
+          "img": "bacon-cheese-burger.webp"
         },
         {
           "nombre": "La Suprema Burger",
           "desc": "150 g de carne angus, queso cheddar, queso mozzarella, jamón, tocineta, cebolla, vegetales y salsa de la casa.",
-          "precio": 34000
+          "precio": 34000,
+          "img": "la-suprema-burger.webp"
         },
         {
           "nombre": "Doble carne",
           "desc": "300 g de carne angus, doble queso cheddar, vegetales y salsa de la casa.",
-          "precio": 36000
+          "precio": 36000,
+          "img": "doble-carne.webp"
         },
         {
           "nombre": "Doble pollo",
           "desc": "Doble pechuga de pollo a la plancha, queso cheddar, vegetales y salsa de la casa.",
-          "precio": 36000
+          "precio": 36000,
+          "img": "doble-pollo.webp"
         },
         {
           "nombre": "Hamburguesa mixta",
           "desc": "150 g de carne angus, pechuga de pollo a la plancha, vegetales y salsa de la casa.",
-          "precio": 36000
+          "precio": 36000,
+          "img": "hamburguesa-mixta.webp"
         }
       ],
       "servicios": [
@@ -405,47 +456,56 @@
         {
           "nombre": "Especial de la casa",
           "desc": "Carne, pollo, salchicha, suiza, chorizo y butifarra. Ideal para 4 personas.",
-          "precio": 61000
+          "precio": 61000,
+          "img": "especial-de-la-casa.webp"
         },
         {
           "nombre": "Sencilla",
           "desc": "",
-          "precio": 17500
+          "precio": 17500,
+          "img": "sencilla.webp"
         },
         {
           "nombre": "Chori-papa",
           "desc": "",
-          "precio": 22000
+          "precio": 22000,
+          "img": "chori-papa.webp"
         },
         {
           "nombre": "Buti-papa",
           "desc": "",
-          "precio": 22000
+          "precio": 22000,
+          "img": "buti-papa.webp"
         },
         {
           "nombre": "Suiza",
           "desc": "",
-          "precio": 23500
+          "precio": 23500,
+          "img": "suiza.webp"
         },
         {
           "nombre": "Pollo-papa",
           "desc": "",
-          "precio": 25500
+          "precio": 25500,
+          "img": "pollo-papa.webp"
         },
         {
           "nombre": "Carne-papa",
           "desc": "",
-          "precio": 25500
+          "precio": 25500,
+          "img": "carne-papa.webp"
         },
         {
           "nombre": "Combinada",
           "desc": "Carne y pollo.",
-          "precio": 28500
+          "precio": 28500,
+          "img": "combinada.webp"
         },
         {
           "nombre": "Mixta",
           "desc": "Chorizo, pollo, carne y butifarra.",
-          "precio": 31000
+          "precio": 31000,
+          "img": "mixta.webp"
         }
       ],
       "servicios": [
@@ -460,37 +520,44 @@
         {
           "nombre": "Chorizo",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "chorizo.webp"
         },
         {
           "nombre": "Butifarra",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "butifarra.webp"
         },
         {
           "nombre": "Pollo",
           "desc": "",
-          "precio": 23500
+          "precio": 23500,
+          "img": "pollo.webp"
         },
         {
           "nombre": "Carne",
           "desc": "",
-          "precio": 23500
+          "precio": 23500,
+          "img": "carne.webp"
         },
         {
           "nombre": "Combinado de carne y pollo",
           "desc": "",
-          "precio": 26500
+          "precio": 26500,
+          "img": "combinado-de-carne-y-pollo.webp"
         },
         {
           "nombre": "Combinado de chorizo y butifarra",
           "desc": "",
-          "precio": 24500
+          "precio": 24500,
+          "img": "combinado-de-chorizo-y-butifarra.webp"
         },
         {
           "nombre": "Mixto",
           "desc": "Carne, pollo, chorizo y butifarra.",
-          "precio": 29500
+          "precio": 29500,
+          "img": "mixto.webp"
         }
       ],
       "servicios": [
@@ -505,17 +572,20 @@
         {
           "nombre": "Chuzo grillé de carne",
           "desc": "",
-          "precio": 25000
+          "precio": 25000,
+          "img": "chuzo-grille-de-carne.webp"
         },
         {
           "nombre": "Chuzo grillé de pollo",
           "desc": "",
-          "precio": 25000
+          "precio": 25000,
+          "img": "chuzo-grille-de-pollo.webp"
         },
         {
           "nombre": "Chuzo grillé combinado de carne y pollo",
           "desc": "",
-          "precio": 28500
+          "precio": 28500,
+          "img": "chuzo-grille-combinado-de-carne-y-pollo.webp"
         }
       ],
       "servicios": [
@@ -530,27 +600,32 @@
         {
           "nombre": "Sencilla gratinada",
           "desc": "Mazorca y mozzarella.",
-          "precio": 18500
+          "precio": 18500,
+          "img": "sencilla-gratinada.webp"
         },
         {
           "nombre": "Pollo y tocineta",
           "desc": "",
-          "precio": 26500
+          "precio": 26500,
+          "img": "pollo-y-tocineta.webp"
         },
         {
           "nombre": "Especial",
           "desc": "Pollo, carne y tocineta.",
-          "precio": 28500
+          "precio": 28500,
+          "img": "especial.webp"
         },
         {
           "nombre": "Mixta",
           "desc": "Carne, pollo, chorizo y butifarra.",
-          "precio": 30500
+          "precio": 30500,
+          "img": "mixta-2.webp"
         },
         {
           "nombre": "Suiza",
           "desc": "",
-          "precio": 25500
+          "precio": 25500,
+          "img": "suiza-2.webp"
         }
       ],
       "servicios": [
@@ -565,12 +640,14 @@
         {
           "nombre": "Lasaña de pollo",
           "desc": "",
-          "precio": 25000
+          "precio": 25000,
+          "img": "lasana-de-pollo.webp"
         },
         {
           "nombre": "Lasaña mixta",
           "desc": "Carne y pollo.",
-          "precio": 25000
+          "precio": 25000,
+          "img": "lasana-mixta.webp"
         }
       ],
       "servicios": [
@@ -592,22 +669,26 @@
         {
           "nombre": "Jamón y queso",
           "desc": "",
-          "precio": 11500
+          "precio": 11500,
+          "img": "jamon-y-queso.webp"
         },
         {
           "nombre": "Pollo",
           "desc": "",
-          "precio": 17500
+          "precio": 17500,
+          "img": "pollo-2.webp"
         },
         {
           "nombre": "Bellavista",
           "desc": "Pollo, piña, maíz y tocineta.",
-          "precio": 21500
+          "precio": 21500,
+          "img": "bellavista.webp"
         },
         {
           "nombre": "Texano",
           "desc": "Carne a la grillé y tocineta.",
-          "precio": 21500
+          "precio": 21500,
+          "img": "texano.webp"
         }
       ],
       "servicios": [
@@ -622,27 +703,32 @@
         {
           "nombre": "Yuquitas fritas con tártara y tocineta",
           "desc": "",
-          "precio": 11000
+          "precio": 11000,
+          "img": "yuquitas-fritas-con-tartara-y-tocineta.webp"
         },
         {
           "nombre": "Picada de bollo",
           "desc": "",
-          "precio": 9000
+          "precio": 9000,
+          "img": "picada-de-bollo.webp"
         },
         {
           "nombre": "Picada de papitas",
           "desc": "",
-          "precio": 11000
+          "precio": 11000,
+          "img": "picada-de-papitas.webp"
         },
         {
           "nombre": "Porción de papitas",
           "desc": "",
-          "precio": 9000
+          "precio": 9000,
+          "img": "porcion-de-papitas.webp"
         },
         {
           "nombre": "Patacones con queso",
           "desc": "",
-          "precio": 13000
+          "precio": 13000,
+          "img": "patacones-con-queso.webp"
         }
       ],
       "servicios": [
@@ -657,12 +743,14 @@
         {
           "nombre": "Papitas chicken crispy",
           "desc": "Pechuga de pollo apanada, tocino crocante, piña caramelizada, queso costeño y salsa tártara de la casa.",
-          "precio": 30000
+          "precio": 30000,
+          "img": "papitas-chicken-crispy.webp"
         },
         {
           "nombre": "Papitas órale",
           "desc": "Carne molida en BBQ picante, chorizo, nachos, tocineta crocante, papitas, queso costeño y salsa de queso cheddar.",
-          "precio": 30000
+          "precio": 30000,
+          "img": "papitas-orale.webp"
         }
       ],
       "servicios": [
@@ -683,67 +771,80 @@
         {
           "nombre": "Sencillo",
           "desc": "",
-          "precio": 10000
+          "precio": 10000,
+          "img": "sencillo.webp"
         },
         {
           "nombre": "Gemelo",
           "desc": "",
-          "precio": 15000
+          "precio": 15000,
+          "img": "gemelo.webp"
         },
         {
           "nombre": "Suizo",
           "desc": "",
-          "precio": 18500
+          "precio": 18500,
+          "img": "suizo.webp"
         },
         {
           "nombre": "Medio suizo",
           "desc": "",
-          "precio": 13500
+          "precio": 13500,
+          "img": "medio-suizo.webp"
         },
         {
           "nombre": "Choriperro",
           "desc": "",
-          "precio": 15500
+          "precio": 15500,
+          "img": "choriperro.webp"
         },
         {
           "nombre": "Butiperro",
           "desc": "",
-          "precio": 15500
+          "precio": 15500,
+          "img": "butiperro.webp"
         },
         {
           "nombre": "Perro pollo",
           "desc": "",
-          "precio": 19500
+          "precio": 19500,
+          "img": "perro-pollo.webp"
         },
         {
           "nombre": "Hawaiano",
           "desc": "Trozos de piña, tocineta y mozzarella.",
-          "precio": 16500
+          "precio": 16500,
+          "img": "hawaiano.webp"
         },
         {
           "nombre": "Mexicano",
           "desc": "Mozzarella y chimichurri.",
-          "precio": 14500
+          "precio": 14500,
+          "img": "mexicano.webp"
         },
         {
           "nombre": "Italiano",
           "desc": "Jamón y mozzarella.",
-          "precio": 14500
+          "precio": 14500,
+          "img": "italiano.webp"
         },
         {
           "nombre": "Ítalo hawaiano",
           "desc": "Trozos de piña, tocineta, jamón y mozzarella.",
-          "precio": 19500
+          "precio": 19500,
+          "img": "italo-hawaiano.webp"
         },
         {
           "nombre": "Ítalo suizo hawaiano",
           "desc": "Trozos de piña, tocineta, suiza, jamón y mozzarella.",
-          "precio": 23500
+          "precio": 23500,
+          "img": "italo-suizo-hawaiano.webp"
         },
         {
           "nombre": "Suizo hawaiano",
           "desc": "Trozos de piña, tocineta, suiza y mozzarella.",
-          "precio": 21500
+          "precio": 21500,
+          "img": "suizo-hawaiano.webp"
         }
       ],
       "servicios": [
@@ -758,17 +859,20 @@
         {
           "nombre": "Gratinado",
           "desc": "",
-          "precio": 6500
+          "precio": 6500,
+          "img": "gratinado.webp"
         },
         {
           "nombre": "Grillé",
           "desc": "",
-          "precio": 4500
+          "precio": 4500,
+          "img": "grille.webp"
         },
         {
           "nombre": "Maíz",
           "desc": "",
-          "precio": 5500
+          "precio": 5500,
+          "img": "maiz.webp"
         }
       ],
       "servicios": [
@@ -783,72 +887,86 @@
         {
           "nombre": "Limonada de coco",
           "desc": "",
-          "precio": 11000
+          "precio": 11000,
+          "img": "limonada-de-coco.webp"
         },
         {
           "nombre": "Limonada natural",
           "desc": "",
-          "precio": 8000
+          "precio": 8000,
+          "img": "limonada-natural.webp"
         },
         {
           "nombre": "Limonada cerezada",
           "desc": "",
-          "precio": 10000
+          "precio": 10000,
+          "img": "limonada-cerezada.webp"
         },
         {
           "nombre": "Té o jugos Hit",
           "desc": "",
-          "precio": 6500
+          "precio": 6500,
+          "img": "te-o-jugos-hit.webp"
         },
         {
           "nombre": "Coca-Cola mega",
           "desc": "",
-          "precio": 16000
+          "precio": 16000,
+          "img": "coca-cola-mega.webp"
         },
         {
           "nombre": "Jugo natural",
           "desc": "En agua o en leche.",
-          "precio": 10000
+          "precio": 10000,
+          "img": "jugo-natural.webp"
         },
         {
           "nombre": "Botella de agua",
           "desc": "",
-          "precio": 4000
+          "precio": 4000,
+          "img": "botella-de-agua.webp"
         },
         {
           "nombre": "Soda",
           "desc": "",
-          "precio": 5000
+          "precio": 5000,
+          "img": "soda.webp"
         },
         {
           "nombre": "Gaseosa PET 400",
           "desc": "",
-          "precio": 5000
+          "precio": 5000,
+          "img": "gaseosa-pet-400.webp"
         },
         {
           "nombre": "Gaseosa 1.5 L PET",
           "desc": "",
-          "precio": 11000
+          "precio": 11000,
+          "img": "gaseosa-1-5-l-pet.webp"
         },
         {
           "nombre": "Té Hatsu",
           "desc": "",
-          "precio": 10000
+          "precio": 10000,
+          "img": "te-hatsu.webp"
         },
         {
           "nombre": "Ginger ale",
           "desc": "",
-          "precio": 7000
+          "precio": 7000,
+          "img": "ginger-ale.webp"
         },
         {
           "nombre": "Soda saborizada de maracuyá",
           "desc": "",
-          "precio": 10000
+          "precio": 10000,
+          "img": "soda-saborizada-de-maracuya.webp"
         },
         {
           "nombre": "Soda saborizada de frutos rojos",
           "desc": "",
-          "precio": 10000
+          "precio": 10000,
+          "img": "soda-saborizada-de-frutos-rojos.webp"
         }
       ],
       "servicios": [
@@ -881,7 +999,8 @@
             "small": 47000,
             "medium": 58500,
             "large": 69000
-          }
+          },
+          "img": "de-la-casa.webp"
         },
         {
           "nombre": "Pizza Burger",
@@ -891,7 +1010,8 @@
             "small": 47000,
             "medium": 58500,
             "large": 69000
-          }
+          },
+          "img": "pizza-burger.webp"
         },
         {
           "nombre": "Mexicana",
@@ -901,7 +1021,8 @@
             "small": 47000,
             "medium": 58500,
             "large": 69000
-          }
+          },
+          "img": "mexicana.webp"
         },
         {
           "nombre": "Tres quesos",
@@ -911,7 +1032,8 @@
             "small": 43000,
             "medium": 54000,
             "large": 65000
-          }
+          },
+          "img": "tres-quesos.webp"
         },
         {
           "nombre": "Vegetariana",
@@ -921,7 +1043,8 @@
             "small": 43000,
             "medium": 54000,
             "large": 65000
-          }
+          },
+          "img": "vegetariana.webp"
         },
         {
           "nombre": "Silvestre",
@@ -931,7 +1054,8 @@
             "small": 43000,
             "medium": 54000,
             "large": 65000
-          }
+          },
+          "img": "silvestre.webp"
         },
         {
           "nombre": "Campesina",
@@ -941,7 +1065,8 @@
             "small": 44500,
             "medium": 55500,
             "large": 66500
-          }
+          },
+          "img": "campesina.webp"
         },
         {
           "nombre": "Tropical",
@@ -951,7 +1076,8 @@
             "small": 42000,
             "medium": 53000,
             "large": 66000
-          }
+          },
+          "img": "tropical.webp"
         },
         {
           "nombre": "Cuatro carnes",
@@ -961,7 +1087,8 @@
             "small": 44500,
             "medium": 55500,
             "large": 66500
-          }
+          },
+          "img": "cuatro-carnes.webp"
         },
         {
           "nombre": "Bella Vista",
@@ -971,7 +1098,8 @@
             "small": 44500,
             "medium": 55500,
             "large": 66500
-          }
+          },
+          "img": "bella-vista.webp"
         }
       ],
       "servicios": [
@@ -990,7 +1118,8 @@
             "small": 36000,
             "medium": 47000,
             "large": 57500
-          }
+          },
+          "img": "jamon-y-queso-2.webp"
         },
         {
           "nombre": "Salami",
@@ -1000,7 +1129,8 @@
             "small": 36000,
             "medium": 47000,
             "large": 57500
-          }
+          },
+          "img": "salami.webp"
         },
         {
           "nombre": "Peperoni (cabano)",
@@ -1010,7 +1140,8 @@
             "small": 36000,
             "medium": 47000,
             "large": 57500
-          }
+          },
+          "img": "peperoni-cabano.webp"
         },
         {
           "nombre": "Pollo",
@@ -1020,7 +1151,8 @@
             "small": 39500,
             "medium": 51000,
             "large": 61500
-          }
+          },
+          "img": "pollo-3.webp"
         },
         {
           "nombre": "Tocineta",
@@ -1030,7 +1162,8 @@
             "small": 39500,
             "medium": 51000,
             "large": 61500
-          }
+          },
+          "img": "tocineta.webp"
         },
         {
           "nombre": "Queso y ajo",
@@ -1040,7 +1173,8 @@
             "small": 36000,
             "medium": 47000,
             "large": 58500
-          }
+          },
+          "img": "queso-y-ajo.webp"
         },
         {
           "nombre": "Napolitana",
@@ -1050,7 +1184,8 @@
             "small": 36000,
             "medium": 47000,
             "large": 58500
-          }
+          },
+          "img": "napolitana.webp"
         },
         {
           "nombre": "Bocadillo",
@@ -1060,7 +1195,8 @@
             "small": 36000,
             "medium": 47000,
             "large": 58500
-          }
+          },
+          "img": "bocadillo.webp"
         },
         {
           "nombre": "Peperoni americano",
@@ -1070,7 +1206,8 @@
             "small": 43000,
             "medium": 56000,
             "large": 69500
-          }
+          },
+          "img": "peperoni-americano.webp"
         }
       ],
       "servicios": [
@@ -1089,7 +1226,8 @@
             "small": 40000,
             "medium": 51000,
             "large": 61000
-          }
+          },
+          "img": "hawaiana.webp"
         },
         {
           "nombre": "Pollo y champiñón",
@@ -1099,7 +1237,8 @@
             "small": 42500,
             "medium": 55000,
             "large": 65000
-          }
+          },
+          "img": "pollo-y-champinon.webp"
         },
         {
           "nombre": "Pollo y jamón",
@@ -1109,7 +1248,8 @@
             "small": 42500,
             "medium": 55000,
             "large": 65000
-          }
+          },
+          "img": "pollo-y-jamon.webp"
         },
         {
           "nombre": "Pollo y tocineta",
@@ -1119,7 +1259,8 @@
             "small": 42500,
             "medium": 55000,
             "large": 65000
-          }
+          },
+          "img": "pollo-y-tocineta-2.webp"
         },
         {
           "nombre": "Salami y peperoni",
@@ -1129,7 +1270,8 @@
             "small": 39000,
             "medium": 50000,
             "large": 60000
-          }
+          },
+          "img": "salami-y-peperoni.webp"
         },
         {
           "nombre": "Jamón y pimentón",
@@ -1139,7 +1281,8 @@
             "small": 38000,
             "medium": 48000,
             "large": 58500
-          }
+          },
+          "img": "jamon-y-pimenton.webp"
         },
         {
           "nombre": "Tocineta y peperoni",
@@ -1149,7 +1292,8 @@
             "small": 39000,
             "medium": 50500,
             "large": 60500
-          }
+          },
+          "img": "tocineta-y-peperoni.webp"
         }
       ],
       "servicios": [
@@ -1167,7 +1311,8 @@
           "small": 7000,
           "medium": 9000,
           "large": 10000
-        }
+        },
+        "img": "queso.webp"
       },
       {
         "nombre": "Verduras (cada una)",
@@ -1176,7 +1321,8 @@
           "small": 4500,
           "medium": 5500,
           "large": 6500
-        }
+        },
+        "img": "verduras-cada-una.webp"
       },
       {
         "nombre": "Carnes (cada una)",
@@ -1185,7 +1331,8 @@
           "small": 5000,
           "medium": 6000,
           "large": 7000
-        }
+        },
+        "img": "carnes-cada-una.webp"
       },
       {
         "nombre": "Pollo",
@@ -1194,7 +1341,8 @@
           "small": 6000,
           "medium": 7000,
           "large": 9000
-        }
+        },
+        "img": "pollo-4.webp"
       }
     ],
     "servicios": [

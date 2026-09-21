@@ -58,6 +58,29 @@
     </div>
   </section>
 
+  <section class="seccion mapa-seccion" aria-labelledby="mapa-tit">
+    <div class="env">
+      <h2 id="mapa-tit" class="vo">El restaurante en el mapa</h2>
+      <div class="mapa">
+        <!-- OJO: estas coordenadas están repetidas en TRES sitios —el botón
+             «Cómo llegar» de arriba, este mapa, y el JSON-LD de index.html—.
+             Si hay que corregirlas, hay que tocar los tres.
+             `output=embed` no necesita clave de API. -->
+        <iframe
+          src="https://maps.google.com/maps?q=11.0029612,-74.7964900&amp;z=17&amp;hl=es&amp;output=embed"
+          title="Mapa con la ubicación de Kalamarata en la Calle 72 No. 60-53, Barranquilla"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+      <p class="mapa__pie">
+        El mapa lo sirve Google y se carga al llegar aquí; al usarlo se aplican
+        sus condiciones. Si prefieres no cargarlo, el botón
+        <strong>Cómo llegar</strong> de arriba abre la app de mapas de tu
+        teléfono.
+      </p>
+    </div>
+  </section>
+
   <section class="seccion seccion--papel" aria-labelledby="cob">
     <div class="env">
       <div class="seccion__tit">

@@ -522,6 +522,14 @@ el blanco es su decisión. `color-scheme: only light`, y los tokens que existía
 solo para invertirse (`sobre-marca`, `enlace`, los `*-prensa`) siguen vivos
 porque ya cumplían otra función en claro.
 
+**El suelo es blanco, no crema.** El detector marcó `cream-palette` sobre el
+fondo anterior (#F6F3EE) y tenía razón: el blanco tostado cálido es la
+superficie a la que se recurre por reflejo, y es parte de por qué el sitio se
+leía como generado. La página es `#FFFFFF`; el escalón (`fondo-hondo`,
+`control`) es `#F1F4F0`, un gris de **matiz verde derivado de la marca**, no
+otro beige. Los filetes se neutralizaron igual. Dentro del campo verde el texto
+secundario usa `sobre-verde` (#E9F0E7), no el crema que tenía antes.
+
 **El color se compromete a escala de página.** El diagnóstico de por qué se veía
 generado: todo era una tarjeta blanca con filete de 1 px sobre gris claro, y el
 naranja y el verde de la marca aparecían solo en botones pequeños. El estándar

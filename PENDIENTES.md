@@ -10,19 +10,106 @@ sea imposible publicar el sitio sin darse cuenta de que falta.
 
 ## 1. Datos que hay que pedirle al dueño
 
-Sin estos no se manda la verificación de empresa de Meta.
+**Resueltos el 21/09/2026** con el Certificado de Matrícula de Persona Natural
+de la Cámara de Comercio de Barranquilla (expedido 09/02/2026, recibo
+13178876, código de verificación FM6A267AFF) y con el correo que indicó el
+dueño.
 
-| Marcador | Qué es | Dónde sale |
+| Marcador | Valor puesto | De dónde sale |
 |---|---|---|
-| `PENDIENTE_RAZON_SOCIAL` | Razón social **exacta**, carácter por carácter, como aparece en el Certificado de Cámara de Comercio | Pie de las 5 páginas y ambos textos legales |
-| `PENDIENTE_NIT` | NIT del negocio | Igual |
-| `PENDIENTE_CORREO_CORPORATIVO` | Correo en el dominio propio, p. ej. `contacto@…` | Pie de las 5 páginas |
-| `PENDIENTE_DOMINIO` | Dominio propio **a nombre del negocio**, no del proveedor | `robots.txt`, `sitemap.xml` |
-| `PENDIENTE_CORREO_DATOS` | Buzón para solicitudes de datos personales | Política de datos |
-| `PENDIENTE_RESPONSABLE_DATOS` | Persona que atiende esas solicitudes dentro de los plazos de ley | Política de datos |
-| `PENDIENTE_DIRECCION_NOTIFICACIONES` | Dirección de notificaciones judiciales | Política de datos |
-| `PENDIENTE_FECHA_VIGENCIA` | Fecha desde la que rigen los textos legales | Política de datos, términos |
-| `PENDIENTE_DECISION_PROMOCIONES` | Si el restaurante va a enviar publicidad. Es un permiso distinto del de atender el pedido | Política de datos |
+| ~~`PENDIENTE_RAZON_SOCIAL`~~ | Néstor Mauricio Ortiz González | Certificado, «Nombre». Es persona natural: la razón social es su nombre |
+| ~~`PENDIENTE_NIT`~~ | 1.140.880.235-8 | Certificado, «NIT» |
+| ~~`PENDIENTE_CORREO_CORPORATIVO`~~ | pedidos@kalamarata.com | Lo indicó el dueño |
+| ~~`PENDIENTE_CORREO_DATOS`~~ | pedidos@kalamarata.com | Lo indicó el dueño (dio un solo correo) |
+| ~~`PENDIENTE_RESPONSABLE_DATOS`~~ | Néstor Mauricio Ortiz González, propietario | Certificado: no hay más titular |
+| ~~`PENDIENTE_DIRECCION_NOTIFICACIONES`~~ | Calle 72 No. 60-53, Barranquilla, Atlántico | Certificado, campo «Dirección para notificación judicial» |
+| ~~`PENDIENTE_FECHA_VIGENCIA`~~ | 21 de septiembre de 2026 | Fecha en que se publicaron los textos |
+
+### Siguen en rojo, y no salen del certificado
+
+| Marcador | Qué falta decidir |
+|---|---|
+| `PENDIENTE_DOMINIO` | El dominio propio. El correo es `@kalamarata.com`, pero tener el correo no es lo mismo que tener el dominio apuntando al sitio. **Hay que confirmarlo, no suponerlo** |
+| `PENDIENTE_DECISION_PROMOCIONES` | Si el restaurante va a enviar publicidad. Es una decisión del negocio, no un dato del certificado |
+
+---
+
+## 1-bis. DOS COSAS DEL CERTIFICADO QUE BLOQUEAN LA VERIFICACIÓN DE META
+
+No son detalles de redacción. Meta compara lo que dice el sitio contra lo que
+dice el certificado, y hoy **no coinciden**.
+
+### a) El certificado no menciona «Kalamarata» por ningún lado
+
+El establecimiento de comercio matriculado a nombre de Néstor Mauricio Ortiz
+González se llama:
+
+> **GATO"S LA 72** — matrícula 259.522, desde el 03 de julio de 1998
+
+No hay ningún establecimiento llamado Kalamarata en este certificado. El sitio
+entero se llama Kalamarata.
+
+Eso deja tres caminos, y **los tres son del dueño, no nuestros**:
+
+1. Kalamarata es un nombre comercial nuevo y **hay que matricularlo** (o
+   cambiarle el nombre al establecimiento) en la Cámara de Comercio.
+2. Existe otro certificado, de otro establecimiento, que sí dice Kalamarata y
+   que no se nos ha entregado.
+3. Se verifica ante Meta como GATO'S LA 72, que es lo que respalda el papel.
+
+Mientras no se resuelva, **la verificación se rechaza**: el nombre del negocio
+no lo respalda ningún documento.
+
+### b) La dirección del certificado no es la que usa el sitio
+
+| Fuente | Dirección |
+|---|---|
+| Certificado (domicilio principal y notificación judicial) | **CL 72 No 60 - 53**, Barranquilla - Atlántico |
+| Sitio y carta impresa | **Calle 72 #61 esquina**, Barranquilla |
+
+Puede que sea el mismo local descrito de dos maneras —un predio numerado 60-53
+está entre la carrera 60 y la 61—, pero **eso no se supone, se confirma**.
+
+Lo hecho mientras tanto, para no afirmar nada falso:
+
+- Las **dos frases de identificación legal** (responsable del tratamiento en la
+  política de datos, y a quién aplican los términos) usan **la del
+  certificado**, porque ahí manda el papel.
+- Las **16 menciones de cómo llegar** (héroe, pies de página, JSON-LD, meta
+  descripciones, `carta.json`) siguen diciendo **Calle 72 #61 esquina**, que es
+  lo que el restaurante publica y lo que la gente usa para llegar. Cambiar por
+  dónde le dicen a los clientes que entren no es nuestro de decidir.
+
+En cuanto el dueño confirme cuál es, se unifica en un solo cambio.
+
+### c) Un aviso, no un problema
+
+Al ser persona natural, **el NIT es la cédula** del dueño más el dígito de
+verificación. Publicarlo es lo normal y lo que pide el Estatuto del Consumidor
+para identificar a quien vende, y ya es público en el RUES — pero conviene que
+el dueño sepa que su número de cédula queda a la vista en el sitio.
+
+### Para el formulario de Meta, copiar tal cual del certificado
+
+Meta compara carácter por carácter. En el sitio el nombre va en orden natural y
+con tildes, que es como se lee bien; **en el formulario hay que poner la forma
+exacta del registro**:
+
+```
+Nombre:          ORTIZ GONZALEZ NESTOR MAURICIO
+Identificación:  1.140.880.235
+NIT:             1.140.880.235 - 8
+Matrícula:       906.393
+Establecimiento: GATO"S LA 72   (matrícula 259.522)
+Dirección:       CL 72 No 60 - 53
+Municipio:       Barranquilla - Atlantico
+CIIU:            5611
+```
+
+El certificado registra además el correo `n.ortiz_95@hotmail.com` y el teléfono
+`3007835040`. **No se publicaron**: el sitio usa el correo corporativo que pidió
+el dueño y el 311 428 0292 que ya estaba. Si Meta exige que el correo coincida
+con el del registro, hay que actualizarlo en la Cámara de Comercio.
 
 Además, sin marcador en el código pero igual de bloqueantes:
 
@@ -31,9 +118,6 @@ Además, sin marcador en el código pero igual de bloqueantes:
   caja.
 - **Confirmar quién es administrador del portafolio comercial** y su usuario de
   Facebook. Solo un administrador puede completar la verificación.
-- **La dirección como figura en el documento.** Usamos «Calle 72 #61 esquina»,
-  que es lo que dice la carta impresa. Si el certificado dice otra cosa,
-  rechazan la verificación.
 
 ## 2. Archivos que faltan
 

@@ -807,11 +807,13 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 }
 .plato--otro-dia .mas[disabled]:hover { background: var(--control); }
 
+/* Fondo lleno y sin filete lateral, como el resto de los avisos del sitio
+   (.horario__aviso, .banda__aviso, .banda__cerrado). El filete de acento en un
+   solo lado no se usa en ninguna otra parte de esta hoja. */
 .grupo__aviso {
   margin: var(--r3) 0 0;
   padding: var(--r3) var(--r4);
   background: var(--alerta-fondo); color: var(--alerta);
-  border-left: 3px solid var(--alerta);
   border-radius: var(--radio-chico);
   font-size: .9rem; font-weight: 700;
 }

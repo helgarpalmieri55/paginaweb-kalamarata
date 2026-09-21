@@ -211,62 +211,92 @@
     const partes = [];
     const navs   = [];
 
-    d.categorias.forEach(c => {
-      navs.push({ id: c.id, nombre: c.nombre });
+    /* La carta impresa son dos cartas distintas: la de almuerzo y la de
+       comidas rápidas. Mezclarlas en una sola lista obliga a pasar por
+       pizzas para llegar al ejecutivo de pollo. Cada servicio es su propia
+       sección, con su banda y su horario. */
+    d.servicios.forEach(serv => {
+      navs.push({ id: `s-${serv.id}`, nombre: serv.nombre, servicio: true });
+
+      const dentro = [];
+
+      d.categorias.filter(c => c.servicios.includes(serv.id)).forEach(c => {
+        const nombre = (c.nombrePorServicio && c.nombrePorServicio[serv.id]) || c.nombre;
+        const id = `${serv.id}--${c.id}`;
+        navs.push({ id, nombre, de: serv.id });
+        dentro.push(`
+          <section class="grupo" id="${id}" aria-labelledby="t-${id}">
+            <div class="grupo__tit"><h3 id="t-${id}">${esc(nombre)}</h3></div>
+            ${c.nota ? `<p class="grupo__nota">${esc(c.nota)}</p>` : ''}
+            <div class="platos">${c.items.map(i => tarjeta(c.id, i, nombre)).join('')}</div>
+          </section>`);
+      });
+
+      d.pizzas.filter(c => c.servicios.includes(serv.id)).forEach(c => {
+        const id = `${serv.id}--${c.id}`;
+        navs.push({ id, nombre: c.nombre, de: serv.id });
+        dentro.push(`
+          <section class="grupo" id="${id}" aria-labelledby="t-${id}">
+            <div class="grupo__tit"><h3 id="t-${id}">${esc(c.nombre)}</h3></div>
+            <p class="grupo__nota">${tallas.map(t => `${t.nombre}, ${t.porciones} porciones`).join(' · ')}</p>
+            <div class="platos">${c.items.map(i => tarjetaPizza(c.id, i, tallas, c.nombre)).join('')}</div>
+          </section>`);
+      });
+
+      if (d.adicionalesPizza.servicios.includes(serv.id)) {
+        const a = d.adicionalesPizza, id = `${serv.id}--arma-tu-pizza`;
+        navs.push({ id, nombre: 'Arma tu pizza', de: serv.id });
+        dentro.push(`
+          <section class="grupo" id="${id}" aria-labelledby="t-${id}">
+            <div class="grupo__tit"><h3 id="t-${id}">Arma tu pizza</h3></div>
+            <p class="grupo__nota">${esc(a.nota)} El precio depende del tamaño de la pizza.</p>
+            <div class="platos">${a.items.map(i =>
+              tarjetaPizza('arma-tu-pizza', { nombre: i.nombre, desc: '', precios: i.precios },
+                           tallas, 'Arma tu pizza adicional')).join('')}</div>
+          </section>`);
+      }
+
+      const bar = d.bar.categorias.filter(c => c.servicios.includes(serv.id));
+      if (bar.length) {
+        const id = `${serv.id}--bar`;
+        navs.push({ id, nombre: 'Bar', de: serv.id });
+        dentro.push(`
+          <section class="grupo" id="${id}" aria-labelledby="t-${id}">
+            <div class="grupo__tit"><h3 id="t-${id}">Bar</h3></div>
+            <p class="bar-aviso">${esc(d.bar.nota)}</p>
+            ${bar.map(c => `
+              <h4 style="margin-top:var(--r5)">${esc(c.nombre)}</h4>
+              <ul class="lista-bar">
+                ${c.items.map(i => `<li>
+                  <span class="n">${esc(i.nombre)}${i.desc ? ` <span class="linea__d">${esc(i.desc)}</span>` : ''}</span>
+                  <span class="g"></span>
+                  <span class="p">${pesos(i.precio)}</span>
+                </li>`).join('')}
+              </ul>`).join('')}
+          </section>`);
+      }
+
       partes.push(`
-        <section class="grupo" id="${c.id}" aria-labelledby="t-${c.id}">
-          <div class="grupo__tit"><h2 id="t-${c.id}">${esc(c.nombre)}</h2></div>
-          ${c.nota ? `<p class="grupo__nota">${esc(c.nota)}</p>` : ''}
-          <div class="platos">${c.items.map(i => tarjeta(c.id, i, c.nombre)).join('')}</div>
-        </section>`);
+        <div class="servicio servicio--${serv.id}">
+          <div class="banda" id="s-${serv.id}">
+            <div class="env banda__caja">
+              <h2>${esc(serv.nombre)}</h2>
+              <span class="banda__horario">${esc(serv.horario)}</span>
+              <p class="banda__nota">${esc(serv.nota)}</p>
+              <p class="banda__aviso">${esc(serv.aviso)}</p>
+              <p class="banda__cerrado" data-cerrado="${esc(serv.id)}" hidden></p>
+            </div>
+          </div>
+          <div class="env">${dentro.join('')}</div>
+        </div>`);
     });
-
-    d.pizzas.forEach(c => {
-      navs.push({ id: c.id, nombre: c.nombre });
-      partes.push(`
-        <section class="grupo" id="${c.id}" aria-labelledby="t-${c.id}">
-          <div class="grupo__tit"><h2 id="t-${c.id}">${esc(c.nombre)}</h2></div>
-          <p class="grupo__nota">${tallas.map(t => `${t.nombre}, ${t.porciones} porciones`).join(' · ')}</p>
-          <div class="platos">${c.items.map(i => tarjetaPizza(c.id, i, tallas, c.nombre)).join('')}</div>
-        </section>`);
-    });
-
-    if (d.adicionalesPizza) {
-      const a = d.adicionalesPizza;
-      navs.push({ id: 'adicionales-pizza', nombre: 'Arma tu pizza' });
-      partes.push(`
-        <section class="grupo" id="adicionales-pizza" aria-labelledby="t-adicionales-pizza">
-          <div class="grupo__tit"><h2 id="t-adicionales-pizza">Arma tu pizza</h2></div>
-          <p class="grupo__nota">${esc(a.nota)} El precio depende del tamaño de la pizza.</p>
-          <div class="platos">${a.items.map(i =>
-            tarjetaPizza('adicionales-pizza', { nombre: i.nombre, desc: '', precios: i.precios }, tallas, 'Arma tu pizza adicional')
-          ).join('')}</div>
-        </section>`);
-    }
-
-    // Bar: se muestra completo y se deja claro que no sale del local.
-    navs.push({ id: 'bar', nombre: 'Bar' });
-    partes.push(`
-      <section class="grupo" id="bar" aria-labelledby="t-bar">
-        <div class="grupo__tit"><h2 id="t-bar">Bar</h2></div>
-        <p class="bar-aviso">${esc(d.bar.nota)}</p>
-        ${d.bar.categorias.map(c => `
-          <h3 style="margin-top:var(--r5)">${esc(c.nombre)}</h3>
-          <ul class="lista-bar">
-            ${c.items.map(i => `<li>
-              <span class="n">${esc(i.nombre)}${i.desc ? ` <span class="linea__d">${esc(i.desc)}</span>` : ''}</span>
-              <span class="g"></span>
-              <span class="p">${pesos(i.precio)}</span>
-            </li>`).join('')}
-          </ul>`).join('')}
-      </section>`);
 
     zona.innerHTML = partes.join('');
 
     const cats = $('#cats');
     if (cats) {
       cats.innerHTML = navs.map(n =>
-        `<a href="#${esc(n.id)}" data-ir="${esc(n.id)}">${esc(n.nombre)}</a>`).join('');
+        `<a href="#${esc(n.id)}" data-ir="${esc(n.id)}"${n.servicio ? ' class="cats__serv"' : ''}>${esc(n.nombre)}</a>`).join('');
       observarGrupos(cats);
     }
 
@@ -294,7 +324,78 @@
     const buscador = $('#buscar');
     buscador?.addEventListener('input', () => filtrar(buscador.value));
 
+    marcarHoy();
+    marcarDisponibilidad(d.servicios);
     pintarPedido();
+  }
+
+  /* Qué se está sirviendo AHORA, con el reloj del local. Un visitante a las
+     8 de la noche mirando la bandeja paisa tiene que saber que a esa hora no
+     se la pueden hacer, y al revés al mediodía con la pizza. */
+  function ahoraEnBogota() {
+    try {
+      const f = new Intl.DateTimeFormat('es-CO', {
+        timeZone: 'America/Bogota', weekday: 'short', hour: '2-digit',
+        minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const g = t => f.find(x => x.type === t)?.value || '';
+      const dias = { dom:0, lun:1, mar:2, mié:3, mie:3, jue:4, vie:5, sáb:6, sab:6 };
+      const dia = dias[g('weekday').toLowerCase().replace('.','').slice(0,3)];
+      return { dia, minutos: Number(g('hour')) * 60 + Number(g('minute')) };
+    } catch {
+      const d = new Date();
+      return { dia: d.getDay(), minutos: d.getHours() * 60 + d.getMinutes() };
+    }
+  }
+
+  const aMin = h => Number(h.slice(0,2)) * 60 + Number(h.slice(3,5));
+
+  function marcarDisponibilidad(servicios) {
+    const { dia, minutos } = ahoraEnBogota();
+    if (dia === undefined) return;
+
+    servicios.forEach(serv => {
+      const cartel = $(`[data-cerrado="${serv.id}"]`);
+      if (!cartel) return;
+
+      const cierra = serv.id === 'rapidas'
+        ? aMin(dia === 5 || dia === 6 ? serv.cierraFinDeSemana : serv.cierraEntreSemana)
+        : aMin(serv.cierra);
+      const abierto = serv.dias.includes(dia) && minutos >= aMin(serv.abre) && minutos < cierra;
+
+      if (abierto) {
+        cartel.hidden = true;
+      } else {
+        cartel.textContent = serv.id === 'almuerzo'
+          ? 'Ahora mismo no se está sirviendo almuerzo. Puedes pedirlo igual y te confirmamos por WhatsApp.'
+          : 'Ahora mismo no se están sirviendo comidas rápidas. Puedes pedirlas igual y te confirmamos por WhatsApp.';
+        cartel.hidden = false;
+      }
+      $(`.servicio--${serv.id}`)?.classList.toggle('servicio--cerrado', !abierto);
+    });
+  }
+
+  /* El visitante del mediodía llega buscando qué se come hoy. Se marca con el
+     día del local, no el del navegador: en UTC puede ser ya lunes mientras en
+     Barranquilla sigue siendo domingo y la cocina no sirve almuerzo. */
+  function marcarHoy() {
+    const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    let dia;
+    try {
+      dia = DIAS.indexOf(new Intl.DateTimeFormat('es-CO', {
+        timeZone: 'America/Bogota', weekday: 'long'
+      }).format(new Date()).replace(/^./, c => c.toUpperCase()));
+    } catch { dia = new Date().getDay(); }
+    if (dia < 1) return; // domingo: no hay almuerzo que marcar
+
+    const nombre = DIAS[dia];
+    $$('.plato', zona).forEach(p => {
+      if (p.querySelector('.plato__nombre')?.textContent.startsWith(nombre + ' ·')) {
+        p.classList.add('plato--hoy');
+        p.querySelector('.plato__cuerpo')
+         ?.insertAdjacentHTML('afterbegin', '<span class="dato__hoy">Hoy</span>');
+      }
+    });
   }
 
   function lienzo(nombre, img) {
@@ -424,6 +525,12 @@
           if (a.dataset.ir === e.target.id) a.setAttribute('aria-current', 'true');
           else a.removeAttribute('aria-current');
         });
+        const pill = $('#barra-serv');
+        if (pill) {
+          const serv = e.target.closest('.servicio');
+          const nombre = serv?.querySelector('.banda h2')?.textContent;
+          if (nombre) { pill.textContent = nombre; pill.hidden = false; }
+        }
       });
     }, { rootMargin: '-150px 0px -70% 0px' });
     $$('.grupo', zona).forEach(g => obs.observe(g));

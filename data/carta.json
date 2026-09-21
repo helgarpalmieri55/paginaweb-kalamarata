@@ -73,6 +73,9 @@
           "desc": "",
           "precio": 21000
         }
+      ],
+      "servicios": [
+        "almuerzo"
       ]
     },
     {
@@ -115,6 +118,9 @@
           "desc": "",
           "precio": 19500
         }
+      ],
+      "servicios": [
+        "almuerzo"
       ]
     },
     {
@@ -147,6 +153,9 @@
           "desc": "",
           "precio": 20500
         }
+      ],
+      "servicios": [
+        "almuerzo"
       ]
     },
     {
@@ -184,6 +193,9 @@
           "desc": "",
           "precio": 20500
         }
+      ],
+      "servicios": [
+        "almuerzo"
       ]
     },
     {
@@ -257,6 +269,9 @@
           "desc": "",
           "precio": 27000
         }
+      ],
+      "servicios": [
+        "almuerzo"
       ]
     },
     {
@@ -310,7 +325,15 @@
           "desc": "",
           "precio": 35000
         }
-      ]
+      ],
+      "servicios": [
+        "almuerzo",
+        "rapidas"
+      ],
+      "nombrePorServicio": {
+        "almuerzo": "Parrilladas",
+        "rapidas": "Asados"
+      }
     },
     {
       "id": "hamburguesas",
@@ -363,6 +386,9 @@
           "desc": "150 g de carne angus, pechuga de pollo a la plancha, vegetales y salsa de la casa.",
           "precio": 36000
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -421,6 +447,9 @@
           "desc": "Chorizo, pollo, carne y butifarra.",
           "precio": 31000
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -463,6 +492,9 @@
           "desc": "Carne, pollo, chorizo y butifarra.",
           "precio": 29500
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -485,6 +517,9 @@
           "desc": "",
           "precio": 28500
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -517,6 +552,9 @@
           "desc": "",
           "precio": 25500
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -534,6 +572,10 @@
           "desc": "Carne y pollo.",
           "precio": 25000
         }
+      ],
+      "servicios": [
+        "almuerzo",
+        "rapidas"
       ]
     },
     {
@@ -567,6 +609,9 @@
           "desc": "Carne a la grillé y tocineta.",
           "precio": 21500
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -599,6 +644,9 @@
           "desc": "",
           "precio": 13000
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -616,6 +664,9 @@
           "desc": "Carne molida en BBQ picante, chorizo, nachos, tocineta crocante, papitas, queso costeño y salsa de queso cheddar.",
           "precio": 30000
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -694,6 +745,9 @@
           "desc": "Trozos de piña, tocineta, suiza y mozzarella.",
           "precio": 21500
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -716,6 +770,9 @@
           "desc": "",
           "precio": 5500
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -793,6 +850,10 @@
           "desc": "",
           "precio": 10000
         }
+      ],
+      "servicios": [
+        "almuerzo",
+        "rapidas"
       ]
     }
   ],
@@ -912,6 +973,9 @@
             "large": 66500
           }
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -1008,6 +1072,9 @@
             "large": 69500
           }
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     },
     {
@@ -1084,6 +1151,9 @@
             "large": 60500
           }
         }
+      ],
+      "servicios": [
+        "rapidas"
       ]
     }
   ],
@@ -1126,6 +1196,9 @@
           "large": 9000
         }
       }
+    ],
+    "servicios": [
+      "rapidas"
     ]
   },
   "bar": {
@@ -1175,6 +1248,10 @@
             "nombre": "Michelada",
             "precio": 2500
           }
+        ],
+        "servicios": [
+          "almuerzo",
+          "rapidas"
         ]
       },
       {
@@ -1211,9 +1288,50 @@
             "desc": "Vodka, maracuyá y blue curaçao.",
             "precio": 22000
           }
+        ],
+        "servicios": [
+          "rapidas"
         ]
       }
     ]
   },
-  "_imagenes": "Las imagenes de assets/img/ son generadas por IA y se muestran marcadas como 'Imagen de referencia'. NO son fotografias de los platos de Kalamarata. Reemplazar por fotografia propia del restaurante en cuanto exista."
+  "_imagenes": "Las imagenes de assets/img/ son generadas por IA y se muestran marcadas como 'Imagen de referencia'. NO son fotografias de los platos de Kalamarata. Reemplazar por fotografia propia del restaurante en cuanto exista.",
+  "servicios": [
+    {
+      "id": "almuerzo",
+      "nombre": "Almuerzo",
+      "horario": "Lunes a sábado, 11:00 a 3:00 de la tarde",
+      "nota": "El domingo no hay almuerzo.",
+      "aviso": "Esto es carta de almuerzo: solo se sirve de 11:00 a 3:00 de la tarde, de lunes a sábado. De noche no está disponible.",
+      "dias": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "abre": "11:00",
+      "cierra": "15:00"
+    },
+    {
+      "id": "rapidas",
+      "nombre": "Comidas rápidas",
+      "horario": "Todos los días desde las 4:00 de la tarde",
+      "nota": "Domingo a jueves hasta las 10:00; viernes y sábado hasta las 11:00.",
+      "aviso": "Esto es carta de noche: se sirve desde las 4:00 de la tarde. Al mediodía no está disponible.",
+      "dias": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "abre": "16:00",
+      "cierraEntreSemana": "22:00",
+      "cierraFinDeSemana": "23:00"
+    }
+  ]
 }

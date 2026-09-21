@@ -25,18 +25,24 @@
   --verde:          #2C8B2B;
   --verde-hondo:    #1E6B1D;
   --verde-claro:    #E8F4E7;
+  --sobre-verde:    #E9F0E7;   /* texto secundario dentro del campo verde */
+  --sobre-verde-2:  #DCE8D9;   /* terciario en el mismo campo */
   --enlace:         #1E6B1D;
   --verde-prensa:   #175616;
+  --naranja-accion: #F5821F;   /* relleno de acción sobre campo verde */
+  --sobre-accion:   #1A1512;   /* texto encima: blanco sobre ese naranja da 2.6:1 */
 
   /* Superficies */
-  --papel:          #FFFFFF;
-  --fondo:          #F6F3EE;
-  --fondo-hondo:    #EDE8E0;
+  --papel:          #FFFFFF;   /* tarjetas y superficies elevadas */
+  --fondo:          #FFFFFF;   /* el suelo de la página: blanco, sin tostar */
+  --fondo-hondo:    #F1F4F0;   /* el escalón: gris de matiz verde, no beige */
+  --control:        #F1F4F0;   /* relleno en reposo de campos y chips */
+  --control-hover:  #E7EBE5;
   --tinta:          #1A1512;
   --tinta-suave:    #5C534B;
   --tinta-tenue:    #6E645B;
-  --linea:          #E2DBD1;
-  --linea-fuerte:   #C9BFB2;
+  --linea:          #E4E7E2;
+  --linea-fuerte:   #C7CDC4;
 
   /* Estados */
   --alerta:         #A8341A;
@@ -57,39 +63,14 @@
 
   --sombra-alta: 0 2px 4px rgba(26, 21, 18, .08), 0 12px 28px rgba(26, 21, 18, .12);
 
-  color-scheme: light;
+  /* Solo claro: es una página web de restaurante, no una app, y el blanco
+     es la decisión del cliente. Sin esto el navegador puede repintar los
+     controles nativos en oscuro. */
+  color-scheme: only light;
   accent-color: var(--naranja);
 }
 
 @media (max-width: 52rem) { :root { --cab-alto: 72px; } }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) {
-    --papel:        #201A16;
-    --fondo:        #151110;
-    --fondo-hondo:  #0E0B0A;
-    --tinta:        #F6F1EA;
-    --tinta-suave:  #BCB0A4;
-    --tinta-tenue:  #8D8277;
-    --linea:        #362D27;
-    --linea-fuerte: #4A3F37;
-    --verde-claro:  #1C2E1B;
-    --enlace:       #4FB24D;
-    --verde-prensa: #86D884;
-    --naranja:      #F5861E;
-    --naranja-vivo: #FF9833;
-    --verde:        #4FB24D;
-    --verde-hondo:  #5FC25D;
-    --naranja-hondo: #F5861E;
-    --naranja-texto: #FF9833;
-    --naranja-prensa: #FFAA55;
-    --sobre-marca:   #17120F;
-    --alerta:       #F0836A;
-    --alerta-fondo: #2E1A15;
-    --sombra-alta:  0 2px 4px rgba(0,0,0,.45), 0 12px 28px rgba(0,0,0,.55);
-    color-scheme: dark;
-  }
-}
 
 /* --------------------------------------------------------------------------
    Base y superficies del navegador. Lo que no dibujamos igual lleva la marca.
@@ -195,10 +176,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 }
 .nav a:hover { color: var(--naranja-hondo); border-bottom-color: var(--naranja); }
 .nav a[aria-current="page"] { color: var(--naranja-hondo); border-bottom-color: var(--naranja); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .nav a:hover,
-  :root:not([data-tema="claro"]) .nav a[aria-current="page"] { color: var(--naranja-vivo); }
-}
+
 @media (max-width: 52rem) { .nav { display: none; } }
 
 /* --------------------------------------------------------------------------
@@ -220,7 +198,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .btn--linea { background: transparent; color: var(--tinta); border-color: var(--linea-fuerte); }
 .btn--linea:hover { border-color: var(--tinta); }
 .btn[disabled], .btn[aria-disabled="true"] {
-  background: var(--fondo-hondo); color: var(--tinta-tenue);
+  background: var(--control); color: var(--tinta-tenue);
   border-color: var(--linea); cursor: not-allowed; transform: none;
 }
 
@@ -238,7 +216,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .portada__entrada { font-size: 1.16rem; color: var(--tinta-suave); max-width: 46ch; }
 .portada__acciones { display: flex; flex-wrap: wrap; gap: var(--r3); margin-top: var(--r5); }
 
-.horario { border: 1px solid var(--linea); border-radius: var(--radio); background: var(--fondo); overflow: hidden; }
+.horario { border: 1px solid var(--linea); border-radius: var(--radio); background: var(--control); overflow: hidden; }
 .horario__fila { display: flex; justify-content: space-between; gap: var(--r4); padding: var(--r3) var(--r4); border-bottom: 1px solid var(--linea); }
 .horario__fila:last-child { border-bottom: 0; }
 .horario__fila dt { font-weight: 700; margin: 0; }
@@ -305,7 +283,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .buscar input {
   width: 100%; font: inherit; color: var(--tinta);
   padding: .7rem .9rem .7rem 2.4rem;
-  background: var(--fondo); border: 1px solid var(--linea-fuerte);
+  background: var(--control); border: 1px solid var(--linea-fuerte);
   border-radius: var(--radio);
 }
 .buscar input::placeholder { color: var(--tinta-tenue); }
@@ -327,7 +305,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   text-decoration: none;
   flex: 0 0 auto; font: inherit; font-weight: 700; font-size: .9rem;
   padding: .5rem .9rem; border-radius: 99px; cursor: pointer;
-  background: var(--fondo); color: var(--tinta-suave);
+  background: var(--control); color: var(--tinta-suave);
   border: 1px solid var(--linea-fuerte);
   transition: background-color .16s cubic-bezier(.2,.8,.2,1), color .16s, border-color .16s;
   white-space: nowrap;
@@ -341,7 +319,13 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .grupo__tit { display: flex; align-items: baseline; gap: var(--r3); flex-wrap: wrap; }
 .grupo__nota { color: var(--tinta-suave); font-size: .9rem; margin: var(--r2) 0 0; }
 
-.platos { display: grid; gap: var(--r4); grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); margin-top: var(--r4); }
+/* align-items: start es load-bearing: por defecto la rejilla estira todas las
+   tarjetas de una fila a la altura de la más alta, así que una tarjeta con
+   foto dejaba a sus tres vecinas sin foto con un hueco vacío enorme. */
+.platos {
+  display: grid; gap: var(--r4); align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); margin-top: var(--r4);
+}
 
 .plato {
   display: flex; flex-direction: column;
@@ -365,9 +349,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   font-family: var(--titular); font-size: 1.06rem; line-height: 1.15;
   color: var(--verde-hondo); letter-spacing: -.02em;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .plato__sinfoto span { color: var(--verde); }
-}
+
 .plato__ref {
   position: absolute; left: var(--r2); bottom: var(--r2);
   background: rgba(26,21,18,.82); color: #fff;
@@ -394,7 +376,7 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .tallas button {
   font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer;
   padding: .32rem .55rem; border-radius: var(--radio-chico);
-  background: var(--fondo); border: 1px solid var(--linea-fuerte); color: var(--tinta-suave);
+  background: var(--control); border: 1px solid var(--linea-fuerte); color: var(--tinta-suave);
   transition: background-color .16s, color .16s, border-color .16s;
 }
 .tallas button:hover { border-color: var(--tinta-tenue); color: var(--tinta); }
@@ -439,9 +421,9 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .panel__cab { display: flex; align-items: center; gap: var(--r3); padding: var(--r4); border-bottom: 1px solid var(--linea); }
 .panel__cab h2 { font-size: 1.16rem; }
 .panel__cerrar { margin-left: auto; background: transparent; border: 0; cursor: pointer; color: var(--tinta-suave); padding: var(--r2); border-radius: var(--radio-chico); }
-.panel__cerrar:hover { background: var(--fondo); color: var(--tinta); }
+.panel__cerrar:hover { background: var(--control); color: var(--tinta); }
 .panel__lista { flex: 1; overflow-y: auto; padding: var(--r4); margin: 0; list-style: none; }
-.panel__pie { border-top: 1px solid var(--linea); padding: var(--r4); background: var(--fondo); }
+.panel__pie { border-top: 1px solid var(--linea); padding: var(--r4); background: var(--control); }
 
 .linea { display: grid; grid-template-columns: 1fr auto; gap: var(--r2) var(--r3); padding: var(--r3) 0; border-bottom: 1px solid var(--linea); }
 .linea__n { font-weight: 700; font-size: .94rem; }
@@ -450,9 +432,9 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .cant { display: inline-flex; align-items: center; gap: .1rem; border: 1px solid var(--linea-fuerte); border-radius: var(--radio-chico); overflow: hidden; }
 .cant button {
   width: 30px; height: 30px; font: inherit; font-weight: 700; cursor: pointer;
-  background: var(--fondo); border: 0; color: var(--tinta);
+  background: var(--control); border: 0; color: var(--tinta);
 }
-.cant button:hover { background: var(--fondo-hondo); }
+.cant button:hover { background: var(--control-hover); }
 .cant span { min-width: 30px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 .total { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--r3); }
@@ -496,7 +478,6 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    -------------------------------------------------------------------------- */
 
 .pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r7) var(--r5); }
-@media (prefers-color-scheme: dark) { :root:not([data-tema="claro"]) .pie { background: var(--fondo-hondo); } }
 .pie a { color: #fff; }
 .pie__rejilla { display: grid; gap: var(--r5); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
 .pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r3); font-family: var(--texto); font-weight: 800; }
@@ -504,3 +485,121 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .pie__legal { border-top: 1px solid var(--pie-linea); margin-top: var(--r6); padding-top: var(--r4); font-size: .9rem; color: var(--pie-rotulo); }
 .pie__legal a { color: var(--pie-texto); }
 .pie .pend { background: var(--pie-pend-fondo); border-color: var(--pie-pend-filo); color: var(--pie-pend-tinta); }
+
+/* --------------------------------------------------------------------------
+   Héroe: el color se compromete a escala de página, no en acentos sueltos.
+   Un campo verde entero es lo que separa esto de una plantilla con botones
+   de colores.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  background: var(--verde-hondo);
+  color: #fff;
+  padding-block: var(--r8);
+  text-align: center;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 1.3rem + 3.4vw, 4rem);
+  max-width: 16ch; margin-inline: auto; color: #fff;
+}
+.hero__entrada {
+  font-size: 1.16rem; color: var(--sobre-verde); max-width: 44ch;
+  margin: var(--r4) auto 0;
+}
+
+/* Los dos botones grandes de la portada, en la pauta de la categoría:
+   icono, acción en grande, y debajo qué pasa al pulsar. */
+.hero__acciones {
+  display: grid; gap: var(--r4); margin-top: var(--r7);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 46rem) { .hero__acciones { grid-template-columns: 1fr 1fr; } }
+
+.accion {
+  display: flex; align-items: center; gap: var(--r4);
+  padding: var(--r5); border-radius: var(--radio);
+  text-decoration: none; text-align: left;
+  border: 2px solid transparent;
+  transition: transform .16s cubic-bezier(.2,.8,.2,1), background-color .16s, border-color .16s;
+}
+.accion:hover { transform: translateY(-2px); }
+.accion svg { flex: 0 0 auto; }
+.accion__tit { display: block; font-family: var(--titular); font-size: 1.3rem; line-height: 1.1; letter-spacing: -.02em; }
+.accion__sub { display: block; font-size: .94rem; margin-top: .2rem; opacity: .85; }
+
+.accion--pedir { background: var(--naranja-accion); color: var(--sobre-accion); }
+.accion--pedir:hover { background: #FF9433; }
+.accion--wa { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+.accion--wa:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+
+/* --------------------------------------------------------------------------
+   Banda de sección. Es el recurso de la carta impresa de Kalamarata: rótulo
+   blanco sobre campo verde. No es un adorno inventado, es su propio sistema.
+   -------------------------------------------------------------------------- */
+
+.banda {
+  background: var(--verde-hondo); color: #fff;
+  padding: var(--r4) 0;
+  margin-block: var(--r7) 0;
+  scroll-margin-top: var(--desplazamiento, 12rem);
+}
+.banda__caja { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--r2) var(--r4); }
+.banda h2 { color: #fff; font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.2rem); }
+.banda__horario { font-size: .94rem; color: var(--sobre-verde); font-weight: 600; }
+.banda__nota { flex-basis: 100%; font-size: .9rem; color: var(--sobre-verde-2); margin: 0; }
+
+.servicio { padding-bottom: var(--r8); }
+/* Los dos servicios son dos cartas distintas. La diferencia tiene que verse
+   al pasar de una a otra, no adivinarse. */
+.servicio--rapidas { background: var(--fondo-hondo); border-top: 3px solid var(--verde-hondo); }
+
+/* Aviso de disponibilidad: va dentro de la banda para que viaje con ella. */
+.banda__aviso {
+  flex-basis: 100%; margin: var(--r3) 0 0;
+  background: rgba(0,0,0,.22); border-radius: var(--radio-chico);
+  padding: var(--r2) var(--r3); font-size: .9rem; font-weight: 600; color: #fff;
+}
+.banda__cerrado {
+  flex-basis: 100%; margin: var(--r2) 0 0;
+  background: var(--naranja-accion); color: var(--sobre-accion);
+  border-radius: var(--radio-chico); padding: var(--r2) var(--r3);
+  font-size: .9rem; font-weight: 800;
+}
+
+/* Indicador pegajoso: la barra de categorías ya está siempre a la vista, así
+   que el servicio en curso viaja ahí. Sin añadir una tercera capa pegajosa,
+   que a 390px se comería un tercio de la pantalla. */
+.barra__serv {
+  /* Es un «estás aquí», no un botón: si se ve como los chips de salto, el
+     visitante encuentra dos píldoras verdes iguales y no sabe cuál pulsar. */
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: .45rem;
+  background: transparent; color: var(--verde-hondo);
+  font-family: var(--titular); font-size: .9rem; letter-spacing: -.01em;
+  padding: .45rem 0; white-space: nowrap;
+}
+.barra__serv[hidden] { display: none; }
+.barra__serv::before {
+  content: ""; width: .55rem; height: .55rem; border-radius: 99px;
+  background: var(--verde-hondo);
+}
+@media (max-width: 30rem) { .barra__serv { font-size: .82rem; } }
+
+/* Los chips de servicio mandan sobre los de categoría: son la división real
+   de la carta, no un filtro más. */
+.cats a.cats__serv {
+  background: var(--verde-hondo); border-color: var(--verde-hondo);
+  color: var(--sobre-marca); font-family: var(--titular); letter-spacing: -.01em;
+}
+.cats a.cats__serv:hover { background: var(--verde-prensa); border-color: var(--verde-prensa); color: var(--sobre-marca); }
+
+/* Dentro de un servicio los títulos de categoría son h3, no h2: el h2 es la
+   banda del servicio. El tamaño sigue la rampa. */
+.grupo__tit h3 { font-size: clamp(1.4rem, 1.15rem + 1.1vw, 2rem); letter-spacing: -.02em; }
+
+.plato--hoy { border-color: var(--verde-hondo); border-width: 2px; }
+.plato--hoy .dato__hoy { align-self: flex-start; }
+
+/* Servicio cerrado ahora mismo: se atenúa lo justo para que se note que no es
+   lo que se está sirviendo, sin volverlo ilegible ni impedir el pedido. */
+.servicio--cerrado .platos, .servicio--cerrado .lista-bar { opacity: .72; }
+.servicio--cerrado .plato:hover { opacity: 1; }

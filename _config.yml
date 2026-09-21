@@ -1,0 +1,26 @@
+# Red de seguridad para el modo «Deploy from a branch» de GitHub Pages.
+#
+# Si Pages publica la rama directamente en vez del artefacto del workflow,
+# sirve el repositorio ENTERO, incluida la documentación interna. Esta lista
+# se lo impide.
+#
+# Con Source = «GitHub Actions» (lo correcto, ver DEPLOY.md) este archivo no
+# se usa: el workflow ni siquiera lo copia al artefacto.
+
+exclude:
+  - .claude/
+  - .impeccable/
+  - .github/
+  - PRODUCT.md
+  - DESIGN.md
+  - PENDIENTES.md
+  - DEPLOY.md
+  - README.md
+  - test
+  - _config.yml
+
+# OJO, LIMITACIÓN REAL: esta lista puede ESCONDER la documentación interna,
+# pero NO puede añadir el noindex. El único sitio donde vive el noindex es el
+# paso del workflow, y ese paso solo se aplica si Source = «GitHub Actions».
+# En modo rama la vista previa queda indexable, y eso solo se arregla con el
+# cambio de ajuste.

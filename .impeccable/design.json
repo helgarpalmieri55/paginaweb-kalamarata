@@ -1,189 +1,650 @@
 {
-  "schemaVersion": 2,
-  "generatedAt": "2026-09-21T00:00:00Z",
-  "title": "Design System: Kalamarata",
-  "extensions": {
-    "colorMeta": {
-      "naranja": { "role": "primary", "displayName": "Naranja de marca", "canonical": "#E8720C", "dark": "#F5861E", "note": "No pasa AA como texto sobre papel (~3.0:1). Solo filete, foco, seleccion y marca.", "tonalRamp": ["oklch(25% 0.11 55)", "oklch(35% 0.14 55)", "oklch(45% 0.16 55)", "oklch(55% 0.18 55)", "oklch(65% 0.18 55)", "oklch(75% 0.15 55)", "oklch(85% 0.09 55)", "oklch(95% 0.03 55)"] },
-      "naranja-vivo": { "role": "primary", "displayName": "Naranja vivo", "canonical": "#F5821F", "dark": "#FF9833", "tonalRamp": ["oklch(25% 0.11 58)", "oklch(35% 0.14 58)", "oklch(45% 0.16 58)", "oklch(55% 0.18 58)", "oklch(68% 0.18 58)", "oklch(78% 0.14 58)", "oklch(87% 0.08 58)", "oklch(95% 0.03 58)"] },
-      "naranja-hondo": { "role": "primary", "displayName": "Naranja de relleno", "canonical": "#B8550A", "dark": "#F5861E", "tonalRamp": ["oklch(22% 0.09 52)", "oklch(32% 0.12 52)", "oklch(42% 0.14 52)", "oklch(51% 0.15 52)", "oklch(62% 0.15 52)", "oklch(73% 0.12 52)", "oklch(84% 0.07 52)", "oklch(94% 0.03 52)"] },
-      "naranja-texto": { "role": "primary", "displayName": "Naranja de texto", "canonical": "#B8550A", "dark": "#FF9833", "note": "Alias de naranja-hondo en claro; en oscuro se separa para sobrevivir al fondo.", "tonalRamp": ["oklch(22% 0.09 52)", "oklch(32% 0.12 52)", "oklch(42% 0.14 52)", "oklch(51% 0.15 52)", "oklch(62% 0.15 52)", "oklch(73% 0.12 52)", "oklch(84% 0.07 52)", "oklch(94% 0.03 52)"] },
-      "naranja-prensa": { "role": "primary", "displayName": "Naranja pulsado", "canonical": "#9E4907", "dark": "#FFAA55", "tonalRamp": ["oklch(20% 0.08 50)", "oklch(29% 0.11 50)", "oklch(38% 0.13 50)", "oklch(46% 0.14 50)", "oklch(58% 0.14 50)", "oklch(70% 0.11 50)", "oklch(82% 0.07 50)", "oklch(93% 0.03 50)"] },
-      "sobre-marca": { "role": "primary", "displayName": "Sobre marca", "canonical": "#FFFFFF", "dark": "#17120F", "note": "Color del texto que va encima de cualquier relleno de marca. Se invierte en oscuro porque los rellenos se aclaran.", "tonalRamp": ["oklch(15% 0.008 60)", "oklch(25% 0.008 60)", "oklch(38% 0.006 60)", "oklch(50% 0.005 60)", "oklch(62% 0.004 60)", "oklch(75% 0.003 60)", "oklch(88% 0.002 60)", "oklch(100% 0 0)"] },
-      "verde": { "role": "secondary", "displayName": "Verde pasto", "canonical": "#2C8B2B", "dark": "#4FB24D", "tonalRamp": ["oklch(20% 0.07 145)", "oklch(30% 0.10 145)", "oklch(40% 0.13 145)", "oklch(51% 0.15 145)", "oklch(62% 0.16 145)", "oklch(74% 0.13 145)", "oklch(85% 0.08 145)", "oklch(95% 0.03 145)"] },
-      "verde-hondo": { "role": "secondary", "displayName": "Verde hondo", "canonical": "#1E6B1D", "dark": "#5FC25D", "tonalRamp": ["oklch(18% 0.06 145)", "oklch(27% 0.09 145)", "oklch(36% 0.11 145)", "oklch(45% 0.12 145)", "oklch(57% 0.13 145)", "oklch(70% 0.11 145)", "oklch(83% 0.07 145)", "oklch(94% 0.03 145)"] },
-      "verde-prensa": { "role": "secondary", "displayName": "Verde pulsado", "canonical": "#175616", "dark": "#86D884", "tonalRamp": ["oklch(16% 0.05 145)", "oklch(24% 0.08 145)", "oklch(33% 0.10 145)", "oklch(41% 0.11 145)", "oklch(54% 0.12 145)", "oklch(68% 0.10 145)", "oklch(82% 0.06 145)", "oklch(93% 0.03 145)"] },
-      "verde-claro": { "role": "secondary", "displayName": "Verde papel", "canonical": "#E8F4E7", "dark": "#1C2E1B", "tonalRamp": ["oklch(22% 0.04 145)", "oklch(34% 0.04 145)", "oklch(46% 0.04 145)", "oklch(58% 0.04 145)", "oklch(70% 0.04 145)", "oklch(80% 0.03 145)", "oklch(89% 0.02 145)", "oklch(96% 0.01 145)"] },
-      "enlace": { "role": "secondary", "displayName": "Verde de enlace", "canonical": "#1E6B1D", "dark": "#4FB24D", "note": "Se redefine solo como token dentro del bloque oscuro. Nunca como regla `a` en el media query: gana a .btn en especificidad.", "tonalRamp": ["oklch(18% 0.06 145)", "oklch(27% 0.09 145)", "oklch(36% 0.11 145)", "oklch(45% 0.12 145)", "oklch(57% 0.13 145)", "oklch(70% 0.11 145)", "oklch(83% 0.07 145)", "oklch(94% 0.03 145)"] },
-      "papel": { "role": "neutral", "displayName": "Papel", "canonical": "#FFFFFF", "dark": "#201A16", "tonalRamp": ["oklch(15% 0.008 60)", "oklch(25% 0.008 60)", "oklch(38% 0.006 60)", "oklch(50% 0.005 60)", "oklch(64% 0.004 60)", "oklch(78% 0.003 60)", "oklch(90% 0.002 60)", "oklch(100% 0 0)"] },
-      "fondo": { "role": "neutral", "displayName": "Papel cálido", "canonical": "#F6F3EE", "dark": "#151110", "tonalRamp": ["oklch(16% 0.008 70)", "oklch(26% 0.008 70)", "oklch(38% 0.008 70)", "oklch(51% 0.008 70)", "oklch(64% 0.008 70)", "oklch(78% 0.008 70)", "oklch(89% 0.008 70)", "oklch(97% 0.006 70)"] },
-      "fondo-hondo": { "role": "neutral", "displayName": "Papel hondo", "canonical": "#EDE8E0", "dark": "#0E0B0A", "tonalRamp": ["oklch(14% 0.008 70)", "oklch(24% 0.010 70)", "oklch(36% 0.011 70)", "oklch(49% 0.012 70)", "oklch(62% 0.012 70)", "oklch(76% 0.012 70)", "oklch(87% 0.011 70)", "oklch(95% 0.008 70)"] },
-      "tinta": { "role": "neutral", "displayName": "Tinta", "canonical": "#1A1512", "dark": "#F6F1EA", "tonalRamp": ["oklch(12% 0.012 55)", "oklch(21% 0.014 55)", "oklch(33% 0.014 55)", "oklch(45% 0.013 55)", "oklch(58% 0.012 55)", "oklch(72% 0.010 55)", "oklch(86% 0.008 55)", "oklch(96% 0.006 55)"] },
-      "tinta-suave": { "role": "neutral", "displayName": "Tinta suave", "canonical": "#5C534B", "dark": "#BCB0A4", "tonalRamp": ["oklch(15% 0.010 65)", "oklch(25% 0.012 65)", "oklch(36% 0.013 65)", "oklch(46% 0.013 65)", "oklch(59% 0.013 65)", "oklch(73% 0.012 65)", "oklch(86% 0.009 65)", "oklch(96% 0.006 65)"] },
-      "tinta-tenue": { "role": "neutral", "displayName": "Tinta tenue", "canonical": "#6E645B", "dark": "#8D8277", "tonalRamp": ["oklch(16% 0.011 65)", "oklch(26% 0.013 65)", "oklch(37% 0.014 65)", "oklch(49% 0.014 65)", "oklch(62% 0.013 65)", "oklch(75% 0.012 65)", "oklch(87% 0.009 65)", "oklch(96% 0.006 65)"] },
-      "linea": { "role": "neutral", "displayName": "Filete", "canonical": "#E2DBD1", "dark": "#362D27", "note": "El filete de 1px es la herramienta principal de profundidad del sistema.", "tonalRamp": ["oklch(18% 0.012 70)", "oklch(28% 0.014 70)", "oklch(40% 0.016 70)", "oklch(52% 0.017 70)", "oklch(65% 0.017 70)", "oklch(78% 0.016 70)", "oklch(89% 0.013 70)", "oklch(97% 0.008 70)"] },
-      "linea-fuerte": { "role": "neutral", "displayName": "Filete fuerte", "canonical": "#C9BFB2", "dark": "#4A3F37", "tonalRamp": ["oklch(18% 0.014 70)", "oklch(28% 0.017 70)", "oklch(40% 0.020 70)", "oklch(52% 0.022 70)", "oklch(65% 0.022 70)", "oklch(79% 0.020 70)", "oklch(90% 0.014 70)", "oklch(97% 0.008 70)"] },
-      "alerta": { "role": "tertiary", "displayName": "Rojo de aviso", "canonical": "#A8341A", "dark": "#F0836A", "tonalRamp": ["oklch(20% 0.08 35)", "oklch(29% 0.11 35)", "oklch(38% 0.14 35)", "oklch(47% 0.16 35)", "oklch(59% 0.16 35)", "oklch(71% 0.13 35)", "oklch(83% 0.08 35)", "oklch(94% 0.03 35)"] },
-      "alerta-fondo": { "role": "tertiary", "displayName": "Papel de aviso", "canonical": "#FBEDE9", "dark": "#2E1A15", "tonalRamp": ["oklch(20% 0.03 35)", "oklch(31% 0.03 35)", "oklch(43% 0.03 35)", "oklch(55% 0.03 35)", "oklch(67% 0.03 35)", "oklch(79% 0.025 35)", "oklch(89% 0.018 35)", "oklch(97% 0.008 35)"] }
-    },
-    "typographyMeta": {
-      "display": { "displayName": "Titular", "purpose": "El h1 de cada página, uno por página. Archivo Black con text-wrap: balance." },
-      "headline": { "displayName": "Título de sección", "purpose": "Títulos de sección y de categoría de la carta." },
-      "title": { "displayName": "Título menor", "purpose": "h3, nombre de plato, nombre de línea del pedido." },
-      "body": { "displayName": "Texto", "purpose": "Texto corrido, máximo 68ch (70ch de caja en páginas legales)." },
-      "label": { "displayName": "Rótulo", "purpose": "Metadato en versalitas con tracking abierto: dt de identidad legal, cabeceras del pie, bajada del wordmark, marca de imagen de referencia. Nunca antetítulo." },
-      "precio": { "displayName": "Precio", "purpose": "Columna de precios y totales. Siempre tabular-nums." }
-    },
-    "shadows": [
-      { "name": "sombra", "value": "0 1px 2px rgba(26, 21, 18, .06), 0 4px 12px rgba(26, 21, 18, .07)", "dark": "0 1px 2px rgba(0,0,0,.4), 0 4px 12px rgba(0,0,0,.45)", "purpose": "Única sombra de reacción: .plato:hover, junto al cambio de filete a linea-fuerte." },
-      { "name": "sombra-alta", "value": "0 2px 4px rgba(26, 21, 18, .08), 0 12px 28px rgba(26, 21, 18, .12)", "dark": "0 2px 4px rgba(0,0,0,.45), 0 12px 28px rgba(0,0,0,.55)", "purpose": "Panel de pedido, el único elemento que flota fuera del plano del documento." }
-    ],
-    "motion": [
-      { "name": "salida-rapida", "value": "cubic-bezier(.2,.8,.2,1)", "purpose": "Curva de estado: 160ms en botones, chips y tarjetas; 180ms en el enlace de salto." },
-      { "name": "entrada-panel", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "260ms para el cajón del pedido y su velo." },
-      { "name": "duracion-estado", "value": "160ms", "purpose": "Duración por defecto de hover y cambios de color." },
-      { "name": "duracion-panel", "value": "260ms", "purpose": "Duración del deslizamiento del panel y del fundido del velo." },
-      { "name": "reduced-motion", "value": "animation-duration: .01ms; transition-duration: .01ms", "purpose": "Con prefers-reduced-motion todo se anula y scroll-behavior pasa a auto." }
-    ],
-    "breakpoints": [
-      { "name": "movil", "value": "52rem", "purpose": "Único corte real: oculta la navegación, muestra la barra fija de pedido, cabecera de 68px a 60px." },
-      { "name": "portada-dos-columnas", "value": "60rem", "purpose": "La portada pasa a 1.15fr .85fr." },
-      { "name": "estrecho", "value": "30rem", "purpose": "Ajuste del ancho del contenedor .env." }
-    ],
-    "layout": {
-      "container": "min(100% - 2rem, 1180px)",
-      "containerLectura": "min(100% - 2rem, 70ch)",
-      "rejillas": ["repeat(auto-fill, minmax(268px, 1fr)) — parrilla de platos", "repeat(auto-fit, minmax(230px, 1fr)) — tarjetas de dato", "repeat(auto-fit, minmax(210px, 1fr)) — identidad legal y pie"],
-      "zIndex": { "barra-carta": 30, "cabecera": 40, "barra-movil": 45, "velo": 50, "panel": 60, "saltar": 100 },
-      "alturasPegajosas": { "cabecera": "68px (60px < 52rem)", "barra-carta": "top: 68px (60px < 52rem)", "scroll-margin-top de grupo": "140px" }
-    }
-  },
-  "components": [
-    {
-      "name": "Botón de pedido",
-      "kind": "button",
-      "refersTo": "button-pedido",
-      "description": "Acción primaria de la casa: abrir la carta o enviar el pedido.",
-      "html": "<a class=\"ds-btn ds-btn-ped\" href=\"#\">Ver la carta y pedir</a>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color .16s cubic-bezier(.2,.8,.2,1), border-color .16s, color .16s, transform .16s; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; border-radius: var(--radio-chico, 6px); } .ds-btn-ped { background: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); } .ds-btn-ped:hover { background: var(--naranja-prensa, #9E4907); }"
-    },
-    {
-      "name": "Botón de WhatsApp",
-      "kind": "button",
-      "refersTo": "button-whatsapp",
-      "description": "Salida al canal donde se cierra el pedido. Verde, nunca naranja.",
-      "html": "<a class=\"ds-btn ds-btn-wa\" href=\"#\">Escribir por WhatsApp</a>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color .16s cubic-bezier(.2,.8,.2,1), transform .16s; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; } .ds-btn-wa { background: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); } .ds-btn-wa:hover { background: var(--verde-prensa, #175616); }"
-    },
-    {
-      "name": "Botón de línea",
-      "kind": "button",
-      "refersTo": "button-linea",
-      "description": "Acción secundaria de la cabecera: «Tu pedido», con contador.",
-      "html": "<button class=\"ds-btn ds-btn-linea ds-pedido-btn\" type=\"button\">Tu pedido <span class=\"ds-cuenta\">3</span></button>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; transition: background-color .16s cubic-bezier(.2,.8,.2,1), border-color .16s, color .16s, transform .16s; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; } .ds-btn-linea { background: transparent; color: var(--tinta, #1A1512); border-color: var(--linea-fuerte, #C9BFB2); } .ds-btn-linea:hover { border-color: var(--tinta, #1A1512); } .ds-pedido-btn { position: relative; } .ds-cuenta { position: absolute; top: -6px; right: -6px; min-width: 21px; height: 21px; display: grid; place-items: center; padding: 0 5px; background: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); border: 2px solid var(--papel, #fff); border-radius: 99px; font-size: .7rem; font-weight: 800; font-variant-numeric: tabular-nums; }"
-    },
-    {
-      "name": "Botón redondo de añadir",
-      "kind": "button",
-      "refersTo": "boton-mas",
-      "description": "La silueta firmante del sitio: 40px redondo, naranja, en cada una de las 172 tarjetas.",
-      "html": "<button class=\"ds-mas\" type=\"button\" aria-label=\"Añadir al pedido\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"><path d=\"M10 4.5v11M4.5 10h11\"/></svg></button>",
-      "css": ".ds-mas { width: 40px; height: 40px; border-radius: 99px; display: grid; place-items: center; cursor: pointer; background: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); border: 0; transition: background-color .16s cubic-bezier(.2,.8,.2,1), transform .16s; } .ds-mas:hover { background: var(--naranja-prensa, #9E4907); } .ds-mas:active { transform: scale(.92); } .ds-mas:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
-    },
-    {
-      "name": "Chip de categoría",
-      "kind": "chip",
-      "refersTo": "chip-categoria",
-      "description": "Píldora de navegación de la carta. El estado activo lo marca un IntersectionObserver sobre la sección visible, no el clic.",
-      "html": "<div class=\"ds-cats\" role=\"group\" aria-label=\"Categorías\"><button type=\"button\" aria-pressed=\"true\">Pizzas</button><button type=\"button\" aria-pressed=\"false\">Pescados</button><button type=\"button\" aria-pressed=\"false\">Hamburguesas</button></div>",
-      "css": ".ds-cats { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; } .ds-cats::-webkit-scrollbar { display: none; } .ds-cats button { flex: 0 0 auto; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; font-size: .88rem; padding: .5rem .9rem; border-radius: 99px; cursor: pointer; background: var(--fondo, #F6F3EE); color: var(--tinta-suave, #5C534B); border: 1px solid var(--linea-fuerte, #C9BFB2); white-space: nowrap; transition: background-color .16s cubic-bezier(.2,.8,.2,1), color .16s, border-color .16s; } .ds-cats button:hover { border-color: var(--tinta-tenue, #6E645B); color: var(--tinta, #1A1512); } .ds-cats button[aria-pressed=\"true\"] { background: var(--naranja-hondo, #B8550A); border-color: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); } .ds-cats button:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
-    },
-    {
-      "name": "Chip de tamaño de pizza",
-      "kind": "chip",
-      "refersTo": "chip-talla",
-      "description": "Elección dentro de la tarjeta; seleccionado en verde para distinguirlo de la navegación naranja. Cambiar de tamaño reescribe el precio de la tarjeta.",
-      "html": "<div class=\"ds-tallas\" role=\"group\" aria-label=\"Tamaño\"><button type=\"button\" aria-pressed=\"true\">Personal</button><button type=\"button\" aria-pressed=\"false\">Mediana</button><button type=\"button\" aria-pressed=\"false\">Familiar</button></div>",
-      "css": ".ds-tallas { display: flex; flex-wrap: wrap; gap: .25rem; } .ds-tallas button { font-family: var(--texto, Archivo, sans-serif); font-size: .78rem; font-weight: 700; cursor: pointer; padding: .32rem .55rem; border-radius: var(--radio-chico, 6px); background: var(--fondo, #F6F3EE); border: 1px solid var(--linea-fuerte, #C9BFB2); color: var(--tinta-suave, #5C534B); transition: background-color .16s, color .16s, border-color .16s; } .ds-tallas button:hover { border-color: var(--tinta-tenue, #6E645B); color: var(--tinta, #1A1512); } .ds-tallas button[aria-pressed=\"true\"] { background: var(--verde-hondo, #1E6B1D); border-color: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); } .ds-tallas button:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
-    },
-    {
-      "name": "Tarjeta de plato",
-      "kind": "card",
-      "refersTo": "tarjeta-plato",
-      "description": "Unidad de la carta: lienzo 4:3, nombre, descripción, precio tabular a la izquierda y botón redondo a la derecha. Sin foto, el lienzo se llena con el nombre en Archivo Black.",
-      "html": "<article class=\"ds-plato\"><div class=\"ds-plato__lienzo\"><div class=\"ds-plato__sinfoto\"><span>Mojarra frita</span></div></div><div class=\"ds-plato__cuerpo\"><h3 class=\"ds-plato__nombre\">Mojarra frita</h3><p class=\"ds-plato__desc\">Con patacón, arroz de coco y ensalada.</p><div class=\"ds-plato__pie\"><span class=\"ds-plato__precio\">$38.000</span><button class=\"ds-mas\" type=\"button\" aria-label=\"Añadir Mojarra frita al pedido\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"><path d=\"M10 4.5v11M4.5 10h11\"/></svg></button></div></div></article>",
-      "css": ".ds-plato { display: flex; flex-direction: column; background: var(--papel, #fff); border: 1px solid var(--linea, #E2DBD1); border-radius: var(--radio, 10px); overflow: hidden; max-width: 300px; transition: border-color .16s cubic-bezier(.2,.8,.2,1), box-shadow .16s; } .ds-plato:hover { border-color: var(--linea-fuerte, #C9BFB2); box-shadow: 0 1px 2px rgba(26,21,18,.06), 0 4px 12px rgba(26,21,18,.07); } .ds-plato__lienzo { position: relative; aspect-ratio: 4 / 3; background: var(--fondo-hondo, #EDE8E0); overflow: hidden; } .ds-plato__sinfoto { width: 100%; height: 100%; display: grid; place-items: center; padding: 1rem; background: var(--verde-claro, #E8F4E7); text-align: center; } .ds-plato__sinfoto span { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.05rem; line-height: 1.15; color: var(--verde-hondo, #1E6B1D); letter-spacing: -.02em; } .ds-plato__cuerpo { padding: 1rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; } .ds-plato__nombre { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1rem; letter-spacing: -.015em; margin: 0; line-height: 1.08; } .ds-plato__desc { font-family: var(--texto, Archivo, sans-serif); font-size: .89rem; color: var(--tinta-suave, #5C534B); margin: 0; line-height: 1.55; } .ds-plato__pie { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: auto; padding-top: .5rem; } .ds-plato__precio { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.12rem; font-variant-numeric: tabular-nums; } .ds-mas { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 99px; display: grid; place-items: center; cursor: pointer; background: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); border: 0; transition: background-color .16s cubic-bezier(.2,.8,.2,1), transform .16s; } .ds-mas:hover { background: var(--naranja-prensa, #9E4907); } .ds-mas:active { transform: scale(.92); }"
-    },
-    {
-      "name": "Buscador de la carta",
-      "kind": "input",
-      "refersTo": "input-buscar",
-      "description": "Único campo del sitio. Icono SVG de lupa a la izquierda; el foco lo da el anillo naranja global, el borde no cambia.",
-      "html": "<div class=\"ds-buscar\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"6\"/><path d=\"m13.5 13.5 4 4\" stroke-linecap=\"round\"/></svg><input type=\"search\" placeholder=\"¿Qué se te antoja?\" autocomplete=\"off\" aria-label=\"Buscar en la carta\"></div>",
-      "css": ".ds-buscar { position: relative; max-width: 420px; } .ds-buscar input { width: 100%; font-family: var(--texto, Archivo, sans-serif); font-size: 1rem; color: var(--tinta, #1A1512); padding: .7rem .9rem .7rem 2.4rem; background: var(--fondo, #F6F3EE); border: 1px solid var(--linea-fuerte, #C9BFB2); border-radius: var(--radio, 10px); } .ds-buscar input::placeholder { color: var(--tinta-tenue, #6E645B); } .ds-buscar input:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; } .ds-buscar svg { position: absolute; left: .75rem; top: 50%; transform: translateY(-50%); color: var(--tinta-tenue, #6E645B); }"
-    },
-    {
-      "name": "Navegación principal",
-      "kind": "nav",
-      "refersTo": null,
-      "description": "Cabecera pegajosa sobre papel con filete inferior. El wordmark es texto, no imagen: Archivo Black verde con la K en naranja.",
-      "html": "<header class=\"ds-cab\"><a class=\"ds-marca\" href=\"#\"><span><span class=\"ds-marca__nombre\"><b>K</b>alamarata</span><span class=\"ds-marca__bajada\">Restaurante Bar · Pizzería</span></span></a><nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#\" aria-current=\"page\">Inicio</a><a href=\"#\">Carta</a><a href=\"#\">Dónde estamos</a><a href=\"#\">Contacto</a></nav></header>",
-      "css": ".ds-cab { display: flex; align-items: center; gap: 1rem; min-height: 68px; padding: .5rem 1rem; background: var(--papel, #fff); border-bottom: 1px solid var(--linea, #E2DBD1); } .ds-marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; } .ds-marca__nombre { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.5rem; line-height: 1; letter-spacing: -.035em; color: var(--verde, #2C8B2B); } .ds-marca__nombre b { color: var(--naranja, #E8720C); font-weight: inherit; } .ds-marca__bajada { display: block; font-family: var(--texto, Archivo, sans-serif); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave, #5C534B); margin-top: .18rem; font-weight: 600; } .ds-nav { display: flex; gap: 1.5rem; margin-left: auto; } .ds-nav a { font-family: var(--texto, Archivo, sans-serif); color: var(--tinta, #1A1512); text-decoration: none; font-weight: 600; font-size: .94rem; padding-block: .5rem; border-bottom: 2px solid transparent; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--naranja-hondo, #B8550A); border-bottom-color: var(--naranja, #E8720C); } .ds-nav a:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
-    },
-    {
-      "name": "Panel de pedido",
-      "kind": "custom",
-      "refersTo": "panel-pedido",
-      "description": "Cajón derecho de 420px que compone el mensaje de WhatsApp. Cerrado lleva inert + aria-hidden=true; al cerrarse devuelve el foco a quien lo abrió.",
-      "html": "<aside class=\"ds-panel\" aria-label=\"Tu pedido\"><div class=\"ds-panel__cab\"><h2>Tu pedido</h2><button class=\"ds-panel__cerrar\" type=\"button\" aria-label=\"Cerrar el pedido\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m5 5 10 10M15 5 5 15\"/></svg></button></div><ul class=\"ds-panel__lista\"><li class=\"ds-linea\"><div><div class=\"ds-linea__n\">Pizza Hawaiana</div><div class=\"ds-linea__d\">Familiar</div><div class=\"ds-cant\"><button type=\"button\" aria-label=\"Quitar uno\">−</button><span>2</span><button type=\"button\" aria-label=\"Añadir uno\">+</button></div></div><div class=\"ds-linea__p\">$76.000</div></li></ul><div class=\"ds-panel__pie\"><dl class=\"ds-total\"><dt>Total</dt><dd>$76.000</dd></dl><a class=\"ds-btn ds-btn-wa\" href=\"#\">Enviar por WhatsApp</a></div></aside>",
-      "css": ".ds-panel { width: min(420px, 100%); background: var(--papel, #fff); border-left: 1px solid var(--linea, #E2DBD1); display: flex; flex-direction: column; box-shadow: 0 2px 4px rgba(26,21,18,.08), 0 12px 28px rgba(26,21,18,.12); font-family: var(--texto, Archivo, sans-serif); } .ds-panel__cab { display: flex; align-items: center; gap: .75rem; padding: 1rem; border-bottom: 1px solid var(--linea, #E2DBD1); } .ds-panel__cab h2 { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.15rem; margin: 0; line-height: 1.08; } .ds-panel__cerrar { margin-left: auto; background: transparent; border: 0; cursor: pointer; color: var(--tinta-suave, #5C534B); padding: .5rem; border-radius: var(--radio-chico, 6px); display: grid; place-items: center; } .ds-panel__cerrar:hover { background: var(--fondo, #F6F3EE); color: var(--tinta, #1A1512); } .ds-panel__lista { flex: 1; overflow-y: auto; padding: 1rem; margin: 0; list-style: none; } .ds-linea { display: grid; grid-template-columns: 1fr auto; gap: .5rem .75rem; padding: .75rem 0; border-bottom: 1px solid var(--linea, #E2DBD1); } .ds-linea__n { font-weight: 700; font-size: .95rem; } .ds-linea__d { font-size: .82rem; color: var(--tinta-tenue, #6E645B); } .ds-linea__p { font-variant-numeric: tabular-nums; font-weight: 700; } .ds-cant { display: inline-flex; align-items: center; gap: .1rem; border: 1px solid var(--linea-fuerte, #C9BFB2); border-radius: var(--radio-chico, 6px); overflow: hidden; margin-top: .5rem; } .ds-cant button { width: 30px; height: 30px; font: inherit; font-weight: 700; cursor: pointer; background: var(--fondo, #F6F3EE); border: 0; color: var(--tinta, #1A1512); } .ds-cant button:hover { background: var(--fondo-hondo, #EDE8E0); } .ds-cant span { min-width: 30px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-panel__pie { border-top: 1px solid var(--linea, #E2DBD1); padding: 1rem; background: var(--fondo, #F6F3EE); } .ds-total { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 .75rem; } .ds-total dt { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.05rem; } .ds-total dd { margin: 0; font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.5rem; font-variant-numeric: tabular-nums; } .ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; text-decoration: none; } .ds-btn-wa { background: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); } .ds-btn-wa:hover { background: var(--verde-prensa, #175616); }"
-    }
-  ],
-  "narrative": {
-    "northStar": "La carta impresa del local, pasada a pantalla",
-    "overview": "El sistema sale del logo del cliente leído literalmente: naranja, verde y negro sobre papel cálido. No hay hero fotográfico ni menú decorativo: la carta es la página, y los datos legales del establecimiento (razón social, NIT, dirección, teléfono) son contenido de primera categoría, en texto seleccionable, no residuo de pie de página. La densidad es la de una carta de restaurante real: 172 productos en 22 categorías, leídos con una mano en un celular de 390 px.\n\nLa materialidad es de papel y tinta. Las superficies son blancas o de un beige cálido (fondo, #F6F3EE) y se separan entre sí por filetes de 1px y por escalones de tono, no por pilas de sombra. El color de marca aparece poco y siempre trabajando: el botón redondo naranja de «añadir», la píldora de categoría, la columna de precios. Todo lo demás es tinta sobre papel.\n\nHay dos esquemas, claro y oscuro, porque hay dos escenas de uso reales: el celular en la calle a mediodía con sol, y el mismo celular en un sofá a las ocho de la noche. El oscuro no es una inversión decorativa: los rellenos de marca se aclaran para sobrevivir al fondo, y por eso existe un token dedicado al texto que va encima de ellos.",
-    "keyCharacteristics": [
-      "Paleta derivada del logo del cliente, no elegida de una plantilla.",
-      "Archivo / Archivo Black (Omnibus-Type, Buenos Aires), grotesca dibujada para imprenta latinoamericana.",
-      "Cifras tabulares en todo precio, cantidad y total.",
-      "Profundidad por filete de 1px y escalón de superficie.",
-      "Radios 10 / 6 / 99 px y nada más.",
-      "Reconocible sin contenido por: el botón redondo naranja, la columna única de precios alineada a la derecha y la píldora de categoría."
-    ],
-    "rules": [
-      { "name": "La Regla de los Dos Naranjas", "body": "Hay dos naranjas y no son intercambiables. naranja (#E8720C) es el de la marca: relleno grande, foco, selección, filete de navegación. naranja-texto (#B8550A) es el de texto y de todo relleno que lleve texto encima, porque el de marca no pasa AA como texto. Escribir texto en naranja sobre papel es un error de contraste, no una variante.", "section": "colors" },
-      { "name": "La Regla de sobre-marca", "body": "El texto que va encima de un relleno de marca (naranja o verde) se pinta siempre con var(--sobre-marca), nunca con #fff literal. En esquema oscuro los rellenos se aclaran y ese token pasa a #17120F: el texto se oscurece con ellos. Un #fff fijo se vuelve ilegible en la mitad de las noches.", "section": "colors" },
-      { "name": "La Regla del Enlace por Token", "body": "El color de enlace vive en el token --enlace y se redefine dentro del bloque oscuro como token, nunca como una regla a { color: … } dentro del media query. Esa versión tiene más especificidad que .btn y le repinta el texto a todos los botones que son anclas. Si un enlace necesita otro color, se cambia el token o se le pone clase.", "section": "colors" },
-      { "name": "La Regla de las Cifras Tabulares", "body": "Todo número que el cliente compare o sume lleva font-variant-numeric: tabular-nums: precio de plato, precio de bar, total del pedido, contador de unidades, contador del botón y las horas del bloque de horarios. Una columna de precios que baila es una columna que no se lee de un vistazo.", "section": "typography" },
-      { "name": "La Regla del Hueco Tipográfico", "body": "Un plato sin foto no lleva icono genérico ni la foto de otro restaurante: el lienzo 4:3 se rellena con el nombre del plato en Archivo Black sobre verde-claro. La ausencia de imagen se resuelve con tipografía.", "section": "typography" },
-      { "name": "La Regla del Rótulo en Versalitas", "body": "Las versalitas con tracking abierto son exclusivamente rótulos de metadato (dt, cabecera de columna, marca de procedencia de imagen). No se usan como antetítulo ni como línea de entrada sobre un titular.", "section": "typography" },
-      { "name": "La Regla del Filete de 1px", "body": "Si dos superficies tienen que separarse, se separan con un filete de 1px en linea y, si hace falta más, con un escalón de tono. Una superficie nueva no nace con sombra. La sombra es respuesta a un estado (hover) o a que el elemento esté literalmente flotando sobre la página (panel). No se apilan más de las dos capas ya definidas ni se inventan tokens de elevación nuevos.", "section": "elevation" },
-      { "name": "La Regla del inert", "body": "El panel cerrado lleva inert y aria-hidden=\"true\", y se los quita al abrirse. Sin inert el teclado aterriza en botones que están fuera de pantalla. Al cerrar, el foco vuelve al elemento que abrió el panel. Cualquier superficie que se oculte por transform en vez de por display hereda esta regla.", "section": "components" }
-    ],
-    "dos": [
-      "Do usar naranja-texto / naranja-hondo (#B8550A) para cualquier naranja que lleve o sea texto, y reservar naranja (#E8720C) para filetes, foco, selección y marca.",
-      "Do pintar el texto sobre relleno de marca con var(--sobre-marca).",
-      "Do poner font-variant-numeric: tabular-nums en todo precio, total y contador.",
-      "Do separar superficies con un filete de 1px en linea y un escalón fondo-hondo → fondo → papel.",
-      "Do quedarse en los tres radios: 10px, 6px, 99px.",
-      "Do usar el ritmo --r1..--r8; si una distancia no está en la escala, es que está mal medida.",
-      "Do marcar el estado seleccionado con aria-pressed y pintarlo desde ese atributo, nunca con una clase paralela.",
-      "Do dar a toda superficie oculta por transform el par inert + aria-hidden=\"true\".",
-      "Do dejar el anillo de foco naranja de 3px con 2px de separación tal cual está.",
-      "Do llenar con tipografía los huecos donde falte una imagen.",
-      "Do dejar los datos legales en texto seleccionable, nunca dentro de una imagen."
-    ],
-    "donts": [
-      "Don't escribir una regla a { color: … } dentro del media query oscuro: gana en especificidad a .btn y repinta el texto de los botones. El color de enlace se cambia en el token --enlace.",
-      "Don't escribir #fff ni #FFFFFF literal como color de texto sobre un relleno de marca.",
-      "Don't añadir tokens de sombra nuevos ni apilar elevación: las dos sombras existentes tienen dueño (hover de tarjeta, panel flotante) y nada más las usa.",
-      "Don't introducir una segunda familia tipográfica ni una cara de sistema haciendo de titular. Archivo y Archivo Black cubren todo.",
-      "Don't usar versalitas con tracking como antetítulo o línea de entrada sobre un titular: son rótulo de metadato.",
-      "Don't resolver la ausencia de una foto con un icono genérico de cubiertos ni con la foto de otro restaurante.",
-      "Don't rellenar con verde un chip o botón de navegación: el verde es confirmación, enlace y WhatsApp; la acción de pedido es naranja.",
-      "Don't inventar breakpoints: el corte del sitio es 52rem y las rejillas se resuelven solas con auto-fit / auto-fill.",
-      "Don't quitar el overflow: hidden de la tarjeta de plato ni el [hidden] { display: none } explícito: display:flex le gana a [hidden] del navegador y la tarjeta filtrada reaparece."
+ "schemaVersion": 2,
+ "generatedAt": "2026-09-21T02:59:56+00:00",
+ "title": "Design System: Kalamarata",
+ "extensions": {
+  "colorMeta": {
+   "naranja": {
+    "role": "primary",
+    "displayName": "Naranja de marca",
+    "canonical": "#E8720C",
+    "dark": "#F5861E",
+    "note": "No pasa AA como texto sobre papel (~3.0:1). Solo filete, foco, seleccion y marca.",
+    "tonalRamp": [
+     "oklch(25% 0.11 55)",
+     "oklch(35% 0.14 55)",
+     "oklch(45% 0.16 55)",
+     "oklch(55% 0.18 55)",
+     "oklch(65% 0.18 55)",
+     "oklch(75% 0.15 55)",
+     "oklch(85% 0.09 55)",
+     "oklch(95% 0.03 55)"
     ]
+   },
+   "naranja-vivo": {
+    "role": "primary",
+    "displayName": "Naranja vivo",
+    "canonical": "#F5821F",
+    "dark": "#FF9833",
+    "tonalRamp": [
+     "oklch(25% 0.11 58)",
+     "oklch(35% 0.14 58)",
+     "oklch(45% 0.16 58)",
+     "oklch(55% 0.18 58)",
+     "oklch(68% 0.18 58)",
+     "oklch(78% 0.14 58)",
+     "oklch(87% 0.08 58)",
+     "oklch(95% 0.03 58)"
+    ]
+   },
+   "naranja-hondo": {
+    "role": "primary",
+    "displayName": "Naranja de relleno",
+    "canonical": "#B8550A",
+    "dark": "#F5861E",
+    "tonalRamp": [
+     "oklch(22% 0.09 52)",
+     "oklch(32% 0.12 52)",
+     "oklch(42% 0.14 52)",
+     "oklch(51% 0.15 52)",
+     "oklch(62% 0.15 52)",
+     "oklch(73% 0.12 52)",
+     "oklch(84% 0.07 52)",
+     "oklch(94% 0.03 52)"
+    ]
+   },
+   "naranja-texto": {
+    "role": "primary",
+    "displayName": "Naranja de texto",
+    "canonical": "#B8550A",
+    "dark": "#FF9833",
+    "note": "Alias de naranja-hondo en claro; en oscuro se separa para sobrevivir al fondo.",
+    "tonalRamp": [
+     "oklch(22% 0.09 52)",
+     "oklch(32% 0.12 52)",
+     "oklch(42% 0.14 52)",
+     "oklch(51% 0.15 52)",
+     "oklch(62% 0.15 52)",
+     "oklch(73% 0.12 52)",
+     "oklch(84% 0.07 52)",
+     "oklch(94% 0.03 52)"
+    ]
+   },
+   "naranja-prensa": {
+    "role": "primary",
+    "displayName": "Naranja pulsado",
+    "canonical": "#9E4907",
+    "dark": "#FFAA55",
+    "tonalRamp": [
+     "oklch(20% 0.08 50)",
+     "oklch(29% 0.11 50)",
+     "oklch(38% 0.13 50)",
+     "oklch(46% 0.14 50)",
+     "oklch(58% 0.14 50)",
+     "oklch(70% 0.11 50)",
+     "oklch(82% 0.07 50)",
+     "oklch(93% 0.03 50)"
+    ]
+   },
+   "sobre-marca": {
+    "role": "primary",
+    "displayName": "Sobre marca",
+    "canonical": "#FFFFFF",
+    "dark": "#17120F",
+    "note": "Color del texto que va encima de cualquier relleno de marca. Se invierte en oscuro porque los rellenos se aclaran.",
+    "tonalRamp": [
+     "oklch(15% 0.008 60)",
+     "oklch(25% 0.008 60)",
+     "oklch(38% 0.006 60)",
+     "oklch(50% 0.005 60)",
+     "oklch(62% 0.004 60)",
+     "oklch(75% 0.003 60)",
+     "oklch(88% 0.002 60)",
+     "oklch(100% 0 0)"
+    ]
+   },
+   "verde": {
+    "role": "secondary",
+    "displayName": "Verde pasto",
+    "canonical": "#2C8B2B",
+    "dark": "#4FB24D",
+    "tonalRamp": [
+     "oklch(20% 0.07 145)",
+     "oklch(30% 0.10 145)",
+     "oklch(40% 0.13 145)",
+     "oklch(51% 0.15 145)",
+     "oklch(62% 0.16 145)",
+     "oklch(74% 0.13 145)",
+     "oklch(85% 0.08 145)",
+     "oklch(95% 0.03 145)"
+    ]
+   },
+   "verde-hondo": {
+    "role": "secondary",
+    "displayName": "Verde hondo",
+    "canonical": "#1E6B1D",
+    "dark": "#5FC25D",
+    "tonalRamp": [
+     "oklch(18% 0.06 145)",
+     "oklch(27% 0.09 145)",
+     "oklch(36% 0.11 145)",
+     "oklch(45% 0.12 145)",
+     "oklch(57% 0.13 145)",
+     "oklch(70% 0.11 145)",
+     "oklch(83% 0.07 145)",
+     "oklch(94% 0.03 145)"
+    ]
+   },
+   "verde-prensa": {
+    "role": "secondary",
+    "displayName": "Verde pulsado",
+    "canonical": "#175616",
+    "dark": "#86D884",
+    "tonalRamp": [
+     "oklch(16% 0.05 145)",
+     "oklch(24% 0.08 145)",
+     "oklch(33% 0.10 145)",
+     "oklch(41% 0.11 145)",
+     "oklch(54% 0.12 145)",
+     "oklch(68% 0.10 145)",
+     "oklch(82% 0.06 145)",
+     "oklch(93% 0.03 145)"
+    ]
+   },
+   "verde-claro": {
+    "role": "secondary",
+    "displayName": "Verde papel",
+    "canonical": "#E8F4E7",
+    "dark": "#1C2E1B",
+    "tonalRamp": [
+     "oklch(22% 0.04 145)",
+     "oklch(34% 0.04 145)",
+     "oklch(46% 0.04 145)",
+     "oklch(58% 0.04 145)",
+     "oklch(70% 0.04 145)",
+     "oklch(80% 0.03 145)",
+     "oklch(89% 0.02 145)",
+     "oklch(96% 0.01 145)"
+    ]
+   },
+   "enlace": {
+    "role": "secondary",
+    "displayName": "Verde de enlace",
+    "canonical": "#1E6B1D",
+    "dark": "#4FB24D",
+    "note": "Se redefine solo como token dentro del bloque oscuro. Nunca como regla `a` en el media query: gana a .btn en especificidad.",
+    "tonalRamp": [
+     "oklch(18% 0.06 145)",
+     "oklch(27% 0.09 145)",
+     "oklch(36% 0.11 145)",
+     "oklch(45% 0.12 145)",
+     "oklch(57% 0.13 145)",
+     "oklch(70% 0.11 145)",
+     "oklch(83% 0.07 145)",
+     "oklch(94% 0.03 145)"
+    ]
+   },
+   "papel": {
+    "role": "neutral",
+    "displayName": "Papel",
+    "canonical": "#FFFFFF",
+    "dark": "#201A16",
+    "tonalRamp": [
+     "oklch(15% 0.008 60)",
+     "oklch(25% 0.008 60)",
+     "oklch(38% 0.006 60)",
+     "oklch(50% 0.005 60)",
+     "oklch(64% 0.004 60)",
+     "oklch(78% 0.003 60)",
+     "oklch(90% 0.002 60)",
+     "oklch(100% 0 0)"
+    ]
+   },
+   "fondo": {
+    "role": "neutral",
+    "displayName": "Papel cálido",
+    "canonical": "#F6F3EE",
+    "dark": "#151110",
+    "tonalRamp": [
+     "oklch(16% 0.008 70)",
+     "oklch(26% 0.008 70)",
+     "oklch(38% 0.008 70)",
+     "oklch(51% 0.008 70)",
+     "oklch(64% 0.008 70)",
+     "oklch(78% 0.008 70)",
+     "oklch(89% 0.008 70)",
+     "oklch(97% 0.006 70)"
+    ]
+   },
+   "fondo-hondo": {
+    "role": "neutral",
+    "displayName": "Papel hondo",
+    "canonical": "#EDE8E0",
+    "dark": "#0E0B0A",
+    "tonalRamp": [
+     "oklch(14% 0.008 70)",
+     "oklch(24% 0.010 70)",
+     "oklch(36% 0.011 70)",
+     "oklch(49% 0.012 70)",
+     "oklch(62% 0.012 70)",
+     "oklch(76% 0.012 70)",
+     "oklch(87% 0.011 70)",
+     "oklch(95% 0.008 70)"
+    ]
+   },
+   "tinta": {
+    "role": "neutral",
+    "displayName": "Tinta",
+    "canonical": "#1A1512",
+    "dark": "#F6F1EA",
+    "tonalRamp": [
+     "oklch(12% 0.012 55)",
+     "oklch(21% 0.014 55)",
+     "oklch(33% 0.014 55)",
+     "oklch(45% 0.013 55)",
+     "oklch(58% 0.012 55)",
+     "oklch(72% 0.010 55)",
+     "oklch(86% 0.008 55)",
+     "oklch(96% 0.006 55)"
+    ]
+   },
+   "tinta-suave": {
+    "role": "neutral",
+    "displayName": "Tinta suave",
+    "canonical": "#5C534B",
+    "dark": "#BCB0A4",
+    "tonalRamp": [
+     "oklch(15% 0.010 65)",
+     "oklch(25% 0.012 65)",
+     "oklch(36% 0.013 65)",
+     "oklch(46% 0.013 65)",
+     "oklch(59% 0.013 65)",
+     "oklch(73% 0.012 65)",
+     "oklch(86% 0.009 65)",
+     "oklch(96% 0.006 65)"
+    ]
+   },
+   "tinta-tenue": {
+    "role": "neutral",
+    "displayName": "Tinta tenue",
+    "canonical": "#6E645B",
+    "dark": "#8D8277",
+    "tonalRamp": [
+     "oklch(16% 0.011 65)",
+     "oklch(26% 0.013 65)",
+     "oklch(37% 0.014 65)",
+     "oklch(49% 0.014 65)",
+     "oklch(62% 0.013 65)",
+     "oklch(75% 0.012 65)",
+     "oklch(87% 0.009 65)",
+     "oklch(96% 0.006 65)"
+    ]
+   },
+   "linea": {
+    "role": "neutral",
+    "displayName": "Filete",
+    "canonical": "#E2DBD1",
+    "dark": "#362D27",
+    "note": "El filete de 1px es la herramienta principal de profundidad del sistema.",
+    "tonalRamp": [
+     "oklch(18% 0.012 70)",
+     "oklch(28% 0.014 70)",
+     "oklch(40% 0.016 70)",
+     "oklch(52% 0.017 70)",
+     "oklch(65% 0.017 70)",
+     "oklch(78% 0.016 70)",
+     "oklch(89% 0.013 70)",
+     "oklch(97% 0.008 70)"
+    ]
+   },
+   "linea-fuerte": {
+    "role": "neutral",
+    "displayName": "Filete fuerte",
+    "canonical": "#C9BFB2",
+    "dark": "#4A3F37",
+    "tonalRamp": [
+     "oklch(18% 0.014 70)",
+     "oklch(28% 0.017 70)",
+     "oklch(40% 0.020 70)",
+     "oklch(52% 0.022 70)",
+     "oklch(65% 0.022 70)",
+     "oklch(79% 0.020 70)",
+     "oklch(90% 0.014 70)",
+     "oklch(97% 0.008 70)"
+    ]
+   },
+   "alerta": {
+    "role": "tertiary",
+    "displayName": "Rojo de aviso",
+    "canonical": "#A8341A",
+    "dark": "#F0836A",
+    "tonalRamp": [
+     "oklch(20% 0.08 35)",
+     "oklch(29% 0.11 35)",
+     "oklch(38% 0.14 35)",
+     "oklch(47% 0.16 35)",
+     "oklch(59% 0.16 35)",
+     "oklch(71% 0.13 35)",
+     "oklch(83% 0.08 35)",
+     "oklch(94% 0.03 35)"
+    ]
+   },
+   "alerta-fondo": {
+    "role": "tertiary",
+    "displayName": "Papel de aviso",
+    "canonical": "#FBEDE9",
+    "dark": "#2E1A15",
+    "tonalRamp": [
+     "oklch(20% 0.03 35)",
+     "oklch(31% 0.03 35)",
+     "oklch(43% 0.03 35)",
+     "oklch(55% 0.03 35)",
+     "oklch(67% 0.03 35)",
+     "oklch(79% 0.025 35)",
+     "oklch(89% 0.018 35)",
+     "oklch(97% 0.008 35)"
+    ]
+   }
+  },
+  "typographyMeta": {
+   "display": {
+    "displayName": "Titular",
+    "purpose": "El h1 de cada página, uno por página. Archivo Black con text-wrap: balance."
+   },
+   "headline": {
+    "displayName": "Título de sección",
+    "purpose": "Títulos de sección y de categoría de la carta."
+   },
+   "title": {
+    "displayName": "Título menor",
+    "purpose": "h3, nombre de plato, nombre de línea del pedido."
+   },
+   "body": {
+    "displayName": "Texto",
+    "purpose": "Texto corrido, máximo 68ch (70ch de caja en páginas legales)."
+   },
+   "label": {
+    "displayName": "Rótulo",
+    "purpose": "Metadato en versalitas con tracking abierto: dt de identidad legal, cabeceras del pie, bajada del wordmark, marca de imagen de referencia. Nunca antetítulo."
+   },
+   "precio": {
+    "displayName": "Precio",
+    "purpose": "Columna de precios y totales. Siempre tabular-nums."
+   }
+  },
+  "shadows": [
+   {
+    "name": "sombra",
+    "value": "0 1px 2px rgba(26, 21, 18, .06), 0 4px 12px rgba(26, 21, 18, .07)",
+    "dark": "0 1px 2px rgba(0,0,0,.4), 0 4px 12px rgba(0,0,0,.45)",
+    "purpose": "Única sombra de reacción: .plato:hover, junto al cambio de filete a linea-fuerte."
+   },
+   {
+    "name": "sombra-alta",
+    "value": "0 2px 4px rgba(26, 21, 18, .08), 0 12px 28px rgba(26, 21, 18, .12)",
+    "dark": "0 2px 4px rgba(0,0,0,.45), 0 12px 28px rgba(0,0,0,.55)",
+    "purpose": "Panel de pedido, el único elemento que flota fuera del plano del documento."
+   }
+  ],
+  "motion": [
+   {
+    "name": "salida-rapida",
+    "value": "cubic-bezier(.2,.8,.2,1)",
+    "purpose": "Curva de estado: 160ms en botones, chips y tarjetas; 180ms en el enlace de salto."
+   },
+   {
+    "name": "entrada-panel",
+    "value": "cubic-bezier(.16,1,.3,1)",
+    "purpose": "260ms para el cajón del pedido y su velo."
+   },
+   {
+    "name": "duracion-estado",
+    "value": "160ms",
+    "purpose": "Duración por defecto de hover y cambios de color."
+   },
+   {
+    "name": "duracion-panel",
+    "value": "260ms",
+    "purpose": "Duración del deslizamiento del panel y del fundido del velo."
+   },
+   {
+    "name": "reduced-motion",
+    "value": "animation-duration: .01ms; transition-duration: .01ms",
+    "purpose": "Con prefers-reduced-motion todo se anula y scroll-behavior pasa a auto."
+   }
+  ],
+  "breakpoints": [
+   {
+    "name": "movil",
+    "value": "52rem",
+    "purpose": "Único corte real: oculta la navegación, muestra la barra fija de pedido, cabecera de 68px a 60px."
+   },
+   {
+    "name": "portada-dos-columnas",
+    "value": "60rem",
+    "purpose": "La portada pasa a 1.15fr .85fr."
+   },
+   {
+    "name": "estrecho",
+    "value": "30rem",
+    "purpose": "Ajuste del ancho del contenedor .env."
+   }
+  ],
+  "layout": {
+   "container": "min(100% - 2rem, 1180px)",
+   "containerLectura": "min(100% - 2rem, 70ch)",
+   "rejillas": [
+    "repeat(auto-fill, minmax(268px, 1fr)) — parrilla de platos",
+    "repeat(auto-fit, minmax(230px, 1fr)) — tarjetas de dato",
+    "repeat(auto-fit, minmax(210px, 1fr)) — identidad legal y pie"
+   ],
+   "zIndex": {
+    "barra-carta": 30,
+    "cabecera": 40,
+    "barra-movil": 45,
+    "velo": 50,
+    "panel": 60,
+    "saltar": 100
+   },
+   "alturasPegajosas": {
+    "cabecera": "68px (60px < 52rem)",
+    "barra-carta": "top: 68px (60px < 52rem)",
+    "scroll-margin-top de grupo": "140px"
+   }
+  },
+  "colorTokens": {
+   "naranja": "#E8720C",
+   "naranja-vivo": "#F5821F",
+   "naranja-hondo": "#B8550A",
+   "naranja-texto": "#B8550A",
+   "naranja-prensa": "#9E4907",
+   "sobre-marca": "#FFFFFF",
+   "pie-texto": "#E9E2D9",
+   "pie-rotulo": "#A79C90",
+   "pie-pend-tinta": "#F5A894",
+   "pie-pend-filo": "#F0836A",
+   "verde": "#2C8B2B",
+   "verde-hondo": "#1E6B1D",
+   "verde-claro": "#E8F4E7",
+   "sobre-verde": "#E9F0E7",
+   "sobre-verde-2": "#DCE8D9",
+   "enlace": "#1E6B1D",
+   "verde-prensa": "#175616",
+   "naranja-accion": "#F5821F",
+   "sobre-accion": "#1A1512",
+   "papel": "#FFFFFF",
+   "fondo": "#FFFFFF",
+   "fondo-hondo": "#F1F4F0",
+   "control": "#F1F4F0",
+   "control-hover": "#E7EBE5",
+   "tinta": "#1A1512",
+   "tinta-suave": "#5C534B",
+   "tinta-tenue": "#6E645B",
+   "linea": "#E4E7E2",
+   "linea-fuerte": "#C7CDC4",
+   "alerta": "#A8341A",
+   "alerta-fondo": "#FBEDE9"
+  },
+  "esquemas": "Solo claro. El modo oscuro se eliminó a petición del cliente el 21/09/2026."
+ },
+ "components": [
+  {
+   "name": "Botón de pedido",
+   "kind": "button",
+   "refersTo": "button-pedido",
+   "description": "Acción primaria de la casa: abrir la carta o enviar el pedido.",
+   "html": "<a class=\"ds-btn ds-btn-ped\" href=\"#\">Ver la carta y pedir</a>",
+   "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color .16s cubic-bezier(.2,.8,.2,1), border-color .16s, color .16s, transform .16s; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; border-radius: var(--radio-chico, 6px); } .ds-btn-ped { background: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); } .ds-btn-ped:hover { background: var(--naranja-prensa, #9E4907); }"
+  },
+  {
+   "name": "Botón de WhatsApp",
+   "kind": "button",
+   "refersTo": "button-whatsapp",
+   "description": "Salida al canal donde se cierra el pedido. Verde, nunca naranja.",
+   "html": "<a class=\"ds-btn ds-btn-wa\" href=\"#\">Escribir por WhatsApp</a>",
+   "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color .16s cubic-bezier(.2,.8,.2,1), transform .16s; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; } .ds-btn-wa { background: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); } .ds-btn-wa:hover { background: var(--verde-prensa, #175616); }"
+  },
+  {
+   "name": "Botón de línea",
+   "kind": "button",
+   "refersTo": "button-linea",
+   "description": "Acción secundaria de la cabecera: «Tu pedido», con contador.",
+   "html": "<button class=\"ds-btn ds-btn-linea ds-pedido-btn\" type=\"button\">Tu pedido <span class=\"ds-cuenta\">3</span></button>",
+   "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; transition: background-color .16s cubic-bezier(.2,.8,.2,1), border-color .16s, color .16s, transform .16s; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; } .ds-btn-linea { background: transparent; color: var(--tinta, #1A1512); border-color: var(--linea-fuerte, #C9BFB2); } .ds-btn-linea:hover { border-color: var(--tinta, #1A1512); } .ds-pedido-btn { position: relative; } .ds-cuenta { position: absolute; top: -6px; right: -6px; min-width: 21px; height: 21px; display: grid; place-items: center; padding: 0 5px; background: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); border: 2px solid var(--papel, #fff); border-radius: 99px; font-size: .7rem; font-weight: 800; font-variant-numeric: tabular-nums; }"
+  },
+  {
+   "name": "Botón redondo de añadir",
+   "kind": "button",
+   "refersTo": "boton-mas",
+   "description": "La silueta firmante del sitio: 40px redondo, naranja, en cada una de las 172 tarjetas.",
+   "html": "<button class=\"ds-mas\" type=\"button\" aria-label=\"Añadir al pedido\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"><path d=\"M10 4.5v11M4.5 10h11\"/></svg></button>",
+   "css": ".ds-mas { width: 40px; height: 40px; border-radius: 99px; display: grid; place-items: center; cursor: pointer; background: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); border: 0; transition: background-color .16s cubic-bezier(.2,.8,.2,1), transform .16s; } .ds-mas:hover { background: var(--naranja-prensa, #9E4907); } .ds-mas:active { transform: scale(.92); } .ds-mas:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
+  },
+  {
+   "name": "Chip de categoría",
+   "kind": "chip",
+   "refersTo": "chip-categoria",
+   "description": "Píldora de navegación de la carta. El estado activo lo marca un IntersectionObserver sobre la sección visible, no el clic.",
+   "html": "<div class=\"ds-cats\" role=\"group\" aria-label=\"Categorías\"><button type=\"button\" aria-pressed=\"true\">Pizzas</button><button type=\"button\" aria-pressed=\"false\">Pescados</button><button type=\"button\" aria-pressed=\"false\">Hamburguesas</button></div>",
+   "css": ".ds-cats { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; } .ds-cats::-webkit-scrollbar { display: none; } .ds-cats button { flex: 0 0 auto; font-family: var(--texto, Archivo, sans-serif); font-weight: 700; font-size: .88rem; padding: .5rem .9rem; border-radius: 99px; cursor: pointer; background: var(--fondo, #F6F3EE); color: var(--tinta-suave, #5C534B); border: 1px solid var(--linea-fuerte, #C9BFB2); white-space: nowrap; transition: background-color .16s cubic-bezier(.2,.8,.2,1), color .16s, border-color .16s; } .ds-cats button:hover { border-color: var(--tinta-tenue, #6E645B); color: var(--tinta, #1A1512); } .ds-cats button[aria-pressed=\"true\"] { background: var(--naranja-hondo, #B8550A); border-color: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); } .ds-cats button:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
+  },
+  {
+   "name": "Chip de tamaño de pizza",
+   "kind": "chip",
+   "refersTo": "chip-talla",
+   "description": "Elección dentro de la tarjeta; seleccionado en verde para distinguirlo de la navegación naranja. Cambiar de tamaño reescribe el precio de la tarjeta.",
+   "html": "<div class=\"ds-tallas\" role=\"group\" aria-label=\"Tamaño\"><button type=\"button\" aria-pressed=\"true\">Personal</button><button type=\"button\" aria-pressed=\"false\">Mediana</button><button type=\"button\" aria-pressed=\"false\">Familiar</button></div>",
+   "css": ".ds-tallas { display: flex; flex-wrap: wrap; gap: .25rem; } .ds-tallas button { font-family: var(--texto, Archivo, sans-serif); font-size: .78rem; font-weight: 700; cursor: pointer; padding: .32rem .55rem; border-radius: var(--radio-chico, 6px); background: var(--fondo, #F6F3EE); border: 1px solid var(--linea-fuerte, #C9BFB2); color: var(--tinta-suave, #5C534B); transition: background-color .16s, color .16s, border-color .16s; } .ds-tallas button:hover { border-color: var(--tinta-tenue, #6E645B); color: var(--tinta, #1A1512); } .ds-tallas button[aria-pressed=\"true\"] { background: var(--verde-hondo, #1E6B1D); border-color: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); } .ds-tallas button:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
+  },
+  {
+   "name": "Tarjeta de plato",
+   "kind": "card",
+   "refersTo": "tarjeta-plato",
+   "description": "Unidad de la carta: lienzo 4:3, nombre, descripción, precio tabular a la izquierda y botón redondo a la derecha. Sin foto, el lienzo se llena con el nombre en Archivo Black.",
+   "html": "<article class=\"ds-plato\"><div class=\"ds-plato__lienzo\"><div class=\"ds-plato__sinfoto\"><span>Mojarra frita</span></div></div><div class=\"ds-plato__cuerpo\"><h3 class=\"ds-plato__nombre\">Mojarra frita</h3><p class=\"ds-plato__desc\">Con patacón, arroz de coco y ensalada.</p><div class=\"ds-plato__pie\"><span class=\"ds-plato__precio\">$38.000</span><button class=\"ds-mas\" type=\"button\" aria-label=\"Añadir Mojarra frita al pedido\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"><path d=\"M10 4.5v11M4.5 10h11\"/></svg></button></div></div></article>",
+   "css": ".ds-plato { display: flex; flex-direction: column; background: var(--papel, #fff); border: 1px solid var(--linea, #E2DBD1); border-radius: var(--radio, 10px); overflow: hidden; max-width: 300px; transition: border-color .16s cubic-bezier(.2,.8,.2,1), box-shadow .16s; } .ds-plato:hover { border-color: var(--linea-fuerte, #C9BFB2); box-shadow: 0 1px 2px rgba(26,21,18,.06), 0 4px 12px rgba(26,21,18,.07); } .ds-plato__lienzo { position: relative; aspect-ratio: 4 / 3; background: var(--fondo-hondo, #EDE8E0); overflow: hidden; } .ds-plato__sinfoto { width: 100%; height: 100%; display: grid; place-items: center; padding: 1rem; background: var(--verde-claro, #E8F4E7); text-align: center; } .ds-plato__sinfoto span { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.05rem; line-height: 1.15; color: var(--verde-hondo, #1E6B1D); letter-spacing: -.02em; } .ds-plato__cuerpo { padding: 1rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; } .ds-plato__nombre { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1rem; letter-spacing: -.015em; margin: 0; line-height: 1.08; } .ds-plato__desc { font-family: var(--texto, Archivo, sans-serif); font-size: .89rem; color: var(--tinta-suave, #5C534B); margin: 0; line-height: 1.55; } .ds-plato__pie { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: auto; padding-top: .5rem; } .ds-plato__precio { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.12rem; font-variant-numeric: tabular-nums; } .ds-mas { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 99px; display: grid; place-items: center; cursor: pointer; background: var(--naranja-hondo, #B8550A); color: var(--sobre-marca, #fff); border: 0; transition: background-color .16s cubic-bezier(.2,.8,.2,1), transform .16s; } .ds-mas:hover { background: var(--naranja-prensa, #9E4907); } .ds-mas:active { transform: scale(.92); }"
+  },
+  {
+   "name": "Buscador de la carta",
+   "kind": "input",
+   "refersTo": "input-buscar",
+   "description": "Único campo del sitio. Icono SVG de lupa a la izquierda; el foco lo da el anillo naranja global, el borde no cambia.",
+   "html": "<div class=\"ds-buscar\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"9\" r=\"6\"/><path d=\"m13.5 13.5 4 4\" stroke-linecap=\"round\"/></svg><input type=\"search\" placeholder=\"¿Qué se te antoja?\" autocomplete=\"off\" aria-label=\"Buscar en la carta\"></div>",
+   "css": ".ds-buscar { position: relative; max-width: 420px; } .ds-buscar input { width: 100%; font-family: var(--texto, Archivo, sans-serif); font-size: 1rem; color: var(--tinta, #1A1512); padding: .7rem .9rem .7rem 2.4rem; background: var(--fondo, #F6F3EE); border: 1px solid var(--linea-fuerte, #C9BFB2); border-radius: var(--radio, 10px); } .ds-buscar input::placeholder { color: var(--tinta-tenue, #6E645B); } .ds-buscar input:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; } .ds-buscar svg { position: absolute; left: .75rem; top: 50%; transform: translateY(-50%); color: var(--tinta-tenue, #6E645B); }"
+  },
+  {
+   "name": "Navegación principal",
+   "kind": "nav",
+   "refersTo": null,
+   "description": "Cabecera pegajosa sobre papel con filete inferior. El wordmark es texto, no imagen: Archivo Black verde con la K en naranja.",
+   "html": "<header class=\"ds-cab\"><a class=\"ds-marca\" href=\"#\"><span><span class=\"ds-marca__nombre\"><b>K</b>alamarata</span><span class=\"ds-marca__bajada\">Restaurante Bar · Pizzería</span></span></a><nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#\" aria-current=\"page\">Inicio</a><a href=\"#\">Carta</a><a href=\"#\">Dónde estamos</a><a href=\"#\">Contacto</a></nav></header>",
+   "css": ".ds-cab { display: flex; align-items: center; gap: 1rem; min-height: 68px; padding: .5rem 1rem; background: var(--papel, #fff); border-bottom: 1px solid var(--linea, #E2DBD1); } .ds-marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; } .ds-marca__nombre { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.5rem; line-height: 1; letter-spacing: -.035em; color: var(--verde, #2C8B2B); } .ds-marca__nombre b { color: var(--naranja, #E8720C); font-weight: inherit; } .ds-marca__bajada { display: block; font-family: var(--texto, Archivo, sans-serif); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave, #5C534B); margin-top: .18rem; font-weight: 600; } .ds-nav { display: flex; gap: 1.5rem; margin-left: auto; } .ds-nav a { font-family: var(--texto, Archivo, sans-serif); color: var(--tinta, #1A1512); text-decoration: none; font-weight: 600; font-size: .94rem; padding-block: .5rem; border-bottom: 2px solid transparent; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--naranja-hondo, #B8550A); border-bottom-color: var(--naranja, #E8720C); } .ds-nav a:focus-visible { outline: 3px solid var(--naranja, #E8720C); outline-offset: 2px; }"
+  },
+  {
+   "name": "Panel de pedido",
+   "kind": "custom",
+   "refersTo": "panel-pedido",
+   "description": "Cajón derecho de 420px que compone el mensaje de WhatsApp. Cerrado lleva inert + aria-hidden=true; al cerrarse devuelve el foco a quien lo abrió.",
+   "html": "<aside class=\"ds-panel\" aria-label=\"Tu pedido\"><div class=\"ds-panel__cab\"><h2>Tu pedido</h2><button class=\"ds-panel__cerrar\" type=\"button\" aria-label=\"Cerrar el pedido\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m5 5 10 10M15 5 5 15\"/></svg></button></div><ul class=\"ds-panel__lista\"><li class=\"ds-linea\"><div><div class=\"ds-linea__n\">Pizza Hawaiana</div><div class=\"ds-linea__d\">Familiar</div><div class=\"ds-cant\"><button type=\"button\" aria-label=\"Quitar uno\">−</button><span>2</span><button type=\"button\" aria-label=\"Añadir uno\">+</button></div></div><div class=\"ds-linea__p\">$76.000</div></li></ul><div class=\"ds-panel__pie\"><dl class=\"ds-total\"><dt>Total</dt><dd>$76.000</dd></dl><a class=\"ds-btn ds-btn-wa\" href=\"#\">Enviar por WhatsApp</a></div></aside>",
+   "css": ".ds-panel { width: min(420px, 100%); background: var(--papel, #fff); border-left: 1px solid var(--linea, #E2DBD1); display: flex; flex-direction: column; box-shadow: 0 2px 4px rgba(26,21,18,.08), 0 12px 28px rgba(26,21,18,.12); font-family: var(--texto, Archivo, sans-serif); } .ds-panel__cab { display: flex; align-items: center; gap: .75rem; padding: 1rem; border-bottom: 1px solid var(--linea, #E2DBD1); } .ds-panel__cab h2 { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.15rem; margin: 0; line-height: 1.08; } .ds-panel__cerrar { margin-left: auto; background: transparent; border: 0; cursor: pointer; color: var(--tinta-suave, #5C534B); padding: .5rem; border-radius: var(--radio-chico, 6px); display: grid; place-items: center; } .ds-panel__cerrar:hover { background: var(--fondo, #F6F3EE); color: var(--tinta, #1A1512); } .ds-panel__lista { flex: 1; overflow-y: auto; padding: 1rem; margin: 0; list-style: none; } .ds-linea { display: grid; grid-template-columns: 1fr auto; gap: .5rem .75rem; padding: .75rem 0; border-bottom: 1px solid var(--linea, #E2DBD1); } .ds-linea__n { font-weight: 700; font-size: .95rem; } .ds-linea__d { font-size: .82rem; color: var(--tinta-tenue, #6E645B); } .ds-linea__p { font-variant-numeric: tabular-nums; font-weight: 700; } .ds-cant { display: inline-flex; align-items: center; gap: .1rem; border: 1px solid var(--linea-fuerte, #C9BFB2); border-radius: var(--radio-chico, 6px); overflow: hidden; margin-top: .5rem; } .ds-cant button { width: 30px; height: 30px; font: inherit; font-weight: 700; cursor: pointer; background: var(--fondo, #F6F3EE); border: 0; color: var(--tinta, #1A1512); } .ds-cant button:hover { background: var(--fondo-hondo, #EDE8E0); } .ds-cant span { min-width: 30px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-panel__pie { border-top: 1px solid var(--linea, #E2DBD1); padding: 1rem; background: var(--fondo, #F6F3EE); } .ds-total { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 .75rem; } .ds-total dt { font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.05rem; } .ds-total dd { margin: 0; font-family: var(--titular, 'Archivo Black', sans-serif); font-size: 1.5rem; font-variant-numeric: tabular-nums; } .ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font-weight: 700; line-height: 1; padding: .8rem 1.25rem; border-radius: var(--radio, 10px); border: 1px solid transparent; cursor: pointer; text-decoration: none; } .ds-btn-wa { background: var(--verde-hondo, #1E6B1D); color: var(--sobre-marca, #fff); } .ds-btn-wa:hover { background: var(--verde-prensa, #175616); }"
   }
+ ],
+ "narrative": {
+  "northStar": "La carta impresa del local, pasada a pantalla",
+  "overview": "El sistema sale del logo del cliente leído literalmente: naranja, verde y negro sobre papel cálido. No hay hero fotográfico ni menú decorativo: la carta es la página, y los datos legales del establecimiento (razón social, NIT, dirección, teléfono) son contenido de primera categoría, en texto seleccionable, no residuo de pie de página. La densidad es la de una carta de restaurante real: 172 productos en 22 categorías, leídos con una mano en un celular de 390 px.\n\nLa materialidad es de papel y tinta. Las superficies son blancas o de un beige cálido (fondo, #F6F3EE) y se separan entre sí por filetes de 1px y por escalones de tono, no por pilas de sombra. El color de marca aparece poco y siempre trabajando: el botón redondo naranja de «añadir», la píldora de categoría, la columna de precios. Todo lo demás es tinta sobre papel.\n\nHay dos esquemas, claro y oscuro, porque hay dos escenas de uso reales: el celular en la calle a mediodía con sol, y el mismo celular en un sofá a las ocho de la noche. El oscuro no es una inversión decorativa: los rellenos de marca se aclaran para sobrevivir al fondo, y por eso existe un token dedicado al texto que va encima de ellos.",
+  "keyCharacteristics": [
+   "Paleta derivada del logo del cliente, no elegida de una plantilla.",
+   "Archivo / Archivo Black (Omnibus-Type, Buenos Aires), grotesca dibujada para imprenta latinoamericana.",
+   "Cifras tabulares en todo precio, cantidad y total.",
+   "Profundidad por filete de 1px y escalón de superficie.",
+   "Radios 10 / 6 / 99 px y nada más.",
+   "Reconocible sin contenido por: el botón redondo naranja, la columna única de precios alineada a la derecha y la píldora de categoría."
+  ],
+  "rules": [
+   {
+    "name": "La Regla de los Dos Naranjas",
+    "body": "Hay dos naranjas y no son intercambiables. naranja (#E8720C) es el de la marca: relleno grande, foco, selección, filete de navegación. naranja-texto (#B8550A) es el de texto y de todo relleno que lleve texto encima, porque el de marca no pasa AA como texto. Escribir texto en naranja sobre papel es un error de contraste, no una variante.",
+    "section": "colors"
+   },
+   {
+    "name": "La Regla de sobre-marca",
+    "body": "El texto que va encima de un relleno de marca (naranja o verde) se pinta siempre con var(--sobre-marca), nunca con #fff literal. En esquema oscuro los rellenos se aclaran y ese token pasa a #17120F: el texto se oscurece con ellos. Un #fff fijo se vuelve ilegible en la mitad de las noches.",
+    "section": "colors"
+   },
+   {
+    "name": "La Regla del Enlace por Token",
+    "body": "El color de enlace vive en el token --enlace y se redefine dentro del bloque oscuro como token, nunca como una regla a { color: … } dentro del media query. Esa versión tiene más especificidad que .btn y le repinta el texto a todos los botones que son anclas. Si un enlace necesita otro color, se cambia el token o se le pone clase.",
+    "section": "colors"
+   },
+   {
+    "name": "La Regla de las Cifras Tabulares",
+    "body": "Todo número que el cliente compare o sume lleva font-variant-numeric: tabular-nums: precio de plato, precio de bar, total del pedido, contador de unidades, contador del botón y las horas del bloque de horarios. Una columna de precios que baila es una columna que no se lee de un vistazo.",
+    "section": "typography"
+   },
+   {
+    "name": "La Regla del Hueco Tipográfico",
+    "body": "Un plato sin foto no lleva icono genérico ni la foto de otro restaurante: el lienzo 4:3 se rellena con el nombre del plato en Archivo Black sobre verde-claro. La ausencia de imagen se resuelve con tipografía.",
+    "section": "typography"
+   },
+   {
+    "name": "La Regla del Rótulo en Versalitas",
+    "body": "Las versalitas con tracking abierto son exclusivamente rótulos de metadato (dt, cabecera de columna, marca de procedencia de imagen). No se usan como antetítulo ni como línea de entrada sobre un titular.",
+    "section": "typography"
+   },
+   {
+    "name": "La Regla del Filete de 1px",
+    "body": "Si dos superficies tienen que separarse, se separan con un filete de 1px en linea y, si hace falta más, con un escalón de tono. Una superficie nueva no nace con sombra. La sombra es respuesta a un estado (hover) o a que el elemento esté literalmente flotando sobre la página (panel). No se apilan más de las dos capas ya definidas ni se inventan tokens de elevación nuevos.",
+    "section": "elevation"
+   },
+   {
+    "name": "La Regla del inert",
+    "body": "El panel cerrado lleva inert y aria-hidden=\"true\", y se los quita al abrirse. Sin inert el teclado aterriza en botones que están fuera de pantalla. Al cerrar, el foco vuelve al elemento que abrió el panel. Cualquier superficie que se oculte por transform en vez de por display hereda esta regla.",
+    "section": "components"
+   }
+  ],
+  "dos": [
+   "Do usar naranja-texto / naranja-hondo (#B8550A) para cualquier naranja que lleve o sea texto, y reservar naranja (#E8720C) para filetes, foco, selección y marca.",
+   "Do pintar el texto sobre relleno de marca con var(--sobre-marca).",
+   "Do poner font-variant-numeric: tabular-nums en todo precio, total y contador.",
+   "Do separar superficies con un filete de 1px en linea y un escalón fondo-hondo → fondo → papel.",
+   "Do quedarse en los tres radios: 10px, 6px, 99px.",
+   "Do usar el ritmo --r1..--r8; si una distancia no está en la escala, es que está mal medida.",
+   "Do marcar el estado seleccionado con aria-pressed y pintarlo desde ese atributo, nunca con una clase paralela.",
+   "Do dar a toda superficie oculta por transform el par inert + aria-hidden=\"true\".",
+   "Do dejar el anillo de foco naranja de 3px con 2px de separación tal cual está.",
+   "Do llenar con tipografía los huecos donde falte una imagen.",
+   "Do dejar los datos legales en texto seleccionable, nunca dentro de una imagen."
+  ],
+  "donts": [
+   "Don't escribir una regla a { color: … } dentro del media query oscuro: gana en especificidad a .btn y repinta el texto de los botones. El color de enlace se cambia en el token --enlace.",
+   "Don't escribir #fff ni #FFFFFF literal como color de texto sobre un relleno de marca.",
+   "Don't añadir tokens de sombra nuevos ni apilar elevación: las dos sombras existentes tienen dueño (hover de tarjeta, panel flotante) y nada más las usa.",
+   "Don't introducir una segunda familia tipográfica ni una cara de sistema haciendo de titular. Archivo y Archivo Black cubren todo.",
+   "Don't usar versalitas con tracking como antetítulo o línea de entrada sobre un titular: son rótulo de metadato.",
+   "Don't resolver la ausencia de una foto con un icono genérico de cubiertos ni con la foto de otro restaurante.",
+   "Don't rellenar con verde un chip o botón de navegación: el verde es confirmación, enlace y WhatsApp; la acción de pedido es naranja.",
+   "Don't inventar breakpoints: el corte del sitio es 52rem y las rejillas se resuelven solas con auto-fit / auto-fill.",
+   "Don't quitar el overflow: hidden de la tarjeta de plato ni el [hidden] { display: none } explícito: display:flex le gana a [hidden] del navegador y la tarjeta filtrada reaparece."
+  ]
+ }
 }

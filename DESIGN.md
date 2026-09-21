@@ -509,3 +509,82 @@ La revisión final marcó siete arreglos materiales. Lo que cambió en el sistem
 - **El almuerzo de hoy se resuelve en el inicio**, con el día de
   `America/Bogota` y no el del navegador: en UTC puede ser ya lunes mientras en
   Barranquilla sigue siendo domingo y la cocina no sirve almuerzo.
+
+
+## Rediseño del 21/09: portada mínima y color comprometido
+
+Petición del cliente: el sitio se veía «muy básico, muy IA», sobraba el modo
+oscuro y la carta mezclaba el almuerzo con las comidas rápidas.
+
+**Fuera el esquema oscuro.** Era una decisión mía, tomada desde la escena de
+uso; el cliente la revocó: esto es una página web de restaurante, no una app, y
+el blanco es su decisión. `color-scheme: only light`, y los tokens que existían
+solo para invertirse (`sobre-marca`, `enlace`, los `*-prensa`) siguen vivos
+porque ya cumplían otra función en claro.
+
+**El suelo es blanco, no crema.** El detector marcó `cream-palette` sobre el
+fondo anterior (#F6F3EE) y tenía razón: el blanco tostado cálido es la
+superficie a la que se recurre por reflejo, y es parte de por qué el sitio se
+leía como generado. La página es `#FFFFFF`; el escalón (`fondo-hondo`,
+`control`) es `#F1F4F0`, un gris de **matiz verde derivado de la marca**, no
+otro beige. Los filetes se neutralizaron igual. Dentro del campo verde el texto
+secundario usa `sobre-verde` (#E9F0E7), no el crema que tenía antes.
+
+**El color se compromete a escala de página.** El diagnóstico de por qué se veía
+generado: todo era una tarjeta blanca con filete de 1 px sobre gris claro, y el
+naranja y el verde de la marca aparecían solo en botones pequeños. El estándar
+de oficio lo dice literalmente — *el color commits at page scale: campos que
+ocupan regiones enteras, no acentos salpicados sobre fondo neutro*. Ahora:
+
+- **`.hero`**: campo `verde-hondo` entero, titular blanco a `clamp(2.1rem, …,
+  4rem)`, y dos acciones grandes en la pauta de la categoría (icono, acción en
+  Archivo Black, subtítulo de qué pasa al pulsar).
+- **`.accion--pedir`**: relleno `naranja-accion` (#F5821F) con texto
+  `sobre-accion` (#1A1512). El blanco encima de ese naranja da **2.59:1** y no
+  se usa; la tinta oscura da 6.98:1.
+- **`.banda`**: rótulo blanco sobre campo verde para cada servicio de la carta.
+  No es un recurso inventado: es el de la carta impresa de Kalamarata.
+
+**La portada es mínima.** Héroe y bloque de identidad legal, nada más. Las
+tarjetas de domicilios, la rejilla del almuerzo semanal y el mapa se fueron: la
+portada dice qué es y lleva a pedir.
+
+**La carta son dos servicios.** `data/carta.json` etiqueta cada categoría con
+`servicios: ['almuerzo'|'rapidas']`, tomado de las dos cartas impresas del
+cliente. Cuatro categorías están en ambas — Asados y parrilladas (que la carta
+de día llama «Parrilladas» y la de noche «Asados», mismos platos y precios),
+Lasañas, Bebidas y Cervezas — y se renderizan en las dos con el nombre que les
+corresponde vía `nombrePorServicio`. Dentro de un servicio los títulos de
+categoría son `h3`: el `h2` es la banda.
+
+**Contacto desapareció.** Su contenido propio (lista de contacto y formas de
+pago) vive en «Dónde estamos». La navegación es Inicio · Pide aquí · Dónde
+estamos, y «Pide aquí» es la carta: mirar y pedir en la misma página.
+
+
+## Separación de servicios y aviso de disponibilidad
+
+El cliente no veía la separación entre las dos cartas y pidió que cada una
+avisara de que no se sirve a la hora de la otra. Tres piezas, no una:
+
+- **Separación visible al pasar.** `.servicio--rapidas` cambia de fondo
+  (`fondo-hondo`) y abre con un filete de 3 px en `verde-hondo`. El salto entre
+  las dos cartas se ve, no se adivina.
+- **Aviso dentro de la banda** (`.banda__aviso`): dice en prosa que esa carta
+  es de almuerzo o de noche y que a la otra hora no está disponible. Va dentro
+  de la banda para que viaje con ella.
+- **Estado real** (`.banda__cerrado`): calculado con el reloj de
+  `America/Bogota`, no el del navegador. Si el servicio no se está sirviendo
+  ahora mismo lo dice en naranja y atenúa sus platos al 72 %, sin impedir el
+  pedido: se puede pedir igual y se confirma por WhatsApp.
+
+**El indicador pegajoso** (`.barra__serv`) viaja en la barra de categorías, que
+ya está siempre a la vista, y dice en qué servicio estás según bajas. No es una
+tercera capa pegajosa a propósito: a 390 px la cabecera y la barra ya ocupan
+210 px, y una banda más se comería un tercio de la pantalla. Se estiliza como
+un «estás aquí» —sin relleno, con un punto verde— y no como los chips de salto:
+dos píldoras verdes idénticas no dejan claro cuál se pulsa.
+
+La lógica de horario está probada con el reloj falseado en seis momentos: lunes
+12:00, lunes 19:00, lunes 21:30, lunes 22:30, domingo 13:00 y sábado 22:30
+—este último cubre el cierre a las 23:00 del fin de semana—.

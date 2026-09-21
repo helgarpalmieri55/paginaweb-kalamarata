@@ -15,8 +15,33 @@ Esto no lo puede hacer el código: hay que tocarlo en la interfaz de GitHub.
 2. En **Source**, elige **GitHub Actions**. No «Deploy from a branch».
 3. Guarda.
 
-Sin ese cambio el workflow corre, construye y falla al publicar, porque Pages
-no está esperando un artefacto de Actions.
+**Esto ya falló una vez, así que conviene leerlo con cuidado.** Si se deja
+«Deploy from a branch», el workflow corre, construye y **reporta éxito** —
+pero GitHub publica la rama `main` entera y el artefacto del workflow se
+ignora. El resultado observado el 21/09/2026 fue:
+
+- `PENDIENTES.md` y `PRODUCT.md` servidos públicamente
+- `test` y `DEPLOY.md` servidos públicamente
+- Cero etiquetas `noindex` en las páginas
+
+Cómo saber en qué modo estás sin entrar a los ajustes: si en la pestaña
+**Actions** aparece un workflow llamado **«pages build and deployment»** que tú
+no escribiste, Pages está en modo rama. Con Source = «GitHub Actions» solo
+corre «Publicar en GitHub Pages».
+
+Otra comprobación rápida, desde fuera:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' \
+  https://helgarpalmieri55.github.io/paginaweb-kalamarata/PENDIENTES.md
+```
+
+`404` es lo correcto. `200` significa que se está publicando la rama.
+
+Hay una red de seguridad en `_config.yml`: si Pages publica la rama, Jekyll lee
+ese archivo y su lista `exclude` deja fuera la documentación interna. **Pero no
+puede añadir el noindex**, que solo existe en el paso del workflow. Es una
+mitigación parcial, no un sustituto del ajuste.
 
 Después del primer merge, la dirección será:
 
@@ -29,7 +54,7 @@ https://helgarpalmieri55.github.io/paginaweb-kalamarata/
 Se publica una **lista explícita**, no una lista de exclusiones, para que nada
 nuevo acabe en internet por descuido:
 
-- Las 7 páginas (`index`, `carta`, `donde-estamos`, `contacto`,
+- Las 6 plantillas (`index`, `carta`, `donde-estamos`,
   `politica-de-datos`, `terminos`, `404`)
 - `assets/` (estilos, scripts, imágenes, tipografías) y `data/carta.json`
 - `favicon.ico`, `robots.txt`, `sitemap.xml`
@@ -43,7 +68,7 @@ Lo publicado pesa **832 KB**.
 ## La vista previa NO se indexa, a propósito
 
 El workflow inyecta `<meta name="robots" content="noindex, nofollow">` en las
-7 páginas y sustituye `robots.txt` por un `Disallow: /`, **solo en la copia que
+6 plantillas y sustituye `robots.txt` por un `Disallow: /`, **solo en la copia que
 se publica**. El código del repositorio queda tal cual, listo para el dominio
 propio.
 
@@ -77,7 +102,7 @@ Cuando exista el dominio del negocio:
 3. Añade un archivo `CNAME` en la raíz del repositorio con el dominio dentro.
 4. Borra el paso de noindex del workflow.
 5. Haz lo que dice `PENDIENTES.md` §3: dominio real en `robots.txt` y
-   `sitemap.xml`, `<link rel="canonical">` en las 6 páginas, y `og:image` y
+   `sitemap.xml`, `<link rel="canonical">` en las 5 páginas, y `og:image` y
    `og:url` absolutos.
 
 ## Una limitación que conviene saber

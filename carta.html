@@ -24,9 +24,8 @@
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="index.html">Inicio</a>
-      <a href="carta.html" aria-current="page">Carta</a>
+      <a href="carta.html" aria-current="page">Pide aquí</a>
       <a href="donde-estamos.html">Dónde estamos</a>
-      <a href="contacto.html">Contacto</a>
     </nav>
     <button class="btn btn--linea pedido-btn" type="button" data-abrir-pedido style="margin-left:auto">
       Tu pedido <span class="cuenta" data-cuenta hidden>0</span>
@@ -36,6 +35,7 @@
 
 <div class="barra">
   <div class="env barra__caja">
+    <span class="barra__serv" id="barra-serv" aria-live="polite" hidden></span>
     <div class="buscar">
       <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4" stroke-linecap="round"/>
@@ -112,8 +112,8 @@
       <div>
         <h2>Horarios</h2>
         <p>Almuerzo: lunes a sábado, 11:00 – 15:00</p>
-        <p>Pizzería: domingo a jueves, 16:00 – 22:00</p>
-        <p>Pizzería: viernes y sábado, 16:00 – 23:00</p>
+        <p>Comidas rápidas: domingo a jueves, 16:00 – 22:00</p>
+        <p>Comidas rápidas: viernes y sábado, 16:00 – 23:00</p>
       </div>
       <div>
         <h2>El sitio</h2>
@@ -121,9 +121,8 @@
              menú móvil, así que sin estos enlaces Dónde estamos y Contacto
              quedan inalcanzables en el teléfono, que es la pantalla real. -->
         <p><a href="index.html">Inicio</a></p>
-        <p><a href="carta.html">Carta y pedidos</a></p>
+        <p><a href="carta.html">Pide aquí</a></p>
         <p><a href="donde-estamos.html">Dónde estamos</a></p>
-        <p><a href="contacto.html">Contacto</a></p>
       </div>
       <div>
         <h2>Legal</h2>

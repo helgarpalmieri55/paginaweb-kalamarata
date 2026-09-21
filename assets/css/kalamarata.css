@@ -14,6 +14,14 @@
   --naranja-texto:  #B8550A;
   --naranja-prensa: #9E4907;
   --sobre-marca:    #FFFFFF;
+
+  /* El pie es oscuro en ambos esquemas: sus tokens no se voltean. */
+  --pie-texto:      #E9E2D9;
+  --pie-rotulo:     #A79C90;
+  --pie-linea:      rgba(255, 255, 255, .14);
+  --pie-pend-tinta: #F5A894;
+  --pie-pend-filo:  #F0836A;
+  --pie-pend-fondo: rgba(240, 131, 106, .16);
   --verde:          #2C8B2B;
   --verde-hondo:    #1E6B1D;
   --verde-claro:    #E8F4E7;
@@ -460,12 +468,12 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
    Pie — el bloque legal va en TODAS las páginas, aunque quede feo
    -------------------------------------------------------------------------- */
 
-.pie { background: var(--tinta); color: #E9E2D9; padding-block: var(--r7) var(--r5); }
+.pie { background: var(--tinta); color: var(--pie-texto); padding-block: var(--r7) var(--r5); }
 @media (prefers-color-scheme: dark) { :root:not([data-tema="claro"]) .pie { background: var(--fondo-hondo); } }
 .pie a { color: #fff; }
 .pie__rejilla { display: grid; gap: var(--r5); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: #A79C90; margin-bottom: var(--r3); font-family: var(--texto); font-weight: 800; }
+.pie h2 { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pie-rotulo); margin-bottom: var(--r3); font-family: var(--texto); font-weight: 800; }
 .pie p, .pie address { font-style: normal; margin: 0 0 var(--r2); font-size: .94rem; }
-.pie__legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: var(--r6); padding-top: var(--r4); font-size: .86rem; color: #A79C90; }
-.pie__legal a { color: #E9E2D9; }
-.pie .pend { background: rgba(240,131,106,.16); border-color: #F0836A; color: #F5A894; }
+.pie__legal { border-top: 1px solid var(--pie-linea); margin-top: var(--r6); padding-top: var(--r4); font-size: .86rem; color: var(--pie-rotulo); }
+.pie__legal a { color: var(--pie-texto); }
+.pie .pend { background: var(--pie-pend-fondo); border-color: var(--pie-pend-filo); color: var(--pie-pend-tinta); }

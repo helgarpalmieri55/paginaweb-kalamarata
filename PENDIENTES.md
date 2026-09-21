@@ -14,9 +14,9 @@ Sin estos no se manda la verificación de empresa de Meta.
 
 | Marcador | Qué es | Dónde sale |
 |---|---|---|
-| `PENDIENTE_RAZON_SOCIAL` | Razón social **exacta**, carácter por carácter, como aparece en el Certificado de Cámara de Comercio | Pie de las 5 páginas, bloque de identidad del inicio, y ambos textos legales |
+| `PENDIENTE_RAZON_SOCIAL` | Razón social **exacta**, carácter por carácter, como aparece en el Certificado de Cámara de Comercio | Pie de las 5 páginas y ambos textos legales |
 | `PENDIENTE_NIT` | NIT del negocio | Igual |
-| `PENDIENTE_CORREO_CORPORATIVO` | Correo en el dominio propio, p. ej. `contacto@…` | Pie de las 5 páginas y bloque de identidad del inicio |
+| `PENDIENTE_CORREO_CORPORATIVO` | Correo en el dominio propio, p. ej. `contacto@…` | Pie de las 5 páginas |
 | `PENDIENTE_DOMINIO` | Dominio propio **a nombre del negocio**, no del proveedor | `robots.txt`, `sitemap.xml` |
 | `PENDIENTE_CORREO_DATOS` | Buzón para solicitudes de datos personales | Política de datos |
 | `PENDIENTE_RESPONSABLE_DATOS` | Persona que atiende esas solicitudes dentro de los plazos de ley | Política de datos |

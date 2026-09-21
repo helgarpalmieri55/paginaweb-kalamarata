@@ -223,15 +223,6 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .horario__fila dd { margin: 0; color: var(--tinta-suave); text-align: right; font-variant-numeric: tabular-nums; }
 .horario__aviso { background: var(--verde-claro); padding: var(--r3) var(--r4); font-size: .9rem; font-weight: 600; }
 
-/* --------------------------------------------------------------------------
-   Bloque de identidad legal — texto plano, nunca dentro de una imagen
-   -------------------------------------------------------------------------- */
-
-.identidad { background: var(--fondo-hondo); border-block: 1px solid var(--linea); padding-block: var(--r6); }
-.identidad__rejilla { display: grid; gap: var(--r4); grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.identidad dt { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-tenue); font-weight: 700; margin-bottom: .2rem; }
-.identidad dd { margin: 0; font-weight: 600; }
-
 .pend {
   display: inline-block; background: var(--alerta-fondo); color: var(--alerta);
   border: 1px dashed var(--alerta); border-radius: var(--radio-chico);
@@ -292,12 +283,25 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .cats-caja { position: relative; }
 /* La barra de scroll se oculta, asi que el corte tiene que verse de otra
    forma: sin esto, 20 de 22 categorias son invisibles y nadie sabe que hay
-   mas a la derecha. */
+   mas a la derecha. Ahora tambien a la izquierda: desde que el riel se
+   desplaza solo para seguirte, puede quedar carta escondida a ese lado. */
+.cats-caja::before,
 .cats-caja::after {
-  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 3.5rem;
-  pointer-events: none;
-  background: linear-gradient(to right, transparent, var(--papel) 78%);
+  content: ""; position: absolute; top: 0; bottom: 0; width: 3.5rem;
+  pointer-events: none; opacity: 0; transition: opacity .16s;
 }
+.cats-caja::before {
+  left: 0; background: linear-gradient(to left, transparent, var(--papel) 78%);
+}
+.cats-caja::after {
+  right: 0; background: linear-gradient(to right, transparent, var(--papel) 78%);
+}
+/* Las clases las pone pintarBordes() en carta.js. Si el script no corre no
+   aparece --medida, y el respaldo deja el degradado derecho puesto, que es el
+   comportamiento que habia antes. Con el JS en marcha mandan las medidas: con
+   solo dos chips no hay nada escondido y no debe verse ningun degradado. */
+.cats-caja--izq::before, .cats-caja--der::after { opacity: 1; }
+.cats-caja:not(.cats-caja--medida)::after { opacity: 1; }
 .cats { display: flex; gap: var(--r2); overflow-x: auto; padding-block: var(--r3); padding-right: 3rem; scrollbar-width: none; }
 .cats::-webkit-scrollbar { display: none; }
 .cats a {
@@ -551,7 +555,10 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
 .banda__horario { font-size: .94rem; color: var(--sobre-verde); font-weight: 600; }
 .banda__nota { flex-basis: 100%; font-size: .9rem; color: var(--sobre-verde-2); margin: 0; }
 
-.servicio { padding-bottom: var(--r8); }
+/* El anclaje del servicio tiene que descontar la cabecera pegajosa, igual
+   que el de los grupos: lo usan los dos chips del riel y la apertura
+   automatica segun la hora. */
+.servicio { padding-bottom: var(--r8); scroll-margin-top: var(--desplazamiento, 12rem); }
 /* Los dos servicios son dos cartas distintas. La diferencia tiene que verse
    al pasar de una a otra, no adivinarse. */
 .servicio--rapidas { background: var(--fondo-hondo); border-top: 3px solid var(--verde-hondo); }
@@ -569,26 +576,8 @@ p  { margin: 0 0 var(--r4); max-width: 68ch; }
   font-size: .9rem; font-weight: 800;
 }
 
-/* Indicador pegajoso: la barra de categorías ya está siempre a la vista, así
-   que el servicio en curso viaja ahí. Sin añadir una tercera capa pegajosa,
-   que a 390px se comería un tercio de la pantalla. */
-.barra__serv {
-  /* Es un «estás aquí», no un botón: si se ve como los chips de salto, el
-     visitante encuentra dos píldoras verdes iguales y no sabe cuál pulsar. */
-  flex: 0 0 auto; display: inline-flex; align-items: center; gap: .45rem;
-  background: transparent; color: var(--verde-hondo);
-  font-family: var(--titular); font-size: .9rem; letter-spacing: -.01em;
-  padding: .45rem 0; white-space: nowrap;
-}
-.barra__serv[hidden] { display: none; }
-.barra__serv::before {
-  content: ""; width: .55rem; height: .55rem; border-radius: 99px;
-  background: var(--verde-hondo);
-}
-@media (max-width: 30rem) { .barra__serv { font-size: .82rem; } }
-
-/* Los chips de servicio mandan sobre los de categoría: son la división real
-   de la carta, no un filtro más. */
+/* El riel son estos dos y nada mas: las dos cartas. Van en verde de marca
+   porque son la division real del menu, no un filtro. */
 .cats a.cats__serv {
   background: var(--verde-hondo); border-color: var(--verde-hondo);
   color: var(--sobre-marca); font-family: var(--titular); letter-spacing: -.01em;

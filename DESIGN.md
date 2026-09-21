@@ -205,10 +205,10 @@ lo lee todo.
 ### Neutral
 - **Papel** (`papel`, #FFFFFF): superficie elevada — cabecera, portada, barra de carta, tarjetas de plato, panel de pedido, páginas legales.
 - **Fondo** (`fondo`, #F6F3EE): lienzo del documento y relleno de controles en reposo (buscador, chips, botones de cantidad).
-- **Fondo hondo** (`fondo-hondo`, #EDE8E0): el escalón más bajo — bloque de identidad legal, hueco de imagen antes de cargar, botón deshabilitado.
+- **Fondo hondo** (`fondo-hondo`): el escalón más bajo — carta de comidas rápidas, hueco de imagen antes de cargar, botón deshabilitado.
 - **Tinta** (`tinta`, #1A1512): todo el texto corrido y el fondo del pie en esquema claro.
 - **Tinta suave** (`tinta-suave`, #5C534B): texto secundario — entradilla, descripción de plato, notas de sección.
-- **Tinta tenue** (`tinta-tenue`, #6E645B): terciario — rótulos de identidad, placeholders, iconos de apoyo.
+- **Tinta tenue** (`tinta-tenue`): terciario — rótulos, placeholders, iconos de apoyo.
 - **Línea** (`linea`, #E2DBD1): el filete de 1px que separa todo.
 - **Línea fuerte** (`linea-fuerte`, #C9BFB2): borde de control interactivo y filete en hover de tarjeta.
 
@@ -286,7 +286,7 @@ decorativa, ni serif editorial, ni cara de sistema haciendo de display.
 - **Headline** (Archivo Black, `clamp(1.4rem, 1.15rem + 1.1vw, 2rem)`): títulos de sección y de categoría de la carta.
 - **Title** (Archivo Black, 1.06rem, tracking −0.01em): `h3`, nombre de plato, nombre del pedido en el panel.
 - **Body** (Archivo 400, 1rem, interlineado 1.55, máximo 68ch; 70ch de caja en páginas legales): texto corrido. La entradilla de portada sube a 1.16rem y se corta en 46ch.
-- **Label** (Archivo 700/800, 0.70–0.74rem, tracking 0.10–0.12em, versalitas por `text-transform: uppercase`): rótulos de dato en el bloque de identidad, cabeceras de columna del pie, bajada del wordmark y la marca «Imagen de referencia» sobre las fotos.
+- **Label** (Archivo 700/800, 0.70–0.74rem, tracking 0.10–0.12em, versalitas por `text-transform: uppercase`): cabeceras de columna del pie, bajada del wordmark y la marca «Imagen de referencia» sobre las fotos.
 - **Precio** (Archivo Black, 1.12rem en tarjeta / 1.5rem en total, `tabular-nums`): la columna de precios.
 - **Cuerpo menor** (Archivo 400/600, 0.94rem): enlaces de navegación, párrafos y dirección del pie, descripción de plato en la tarjeta.
 - **Meta** (Archivo 400, 0.9rem): notas de sección, texto legal del pie, aviso del bar, nota del total.
@@ -347,7 +347,7 @@ portada abre a `r8` (4.5rem) arriba. Dentro de una tarjeta o de una fila, la
 distancia por defecto es `r4` (1rem) y el apretón es `r2` (0.5rem).
 
 Las rejillas son todas automáticas, sin breakpoints propios:
-`repeat(auto-fit, minmax(210px, 1fr))` para identidad legal y pie,
+`repeat(auto-fit, minmax(210px, 1fr))` para el pie,
 `minmax(230px, 1fr)` para las tarjetas de dato y
 `repeat(auto-fill, minmax(268px, 1fr))` para la parrilla de platos. La portada es
 la única rejilla explícita: una columna hasta 60rem, `1.15fr .85fr` por encima.
@@ -368,7 +368,7 @@ Capas `z-index` declaradas: barra de carta 30, cabecera 40, barra móvil 45, vel
 El sistema es plano por doctrina. La profundidad se construye con dos
 herramientas: **el filete de 1px** en `linea` (y `linea-fuerte` para bordes
 interactivos) y **el escalón de superficie** `fondo-hondo` → `fondo` → `papel`.
-La cabecera, la barra de carta, la portada, el bloque de identidad y las
+La cabecera, la barra de carta, la portada y las
 secciones de papel se distinguen del documento por un filete y un cambio de
 tono, no por elevación.
 
@@ -545,7 +545,8 @@ ocupan regiones enteras, no acentos salpicados sobre fondo neutro*. Ahora:
 - **`.banda`**: rótulo blanco sobre campo verde para cada servicio de la carta.
   No es un recurso inventado: es el de la carta impresa de Kalamarata.
 
-**La portada es mínima.** Héroe y bloque de identidad legal, nada más. Las
+**La portada es mínima.** Héroe y nada más: los datos del negocio viven
+solo en el pie, donde ya estaban repetidos. Las
 tarjetas de domicilios, la rejilla del almuerzo semanal y el mapa se fueron: la
 portada dice qué es y lleva a pedir.
 

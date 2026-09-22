@@ -143,17 +143,36 @@ CIIU:            5611
 ```
 
 El certificado registra además el correo `n.ortiz_95@hotmail.com` y el teléfono
-`3007835040`. **No se publicaron**: el sitio usa el correo corporativo que pidió
-el dueño y el 311 428 0292 que ya estaba. Si Meta exige que el correo coincida
-con el del registro, hay que actualizarlo en la Cámara de Comercio.
+`3007835040`.
 
-Además, sin marcador en el código pero igual de bloqueantes:
+### El teléfono: RESUELTO el 22/09/2026
 
-- **Un teléfono que pueda recibir el código de Meta**, y alguien avisado de que
-  va a entrar una llamada o un SMS. El 311 428 0292 lo contesta quien esté en
-  caja.
-- **Confirmar quién es administrador del portafolio comercial** y su usuario de
-  Facebook. Solo un administrador puede completar la verificación.
+Había una incoherencia que era causa conocida de rechazo: el certificado decía
+**300 783 5040** y el sitio decía **311 428 0292**, y Meta compara el teléfono
+entre el documento, la web y la cuenta.
+
+**El dueño decidió publicar también el 300.** Está en las 6 páginas, en el
+bloque «Datos legales» del pie, rotulado **«Administrativo»**, y en el cuerpo de
+la política de datos y de los términos. No está en el bloque de arriba ni en
+ningún enlace `wa.me`: quien viene a pedir tiene que seguir marcando el 311. La
+prueba `telefonos.js` vigila exactamente eso.
+
+Coste medido en el alto del pie: **236 → 261 px** a 1440, **580 → 626 px** a
+390, **719 → 744 px** a 320. Un dato más es una línea más; no hay forma de
+publicar un teléfono gratis.
+
+El correo del certificado sigue **sin publicarse**: el sitio usa el corporativo
+que pidió el dueño. Si Meta exigiera que coincida con el del registro, hay que
+actualizarlo en la Cámara de Comercio.
+
+### Lo que queda, y ya no bloquea
+
+- **El código de confirmación no tiene por qué llegar por teléfono.** Meta deja
+  escoger entre correo, SMS, llamada o verificación de dominio, y recomienda un
+  correo en el dominio del sitio. Ya existen `pedidos@kalamarata.com` y el DNS
+  en Cloudflare, así que esa es la ruta corta.
+- **Administrador del portafolio: el dueño.** Lo confirmó el 22/09/2026.
+  Coincide con quien figura en el certificado, que es lo que conviene.
 
 ## 1-ter. La decisión de promociones: TOMADA
 
@@ -300,7 +319,8 @@ Esto se revisa al final, cuando ya estén los datos de arriba:
 
 - [ ] Nombre en la web = nombre en el formulario de Meta = nombre en el documento
 - [ ] Dirección en la web = dirección en el formulario = dirección en el documento
-- [ ] Teléfono en la web = teléfono en el formulario
+- [x] Teléfono en la web = teléfono en el documento — el 300 783 5040 del
+      certificado se publica desde el 22/09/2026 (ver sección 4)
 - [ ] El display name que se pida ante Meta se lee igual que el nombre de la web
 
 ---

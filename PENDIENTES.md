@@ -227,6 +227,15 @@ tratar.
 Si el dueño prefiere que desaparezca también de ahí, es un cambio de una línea
 por página, pero conviene que sea una decisión consciente y no un descuido.
 
+## 1-octies. Cerrado el 22/09/2026
+
+| Asunto | Estado |
+|---|---|
+| **Dominio propio** | **Listo.** `kalamarata.com` y `www.kalamarata.com` sirven el sitio. Estuvo a medias unas horas: el apex tenía dos registros A heredados de GoDaddy (13.248.243.5 y 76.223.105.230) en vez del Worker, así que solo respondía `www` |
+| **Cache busting** | **No hace falta.** Se comprobó sobre el sitio vivo: Cloudflare sirve todo con `cache-control: public, max-age=0, must-revalidate` y `etag`, así que el navegador revalida siempre y nunca se queda con el CSS o el JS viejos. El problema era de GitHub Pages (`max-age=600` sin revalidar) y se fue con la mudanza |
+| **Mención al alcohol en términos y pie** | **Se queda**, por decisión del dueño |
+| **«Coca-Cola mega»** | Es la de **2,5 L**. Renombrada |
+
 ## 2. Archivos que faltan
 
 - ~~**El logo**~~ — **entregado el 21/09/2026** en PNG con canal alfa real.
@@ -242,10 +251,10 @@ por página, pero conviene que sea una decisión consciente y no un descuido.
   italiano). Anotado en `PROCEDENCIA.md` como su declaración, no como
   verificación nuestra: no hay forma de comprobar la autoría de una imagen
   desde aquí.
-- **Aclarar qué es una «Coca-Cola mega»** (lo único abierto de las imágenes).
-  La carta la llama así y la foto es de **600 mL**; en Colombia «mega» suele ser
-  un formato mayor. Ya no es cuestión de permisos, sino de que el cliente vea lo
-  que va a recibir. Lo dice el restaurante; no se ha supuesto nada.
+- ~~**Aclarar qué es una «Coca-Cola mega»**~~ — **resuelto el 22/09/2026**: es
+  la de **2,5 litros**. El plato se llama ahora «Coca-Cola 2.5 L PET» y el
+  archivo de imagen se renombró para seguir la convención. La foto sigue siendo
+  la misma; el porqué está en `PROCEDENCIA.md`.
 
 ## 3. Un paso manual en GitHub, una sola vez
 
@@ -253,16 +262,27 @@ por página, pero conviene que sea una decisión consciente y no un descuido.
       branch»). Sin esto el workflow construye pero no publica. Detalle
       completo en `DEPLOY.md`.
 
-## 4. Cuando exista el dominio
+## 4. Cuando exista el dominio — HECHO el 22/09/2026
 
-- [ ] Poner el dominio real en `robots.txt` (descomentar la línea `Sitemap:`) y
-      en `sitemap.xml`.
-- [ ] Añadir `<link rel="canonical">` a las 5 páginas. **Hoy no está a
-      propósito**: un canonical apuntando a un dominio inexistente desindexa el
-      sitio en silencio, mientras que su ausencia no hace daño.
-- [ ] Añadir `og:image` y `og:url` absolutos.
-- [ ] Comprobar que el sitio carga por HTTPS sin advertencias.
-- [ ] Probarlo en **ventana de incógnito**: sin sesión, sin caché y sin 404.
+- [x] **Dominio real en `robots.txt` y `sitemap.xml`.**
+- [x] **`<link rel="canonical">` en las 5 páginas.** Apuntan a las URL **sin
+      `.html`**, que son las que Cloudflare sirve con 200 directo; con `.html`
+      devuelve un 307 y una canónica hacia una redirección es justo lo que no
+      se quiere. Comprobado sobre el sitio vivo.
+- [x] **`og:url`, `og:image`, `og:site_name` y `og:image:alt` absolutos**, en
+      las 5 páginas. Antes solo `index.html` tenía cuatro etiquetas `og` y
+      ninguna imagen: al compartir el enlace por WhatsApp no salía vista previa.
+      Se creó `compartir.webp` (1200×630, 120 KB) recortando el muro italiano
+      de forma que el logotipo sobreviviera.
+- [x] **El `sitemap.xml` usa las mismas URL que las canónicas**, no las de
+      `.html`. Un sitemap lleno de redirecciones es un sitemap que el buscador
+      tiene que corregir solo.
+- [x] **HTTPS sin advertencias**: `kalamarata.com` responde 200 por HTTP/2.
+
+Queda una comprobación que solo puede hacer una persona:
+
+- [ ] Abrirlo en **ventana de incógnito** desde un móvil con datos, sin wifi ni
+      sesión, y recorrer las 5 páginas.
 
 ## 5. Enganche con el asistente de WhatsApp
 

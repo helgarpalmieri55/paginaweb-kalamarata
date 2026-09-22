@@ -23,7 +23,7 @@ Cada una se revisó a tamaño grande antes de aceptarla:
 
 | Archivo | Qué muestra | Comprobado |
 |---|---|---|
-| `coca-cola-mega.webp` | Botella de 600 mL, sabor original | Sello MINSALUD «EXCESO EN AZÚCARES», «600 mL / 3 PORCIONES / BEBIDA GASEOSA», todo legible y correcto |
+| `coca-cola-2-5-l-pet.webp` | Botella de 600 mL, sabor original | Sello MINSALUD «EXCESO EN AZÚCARES», «600 mL / 3 PORCIONES / BEBIDA GASEOSA», todo legible y correcto |
 | `te-hatsu.webp` | Tres botellas de 400 mL (flor de loto, frutos rojos, limón y hierbabuena) | «SIN AZÚCAR & SIN CALORÍAS», «Cont. Neto 400 ml (13,33 fl oz)», tabla nutricional legible |
 | `te-o-jugos-hit.webp` | Tres cajas (frutas tropicales, mango, mora) | Sellos MINSALUD «EXCESO EN AZÚCARES» y «CONTIENE EDULCORANTE», legibles |
 
@@ -46,10 +46,19 @@ el tamaño exactos que recibe el cliente, pero ya no es un asunto de permisos.
 
 ### Dos desajustes medidos, no supuestos
 
-- **La carta dice «Coca-Cola mega» y la foto es de 600 mL.** En Colombia
-  «mega» suele nombrar un formato mayor. O la foto no es del envase que se
-  vende, o el nombre de la carta no es el del producto. **Sigue sin aclararse**;
-  no es un problema de licencia, sino de que el cliente vea lo que va a recibir.
+- **La foto de Coca-Cola es de 600 mL y el producto es de 2,5 L.** El dueño
+  aclaró el 22/09/2026 que la «mega» de su carta es la de 2,5 litros, así que
+  el plato pasó a llamarse «Coca-Cola 2.5 L PET».
+
+  **La foto se dejó**, y conviene que conste por qué: enseña el producto
+  correcto —Coca-Cola PET, sabor original, con su sello MINSALUD— y la imagen
+  no tiene ninguna referencia de escala, así que de ella no se deduce un
+  tamaño. El nombre dice «2.5 L», que es lo que fija la expectativa. No es el
+  caso de las etiquetas inventadas que se rechazaron: ahí la foto enseñaba otro
+  producto.
+
+  Aun así, una foto del envase de 2,5 L sería mejor. Si el dueño la manda, se
+  cambia sin tocar nada más: el archivo ya se llama `coca-cola-2-5-l-pet.webp`.
 - **La foto de Hit viene de un original de 554×554 px**, por debajo de los
   760 px que usa el sitio, así que se ve algo más blanda que las demás. Se
   publicó igual porque muestra el producto correcto; una foto propia la
